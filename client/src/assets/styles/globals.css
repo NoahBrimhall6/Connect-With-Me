@@ -22,13 +22,21 @@
     --whitestblue: #ebfffe;
 }
 
-html, body {
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
     padding: 0;
     margin: 0;
     font-family: "RobotoReg";
     background-color: var(--whitestblue);
     color: black;
     min-height: 100%;
+    padding-bottom: 28rem;
+    box-sizing: inherit;
 }
 
 footer {
@@ -37,48 +45,14 @@ footer {
     bottom: 0;
     left: 0;
 }
-/* 
-.mainNavbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--cutestpurp);
-    font-family: var(--main-font);
-    padding: 2rem;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-shadow: 0 0 10px 2px black;
+
+.profileHeaders {
+    font-family: 'robotoBold';
+    margin-bottom: .2rem;
+    font-size: 1.13rem;
 }
 
-.icon-nav {
-    font-size: 1.2rem;
-    margin-left: 1rem;
-    text-decoration: none;
-    color: white;
+.gridSection {
+    min-height: 100vh;
+    margin-top: 3rem;
 }
-
-.active-tab-icon {
-    font-weight: bold;
-    color: white;
-    font-size: 1.2rem;
-    text-decoration: none;
-}
-
-.other-nav {
-    display: flex;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: white;
-}
-
-.other-nav a {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: .2rem;
-}
-
-.icon-nav a:hover {
-    color: white;
-    font-weight: bold;
-} */
