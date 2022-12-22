@@ -4,18 +4,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import "tailwindcss/tailwind.css"
 
 // Components
-import Home from './components/pages/Home';
-import JobSearch from './components/pages/JobSearch';
-import Profile from './components/pages/Profile';
+import Home from './pages/Home';
+import JobSearch from './pages/JobSearch';
+import Profile from './pages/Profile';
 // import Resume from './components/pages/Resume';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 // Apollo Client
 const client = new ApolloClient({
-    uri: '/graphql',
-    cache: new InMemoryCache()
-})
+  uri: '/graphql',
+  cache: new InMemoryCache()
+});
 
 // Application
 function App() {
@@ -38,5 +38,3 @@ function App() {
 }
 
 export default App;
-
-
