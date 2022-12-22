@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from '../images/cwm-logo.png';
-import BlankProfile from '../images/blank-profile-pic.webp';
+import Logo from '../assets/images/cwm-logo.png';
+import BlankProfile from '../assets/images/blank-profile-pic.webp';
 
 export default function Navbar() {
     let location = window.location.pathname;
