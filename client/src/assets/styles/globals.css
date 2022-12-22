@@ -35,7 +35,7 @@ body {
     background-color: var(--whitestblue);
     color: black;
     min-height: 100%;
-    padding-bottom: 28rem;
+    padding-bottom: 30rem;
     box-sizing: inherit;
 }
 
@@ -55,4 +55,32 @@ footer {
 .gridSection {
     min-height: 100vh;
     margin-top: 3rem;
+}
+
+.gridFeed {
+    min-height: 100vh;
+}
+
+.placeholderImage {
+    width: 250px;
+    height: auto;
+}
+
+/* styling to keep footer on bottom and not compromise main content */
+@media screen and (max-width: 1024px )  {
+    body {
+        padding-bottom: 40rem;
+    }
+}
+
+@media screen and (max-width: 640px )  {
+    body {
+        padding-bottom: 60rem;
+    }
+}
+
+@media screen and (max-width: 270px )  {
+    body {
+        padding-bottom: 70rem;
+    }
 }

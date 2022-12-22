@@ -1,13 +1,21 @@
 import React from 'react';
+import Img from '../assets/images/blank-profile-pic.webp';
 
 export default function Profile() {
     return (
         <div>
-            <header>
-
-            </header>
-
-            <div className='m-8 grid grid-cols-4 grid-rows-6 text-white bg-gray-600 p-5 rounded-md gap-3 gridSection'>
+            {/* Header section for profile ??? ... need to figure out what we want to do here */}
+            <div className='grid grid-cols-6 mt-10'>
+                <header className='bg-gray-800 text-white p-5 rounded-md col-start-2 col-end-6 flex flex-col justify-center items-center'>
+                    <h1 className='profileHeaders'>Michelle's Profile</h1>
+                    {/* <div className='flex'> */}
+                        <img className='rounded-lg mt-3 placeholderImage' src={Img} alt='profile picture holder'></img>
+                    {/* </div> */}
+                </header>
+            </div>
+            
+            {/* Grid styling for profile section */}
+            <div className='ml-8 mr-8 mb-8 grid grid-cols-4 grid-rows-6 text-white bg-gray-600 p-5 rounded-md gap-3 gridSection'>
                     <div className='profilePic bg-gray-900 rounded-md p-3 lg:col-start-1 lg:col-span-1 md:col-start-1 md:col-span-2 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-2 md:row-start-1 md:row-end-2 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4'>
                         <h1 className='profileHeaders'>Name Here</h1>
                         <h3 className='mt-2'>My Title -- Occupation</h3>
