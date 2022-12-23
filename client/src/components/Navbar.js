@@ -6,17 +6,6 @@ export default function Navbar() {
     let location = window.location.pathname;
 
     return (
-        // <nav className='mainNavbar'>
-        //     <div className='icon-nav'>
-        //         <a className={location === '/' ? 'active-tab-icon' : 'icon-nav'}  href="/">MICH</a>
-        //     </div>
-                
-        //     <div className='other-nav'>
-        //         <a className={location === '/jobs' || location === '/' ? 'active-tab' : 'nav-link'}   href="/aboutme">About Me</a>
-
-        //         <a className={location === '/profile' ? 'active-tab' : 'nav-link'}   href="/portfolio">Portfolio</a>
-        //     </div>
-        // </nav>
 
     <nav className="bg-gray-800">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -49,31 +38,23 @@ export default function Navbar() {
             <a href="/profile" className={location === '/profile' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"}>Profile</a>
 
             <a href="/resume" className={location === '/resume' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"}>Resume</a>
+
+            {/* need to create so when 'enter' is hit it will search to clean up the navbar with no button */}
+            <div className={location === '/jobs' ? '' : 'hidden'}>
+                <input type='text' placeholder='Search' className=' text-gray-800 sm:w-30 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none'/>
+            </div>
           </div>
         </div>
       </div>
       <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        {/* <button type="button" className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-          <span className="sr-only">View notifications</span>
-          <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-          </svg>
-        </button> */}
-
         <div className="relative ml-3">
           <div>
             <button type="button" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-              <span className="sr-only">Open user menu</span>
-              <img className="h-8 w-8 rounded-full" src={BlankProfile} alt="profile snapshot"/>
+              {/* need to update sign in and out !!! only show sign out when signed in and vice versa ... will update */}
+              <a href='/signin' className={location === '/signin' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium mr-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-2"}>Sign In</a>
+              <a href='/signout' className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
             </button>
           </div>
-
-          
-          {/* <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <a href="/profile" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-            <a href="/settings" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-            <a href="/signout" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-          </div> */}
         </div>
         </div>
         </div>
@@ -81,7 +62,7 @@ export default function Navbar() {
 
     <div className="sm:hidden" id="mobile-menu">
         <div className="space-y-1 px-2 pt-2 pb-3">
-        <a href="/" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
+        <a href="/" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
 
         <a href="/jobs" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Jobs</a>
 
