@@ -10,6 +10,8 @@ import Profile from './pages/Profile';
 import Resume from './pages/Resume';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 // Apollo Client
 const client = new ApolloClient({
@@ -29,6 +31,8 @@ function App() {
               <Route path='/jobs' element={<JobSearch />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/resume' element={<Resume />} />
+              <Route path='/signin' element={<SignIn />} />
+              <Route path='/signup' element={<SignUp />} />
             </Routes>
           </div>
         <Footer />

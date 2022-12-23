@@ -71,6 +71,10 @@ footer {
     width: auto;
 }
 
+.bold {
+    font-family: 'RobotoBold';
+}
+
 /* styling to keep footer on bottom and not compromise main content */
 @media screen and (max-width: 1024px )  {
     body {
