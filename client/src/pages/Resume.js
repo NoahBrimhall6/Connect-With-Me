@@ -331,6 +331,7 @@ export default function Resume() {
                 <button type="submit" className="btn btn-primary" id="contactSubmit" onClick={handleFormSubmit}>Submit</button>
             </form>
         </div>
+
     )
 }
 

@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: "RobotoLight";
+    src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "RobotoReg";
+    src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "RobotoBold";
+    src: url("../fonts/Roboto/Roboto-Medium.ttf");
+}
+
+:root {
+    --whitestblue: #ebfffe;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "RobotoReg";
+    background-color: var(--whitestblue);
+    color: black;
+    min-height: 100%;
+    padding-bottom: 30rem;
+    box-sizing: inherit;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.profileHeaders {
+    font-family: 'robotoBold';
+    margin-bottom: .2rem;
+    font-size: 1.13rem;
+}
+
+.gridSection {
+    min-height: 100vh;
+    margin-top: 3rem;
+}
+
+.gridFeed {
+    min-height: 100vh;
+}
+
+.placeholderImage {
+    width: 250px;
+    height: auto;
+}
+
+.postImage {
+    height: 150px;
+    width: auto;
+}
+
+/* styling to keep footer on bottom and not compromise main content */
+@media screen and (max-width: 1024px )  {
+    body {
+        padding-bottom: 40rem;
+    }
+}
+
+@media screen and (max-width: 640px )  {
+    body {
+        padding-bottom: 60rem;
+    }
+}
+
+@media screen and (max-width: 270px )  {
+    body {
+        padding-bottom: 70rem;
+    }
+}
