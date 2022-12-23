@@ -3,7 +3,7 @@ import React from 'react';
 import Home from './components/pages/Home';
 import JobSearch from './components/pages/JobSearch';
 import Profile from './components/pages/Profile';
-// import Resume from './components/pages/Resume';
+import Resume from './components/pages/Resume';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -22,7 +22,11 @@ function App() {
             break;
         case '/profile': 
             component = <Profile />
+            case '/resume': 
+            component = <Resume />
+    
     }
+    
 
     return (
         <>
@@ -30,7 +34,7 @@ function App() {
             <div>
                 {component}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
