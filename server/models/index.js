@@ -3,6 +3,8 @@ const Post = require('./Posts');
 const Comment = require('./Comments');
 const Resume = require('./Resume');
 const JobPosting = require('./JobPosting');
+const Keyword = require('./Keyword');
 
-module.exports = { User, Post, Comment, Resume, JobPosting };
+module.exports = { Users, Posts, Comments, Resume, JobPosting, Keyword };
+
 

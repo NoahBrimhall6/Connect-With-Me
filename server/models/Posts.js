@@ -3,37 +3,25 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const Comments = require('./Comments');
 
-const jobPostingSchema = new Schema({
-    jobTitle: {
+const postsSchema = new Schema({
+    title: {
         type: String,
         required: true,
     },
-    jobDescription: {
+    post: {
         type: String,
         required: true,
     },
-    salary: {
+    author: {
         type: String,
         required: true,
-    },
-    contact: {
-        type: String,
-        required: true,
-    },
-    zipCode: {
-        type: Integer,
-        required: true,
-    },
-    keywords: {
-        type: Schema.Types.ObjectId,
-        ref: 'Keyword',        
     },
     upVotes: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Users',
             unique: true,   //Manamana Is this right?
-
+            
         }
     ],
     downVotes: [
@@ -50,6 +38,7 @@ const jobPostingSchema = new Schema({
 });
 
 
-const JobPosting = mongoose.model('JobPosting', jobPostingSchema);
 
-module.exports = JobPosting;
+const Posts = mongoose.model('Posts', postsSchema);
+
+module.exports = Posts;
