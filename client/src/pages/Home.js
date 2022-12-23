@@ -191,8 +191,12 @@ export default function Home() {
                             
                             <div>
                                 <button className="bg-teal-500 hover:bg-teal-600 text-white py-2 px-3 rounded-full mx-1"><ion-icon name="thumbs-up"></ion-icon></button>
+                                <button className="bg-red-600 hover:bg-gray-500 text-white py-2 px-3 rounded-full mx-1"><ion-icon name="thumbs-down"></ion-icon></button>
                                 
                                 <button className="bg-red-400 hover:bg-red-500 text-white py-2 px-3 rounded-full mx-1"><ion-icon name="heart"></ion-icon></button>
+
+                                
+                                
 
                                 <button className="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-3 rounded-full mx-1"><ion-icon name="star"></ion-icon></button>
                             </div>
