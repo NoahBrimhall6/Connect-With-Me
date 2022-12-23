@@ -66,6 +66,11 @@ footer {
     height: auto;
 }
 
+.postImage {
+    height: 150px;
+    width: auto;
+}
+
 /* styling to keep footer on bottom and not compromise main content */
 @media screen and (max-width: 1024px )  {
     body {
