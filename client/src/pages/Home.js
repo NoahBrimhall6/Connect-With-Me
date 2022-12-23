@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-
 export default function Home() {
     return (
         <div className='m-10'>
