@@ -6,7 +6,7 @@ const Posts = require('./Posts');
 const JobPosting = require('./JobPosting');
 
 const usersSchema = new Schema({
-    userName: {
+    userName: {             //Manamana might be able to remove?
         type: String,
         required: true,
         trim: true,
