@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');  //Manamana Using bcrypt?
+const Posts = require('./Posts');
+const JobPosting = require('./JobPosting');
 
 const usersSchema = new Schema({
     userName: {
@@ -39,11 +41,16 @@ const usersSchema = new Schema({
         required: true,
     },
     posts: [Posts.schema],
-    comments: [Comments.schema],
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comments'
+          }
+    ],
     jobPosting: [JobPosting.schema],
     resume: {
-        type: Schema.Types.ObjectId,
-        ref: 'Resume',
+        type: String,
+    
     },
 
 

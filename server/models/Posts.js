@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
+const Comments = require('./Comments');
 
 const postsSchema = new Schema({
     title: {
@@ -11,7 +12,7 @@ const postsSchema = new Schema({
         type: String,
         required: true,
     },
-    username: {
+    author: {
         type: String,
         required: true,
     },
