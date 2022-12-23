@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const Comments = require('./Comments');
 
-const postsSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    post: {
+const commentsSchema = new Schema({
+    comment: {
         type: String,
         required: true,
     },
@@ -31,7 +26,7 @@ const postsSchema = new Schema({
             unique: true,   //Manamana Is this right?
         }
     ],
-    comments: [Comments.schema],
+    
 
 
 
@@ -39,6 +34,6 @@ const postsSchema = new Schema({
 
 
 
-const Posts = mongoose.model('Posts', postsSchema);
+const Comments = mongoose.model('Comments', commentsSchema);
 
-module.exports = Posts;
+module.exports = Comments;
