@@ -132,7 +132,7 @@ export default function Resume() {
     }
 
     return (
-        <div className='contactConatainer'>
+        <div className='contactConatainer xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10'>
             <h2>ResumeBuilder!</h2>
             <form className='contactForm'>
                 <div className="mb-3">
@@ -144,7 +144,6 @@ export default function Resume() {
                         className="form-control"
                         id="fullName"
                         placeholder="Your Full Name">
-
                     </input>
                 </div>
                 <div className="mb-3">
@@ -156,7 +155,6 @@ export default function Resume() {
                         className="form-control"
                         id="email"
                         placeholder="email">
-
                     </input>
                 </div>
                 <div className="mb-3">

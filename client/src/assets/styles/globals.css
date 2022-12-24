@@ -75,7 +75,46 @@ footer {
     font-family: 'RobotoBold';
 }
 
-/* styling to keep footer on bottom and not compromise main content */
+.xbutton {
+    padding-top: 4px;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+.resizable-input {
+    overflow-y: hidden;
+    min-height: 30px;
+}
+
+/* Modal styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40rem;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .blur {
+    filter: blur(5px);
+  }  
+
+
+/* Styling to keep footer on bottom and not compromise main content */
 @media screen and (max-width: 1024px )  {
     body {
         padding-bottom: 40rem;
