@@ -81,11 +81,6 @@ footer {
     padding-left: 6px;
 }
 
-.resizable-input {
-    overflow-y: hidden;
-    min-height: 30px;
-}
-
 /* Modal styling */
 .modal-overlay {
     position: fixed;
