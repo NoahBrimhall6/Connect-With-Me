@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import ViewJob from './pages/ViewJob';
 
 // Apollo Client
 const client = new ApolloClient({
@@ -33,6 +34,7 @@ function App() {
               <Route path='/resume' element={<Resume />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
+              <Route path='/viewjob' element={<ViewJob />} />
             </Routes>
           </div>
         <Footer />
