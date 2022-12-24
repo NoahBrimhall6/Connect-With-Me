@@ -12,6 +12,7 @@ export default function Profile() {
                             {/* logic needed to UPLOAD IMAGE */}
                             <img className='rounded-lg my-3 placeholderImage' src={Img} alt='profile picture holder'></img>
                             {/* <h1 className='bold text-lg text-black mt-3 text-center rounded-lg bg-gray-200 py-5 my-3'>Banana Yomamma</h1> */}
+                            <h1 className='text-center text-lg bold'>Banana Bobanaa</h1>
                             <h3 className='text-white text-center'>Banana Grower</h3>
                         </div>
                         
@@ -51,12 +52,9 @@ export default function Profile() {
                             </div>
                         </div>                        
                     </div>
-
-
-                    
                     </div>  
 
-                    <div className='skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-3 sm:row-start-1 sm:row-end-2 row-start-3 row-end-4 col-start-1 col-span-4'>
+                    <div className='skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-3 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4'>
                         <h1 className='profileHeaders'>Skills and Education</h1>
                         <p className='mt-2'>All of my skills and stuff</p>
                     </div>
