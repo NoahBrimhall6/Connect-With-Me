@@ -143,7 +143,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <hr className="my-3 h-px bg-gray-200 border-0 dark:bg-gray-400"></hr>
+                <hr className="my-3 h-px border-0 bg-gray-400"></hr>
 
                 {/* Make this responsive with current likes and comments!!! */}
                 <div className="flex flex-row justify-between mx-5">

@@ -103,6 +103,16 @@ footer {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
+
+  .form-control {
+    width: 27rem;
+    padding: .3rem;
+    margin-right: 1rem;
+  }
+
+  .textarea-form {
+    height: 8rem;
+  }
   
   .blur {
     filter: blur(5px);
@@ -120,6 +130,30 @@ footer {
     body {
         padding-bottom: 60rem;
     }
+}
+
+@media screen and (max-width: 575px) {
+    .form-control {
+        width: 22rem;
+      }
+}
+
+@media screen and (max-width: 411px) {
+    .form-control {
+        width: 15rem;
+      }
+}
+
+@media screen and (max-width: 334px) {
+    .form-control {
+        width: 10rem;
+      }
+}
+
+@media screen and (max-width: 253px) {
+    .form-control {
+        width: 5rem;
+      }
 }
 
 @media screen and (max-width: 270px )  {

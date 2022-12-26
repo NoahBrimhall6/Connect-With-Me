@@ -29,7 +29,7 @@ export default function Profile() {
             {/* Grid styling for profile section */}
             <div className='xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-4 grid-rows-6 text-white p-5 rounded-md gap-5 gridSection'>
                     <div className='myPosts bg-gray-900 rounded-md p-4 lg:col-start-4 lg:col-span-1 md:col-start-4 md:col-span-1 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-7 md:row-start-1 md:row-end-7 sm:row-start-5 sm:row-end-7 row-start-5 row-end-7 col-start-1 col-span-4 flex flex-col items-center'>
-                        <h1 className='profileHeaders'>My Posts</h1>
+                        <h1 className='profileHeaders text-teal-400'>My Posts</h1>
 
                         {/* Start of inidividual post here */}
                         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
@@ -55,12 +55,153 @@ export default function Profile() {
                     </div>  
 
                     <div className='skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-3 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4'>
-                        <h1 className='profileHeaders'>Skills and Education</h1>
-                        <p className='mt-2'>All of my skills and stuff</p>
+                    <h1 className='profileHeaders text-white'>Education and Skills</h1>
+
+
+                    <div className='flex'>
+                    <div className='educationSection mr-2'>
+                       <h4 className='m-1 bold text-teal-400 text-lg'>Education</h4>
+                       {/* Education template -- make responsive with users credentials */}
+                       <div className='m-1 educationTemplate'>
+                           <h6 className='bold'>University of Utah</h6>
+                           <p className='text-sm'>Full Stack Coding Bootcamp</p>
+                           <p className='text-sm'>Jul 2022 - Jan 2023</p>
+                       </div>
+                       {/* end template */}
+
+                       <div className='m-1 educationTemplate'>
+                           <h6 className='bold'>Harvard</h6>
+                           <p className='text-sm'>Bachelor of Business Administration</p>
+                           <p className='text-sm'>Jul 2012 - Jan 2018</p>
+                       </div>
+                       </div>
+                       
+                   
+                   <div className='skillsSection ml-2'>
+                       <h4 className='m-1 bold text-teal-400 text-lg'>Skills</h4>
+                       {/* Make the skills responsive . . . */}
+                       <div className='skillsList flex flex-wrap'>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       <p className='mr-2 m-1'>Skill here</p>
+                       </div>     
+                   </div>
+                    </div>
+                        
+                        
                     </div>
                     <div className='resume bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-3 lg:row-end-7 md:row-start-3 md:row-end-7 sm:row-start-2 sm:row-end-5 row-start-2 row-end-5 col-start-1 col-span-4'>
-                        <h1 className='profileHeaders'>Resume</h1>
-                        <p className='mt-2'>Resume goes here</p>
+                        <div className='profileResume bg-gray-200 text-black rounded-lg p-4 m-5'>
+                            <h3 className='bold text-2xl text-center'>Jane Doe</h3>
+                            <hr className='my-3 mx-2 h-px border-0 bg-gray-400'></hr>
+                            <div className='m-1 py-1 px-10 text-sm'>
+                                <p>Professional summary about me. Lots of good stuff. I am so amazing because of xyz and have a lot to offer... blah blah blah.  Lots of good stuff. I am so amazing ya ya ya I am wow cool I am wow cool I am wow cool.</p>
+                            </div>
+                            <hr className='my-3 mx-2 h-px border-0 bg-gray-400'></hr>
+
+                            <div className='flex'>
+                            <div className='contactEducationSkills bg-gray-900 rounded-lg py-5 px-6 mx-6 text-white'>
+                            <h4 className='bold text-lg text-teal-400'>Contact</h4>
+                            <div className='m-1'>
+                            <p><span className='mr-2'><ion-icon name="mail"></ion-icon></span>janedoe@gmail.com</p>
+                            <p><span><ion-icon name="call"></ion-icon></span><span className='mr-1 ml-2'>(385)</span>123-1234</p>
+                            <p><span className='mr-2'><ion-icon name="location"></ion-icon></span>Salt Lake City, Utah</p>
+                            </div>
+                            
+
+                            <h3 className='bold text-lg text-teal-400'>Education</h3>
+                            <div className='m-1'>
+                                <p className='bold'>University of Utah</p>
+                                <p className='text-sm'>Full Stack Coding Bootcamp</p>
+                                <p className='text-sm'>Jul 2022 - Jan 2023</p>
+                            </div>
+
+                            <h3 className='bold text-lg text-teal-400'>Skills</h3>
+                            <ul className='m-1'>
+                                <li>skill</li>
+                                <li>skill</li>
+                                <li>skill</li>
+                                <li>skill</li>
+                            </ul>
+                            </div>
+                            
+                        
+
+
+                           <div className='resumeExperience mx-4'>
+                            <h3 className='bold text-xl'>Experience</h3>
+                            {/* Make this responsive */}
+                                <div className='m-1 my-2'>
+                                    <h4 className='bold'>Software Developer</h4>
+                                    <h5 className='text-sm'>Jan 2018 - Jan 2022</h5>
+                                    <h5 className='text-sm bold'>Responsibilities</h5>
+                                    <ul className='text-sm list-disc ml-4'>
+                                        <li>responsibility one goes here.</li>
+                                        <li>responsibility two goes here.</li>
+                                        <li>responsibility three goes here.</li>
+                                    </ul>
+                                </div>
+                                {/* end of template */}
+
+
+                                <div className='m-1 my-2'>
+                                    <h4 className='bold'>Software Developer</h4>
+                                    <h5 className='text-sm'>Jan 2018 - Jan 2022</h5>
+                                    <h5 className='text-sm bold'>Responsibilities</h5>
+                                    <ul className='text-sm list-disc ml-4'>
+                                        <li>responsibility one goes here.</li>
+                                        <li>responsibility two goes here.</li>
+                                        <li>responsibility three goes here.</li>
+                                    </ul>
+                                </div>
+
+                                <div className='m-1 my-2'>
+                                    <h4 className='bold'>Software Developer</h4>
+                                    <h5 className='text-sm'>Jan 2018 - Jan 2022</h5>
+                                    <h5 className='text-sm bold'>Responsibilities</h5>
+                                    <ul className='text-sm list-disc ml-4'>
+                                        <li>responsibility one goes here.</li>
+                                        <li>responsibility two goes here.</li>
+                                        <li>responsibility three goes here.</li>
+                                    </ul>
+                                </div>
+
+                                <div className='m-1 my-2'>
+                                    <h4 className='bold'>Software Developer</h4>
+                                    <h5 className='text-sm'>Jan 2018 - Jan 2022</h5>
+                                    <h5 className='text-sm bold'>Responsibilities</h5>
+                                    <ul className='text-sm list-disc ml-4'>
+                                        <li>responsibility one goes here.</li>
+                                        <li>responsibility two goes here.</li>
+                                        <li>responsibility three goes here.</li>
+                                    </ul>
+                                </div>
+
+                                <div className='m-1 my-2'>
+                                    <h4 className='bold'>Software Developer</h4>
+                                    <h5 className='text-sm'>Jan 2018 - Jan 2022</h5>
+                                    <h5 className='text-sm bold'>Responsibilities</h5>
+                                    <ul className='text-sm list-disc ml-4'>
+                                        <li>responsibility one goes here.</li>
+                                        <li>responsibility two goes here.</li>
+                                        <li>responsibility three goes here.</li>
+                                    </ul>
+                                </div>
+                                
+                           </div>
+                            </div>
+                            
+                            
+                            
+
+                        </div>
                     </div>
             </div> 
         </div>  

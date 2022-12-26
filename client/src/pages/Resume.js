@@ -132,10 +132,11 @@ export default function Resume() {
     }
 
     return (
-        <div className='contactConatainer xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10'>
+        <div className='xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10'>
             <h2 className='bg-gray-900 rounded-md text-white text-3xl p-4 text-center m-3'>ResumeBuilder!</h2>
-            <form className='contactForm m-3 bg-gray-800 p-4 rounded-lg'>
-                <h2 className='bold text-2xl text-white mb-1'>Basic Information</h2>
+            {/* max-w-3xl */}
+            <form className='contactForm m-3 bg-gray-800 p-6 rounded-lg'>
+                <h2 className='bold text-2xl text-teal-400 mb-1'>Basic Information</h2>
                 <div className="mb-3 mx-1">
                     <h3 className='bold text-md text-white'>Full Name:</h3>
                     <input
@@ -143,7 +144,7 @@ export default function Resume() {
                         name='fullName'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="fullName"
                         placeholder="Your Full Name">
                     </input>
@@ -155,7 +156,7 @@ export default function Resume() {
                         name='email'
                         type="email"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="email"
                         placeholder="Email">
                     </input>
@@ -167,7 +168,7 @@ export default function Resume() {
                         name='location'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="location"
                         placeholder="(West Valley, Utah)">
                     </input>
@@ -179,7 +180,7 @@ export default function Resume() {
                         name='skills'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="skils"
                         placeholder="What are your skills? (HTML CSS JS)">
                     </input>
@@ -191,13 +192,13 @@ export default function Resume() {
                         name='education'
                         type="text"
                         onChange={handleInputChange}
-                        className="education form-control rounded-md p-1 bg-gray-200"
+                        className="education form-control focus:outline-teal-400  rounded-md p-1 bg-gray-200"
                         id="education"
-                        placeholder="What Education do you have?">
+                        placeholder="What education do you have?">
                     </input>
                 </div>
                 <br></br>
-                <h2 className='bold text-2xl text-white mb-1'>Previous Experience</h2>
+                <h2 className='bold text-2xl text-teal-400 mb-1 mt-1'>Previous Experience</h2>
                 <div className="mb-3 mx-1">
                     <h3 className='bold text-xl text-white mb-1'>Job 1</h3>
                     <h3 className='bold text-md text-white'>Job Title:</h3>
@@ -206,9 +207,9 @@ export default function Resume() {
                         name='prevJ1Title'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Title"
-                        placeholder="What is your Previous Job Title">
+                        placeholder="What is your previous job title?">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -218,9 +219,9 @@ export default function Resume() {
                         name='prevJ1Company'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Company"
-                        placeholder="What was the Company of your previous Job?">
+                        placeholder="What was the company of your previous job?">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -230,9 +231,9 @@ export default function Resume() {
                         name='prevJ1Length'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Length"
-                        placeholder="How Long did you Work there? (August 2021 - July 2022)">
+                        placeholder="How long did you work there? (August 2021 - July 2022)">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -242,7 +243,7 @@ export default function Resume() {
                         name='prevJ1Responsibilities'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control textarea-form focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Responsibilities"
                         placeholder="Responsibility 1; Responsibility 2; Responsibility 3; Responsibility 4; Responsibility 5; Responsibility 6; Responsibility 7; Responsibility 8; Responsibility 9; Responsibility 10">
                     </textarea>
@@ -257,9 +258,9 @@ export default function Resume() {
                         name='prevJ2Title'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Title"
-                        placeholder="What is your Previous Job Title">
+                        placeholder="What is your previous job title?">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -269,9 +270,9 @@ export default function Resume() {
                         name='prevJ2Company'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Company"
-                        placeholder="What was the Company of your previous Job?">
+                        placeholder="What was the company of your previous job?">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -281,9 +282,9 @@ export default function Resume() {
                         name='prevJ2Length'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Length"
-                        placeholder="How Long did you Work there? (August 2021 - July 2022)">
+                        placeholder="How long did you work there? (August 2021 - July 2022)">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -293,7 +294,7 @@ export default function Resume() {
                         name='prevJ2Responsibilities'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control textarea-form focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Responsibilities"
                         placeholder="Responsibility 1; Responsibility 2; Responsibility 3; Responsibility 4; Responsibility 5; Responsibility 6; Responsibility 7; Responsibility 8; Responsibility 9; Responsibility 10">
                     </textarea>
@@ -307,9 +308,9 @@ export default function Resume() {
                         name='prevJ3Title'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Title"
-                        placeholder="What is your Previous Job Title">
+                        placeholder="What is your previous job title?">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -319,9 +320,9 @@ export default function Resume() {
                         name='prevJ3Company'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Company"
-                        placeholder="What was the Company of your previous Job?">
+                        placeholder="What was the company of your previous job?">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -331,9 +332,9 @@ export default function Resume() {
                         name='prevJ3Length'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Length"
-                        placeholder="How Long did you Work there? (August 2021 - July 2022)">
+                        placeholder="How long did you work there? (August 2021 - July 2022)">
                     </input>
                 </div>
                 <div className="mb-3 mx-1">
@@ -343,7 +344,7 @@ export default function Resume() {
                         name='prevJ3Responsibilities'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control rounded-md p-1 bg-gray-200"
+                        className="form-control textarea-form focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Responsibilities"
                         placeholder="Responsibility 1; Responsibility 2; Responsibility 3; Responsibility 4; Responsibility 5; Responsibility 6; Responsibility 7; Responsibility 8; Responsibility 9; Responsibility 10">
                     </textarea>
