@@ -1,53 +1,51 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const { Schema } = mongoose;
-
-const resumeSchema = new Schema({
+const resumeSchema = new Schema(
+  {
     name: {
         type: String,
-        required: true,
+        required: true
     },
     email: {
         type: String,
-        required: true,
+        required: true
     },
     skills: {
-        type: String,        
+        type: String       
     },
     education: {
-        type: String,        
+        type: String       
     },
     job1Title: {
-        type: String,        
+        type: String        
     },
     job1Length: {
-        type: String,        
+        type: String        
     },
     job1Description: {
-        type: String,        
+        type: String        
     },
     job2Title: {
-        type: String,        
+        type: String        
     },
     job2Length: {
-        type: String,        
+        type: String        
     },
     job2Description: {
-        type: String,        
+        type: String       
     },
     job3Title: {
-        type: String,        
+        type: String        
     },
     job3Length: {
-        type: String,        
+        type: String        
     },
     job3Description: {
-        type: String,        
-    },
+        type: String       
+    }
+  }
+);
 
-
-});
-
-const Resume = mongoose.model('Resume', resumeSchema);
+const Resume = model('Resume', resumeSchema);
 
 module.exports = Resume;
