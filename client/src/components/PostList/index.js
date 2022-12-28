@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Comment from '../Comment';
+import CommentList from '../CommentList';
 
 export default function PostList({ posts }) {
   // Comments section use state to show and hide comments
@@ -80,7 +80,7 @@ export default function PostList({ posts }) {
                       {/* Comments section */}
                       <section>
                         {/* Start of a comment template */}
-                          <Comment />
+                          <Comment comments={post.comments} />
                         {/* End of comment template */}
                       </section>
       

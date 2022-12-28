@@ -11,6 +11,8 @@ export const QUERY_POSTS = gql`
       dislikes
       comments
       commentCount
+      likesCount
+      dislikesCount
     }
   }
 `;

@@ -56,6 +56,19 @@ postSchema.virtual('commentCount')
     : this.comments.length
   );
 
+postSchema.virtual('likesCount')
+  .get(() => 
+    !this.likes
+    ? 'No'
+    : this.likes.length
+  );
+
+postSchema.virtual('dislikesCount')
+  .get(() => 
+    !this.dislikes
+    ? 'No'
+    : this.dislikes.length
+  );
 
 const Post = model('Post', postSchema);
 
