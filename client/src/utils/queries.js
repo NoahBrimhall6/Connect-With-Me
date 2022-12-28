@@ -7,12 +7,14 @@ export const QUERY_POSTS = gql`
       body
       username
       createdAt
-      likes
-      dislikes
       comments
       commentCount
       likesCount
       dislikesCount
     }
   }
+`;
+
+export const QUERY_CONNECTIONS = gql`
+  
 `;

@@ -5,6 +5,8 @@ export default function PostList({ posts }) {
   // Comments section use state to show and hide comments
   const [isSectionVisible, setIsSectionVisible] = useState(false);
 
+  const toggleComments = () => setIsSectionVisible((currentState) => !currentState);
+
   if (!posts.length) {return <h3>No Posts Yet</h3>}
 
   return (
@@ -41,15 +43,11 @@ export default function PostList({ posts }) {
       
               <hr className="my-3 h-px bg-gray-200 border-0 dark:bg-gray-400"></hr>
       
-              {/* Make this responsive with current likes and comments!!! */}
               <div className="flex flex-row justify-between mx-5">
                 <p className="text-black text-xs">{post.likesCount} Likes</p>
                 <p className="text-black text-xs">{post.dislikesCount} Likes</p>
-                {/* create comment section how to reference that post?? */}
                 <button
-                  onClick={() =>
-                    setIsSectionVisible((currentState) => !currentState)
-                  }
+                  onClick={toggleComments()}
                   className="text-black hover:underline text-xs"
                 >
                   {post.commentCount} Comments
@@ -66,11 +64,7 @@ export default function PostList({ posts }) {
                       <div className="flex justify-between">
                         <h3 className="text-white mx-2 text-lg">Comments</h3>
                         <button
-                          onClick={() =>
-                            setIsSectionVisible(
-                              (currentState) => !currentState
-                            )
-                          }
+                          onClick={toggleComments()}
                           className="bg-teal-500 hover:bg-teal-400 text-white xbutton  rounded-full mx-1 mr-1 mb-1 text-xs"
                         >
                           <ion-icon name="close"></ion-icon>
@@ -79,18 +73,12 @@ export default function PostList({ posts }) {
       
                       {/* Comments section */}
                       <section>
-                        {/* Start of a comment template */}
-                          <Comment comments={post.comments} />
-                        {/* End of comment template */}
+                        <CommentList comments={post.comments} />
                       </section>
       
                       <div className="flex justify-end">
                         <button
-                          onClick={() =>
-                            setIsSectionVisible(
-                              (currentState) => !currentState
-                            )
-                          }
+                          onClick={toggleComments()}
                           className="text-xs hover:underline mr-3 mt-1"
                         >
                           Close

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Comment({ comments }) {
+export default function CommentList({ comments }) {
   if (!comments.length) {return <h3>No Comments Yet</h3>}
 
   return (
