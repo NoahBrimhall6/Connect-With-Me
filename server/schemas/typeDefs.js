@@ -8,8 +8,6 @@ const typeDefs = gql`
     lastName: String
     email: String
     password: String
-    profileType: String
-    availableToWork: Boolean
     posts: [Post]
     comments: [Comment]
     jobPostings: [JobPosting]

@@ -29,14 +29,6 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    profileType: {
-        type: String,
-        required: false
-    },
-    availableToWork: {
-      type: Boolean,
-      required: false
-    },
     posts: [
       {
         type: Schema.Types.ObjectId,
