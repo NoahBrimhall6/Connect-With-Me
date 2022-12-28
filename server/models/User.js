@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');  //Manamana Using bcrypt?
 
 const userSchema = new Schema(
   {
-    userName: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -16,7 +16,7 @@ const userSchema = new Schema(
     },
     lastName: {
       type: String,
-      required: true,
+      required: true
     },
     email: {
       type: String,
