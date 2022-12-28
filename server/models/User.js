@@ -6,36 +6,36 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
       unique: true
     },
     firstName: {
       type: String,
-      required: true
+      required: false
     },
     lastName: {
       type: String,
-      required: true
+      required: false
     },
     email: {
       type: String,
-      required: true,
+      required: false,
       unique: true,
       match: [/.+@.+\..+/, 'Must match an email address!'],
     },
     password: {
       type: String,
-      required: true,
+      required: false,
       minlength: 5
     },
     profileType: {
-        type: Integer,
-        required: true
+        type: String,
+        required: false
     },
     availableToWork: {
       type: Boolean,
-      required: true
+      required: false
     },
     posts: [
       {

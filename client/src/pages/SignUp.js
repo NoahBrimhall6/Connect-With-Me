@@ -5,9 +5,11 @@ import Auth from '../utils/auth';
 
 
 
+
+
 export default function SignUp() {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', firstName: '', lastName: '' });
   const [addUser, { error, data }] = useMutation(ADD_USER)
   // set state for form validation
 
@@ -27,8 +29,9 @@ export default function SignUp() {
     }
 
     try {
+        console.log(userFormData.username)
       const { data } = await addUser({
-        variables: {...userFormData},
+        variables: {username: userFormData.username, email: userFormData.email, password: userFormData.password, firstName: userFormData.firstName, lastName: userFormData.lastName},
       });
 
 
@@ -41,6 +44,8 @@ export default function SignUp() {
       username: '',
       email: '',
       password: '',
+      firstName: '',
+      lastName: ''
     });
   };
 
@@ -54,6 +59,30 @@ export default function SignUp() {
                             Sign up for an account
                         </h1>
                         <form className="space-y-4 md:space-y-6" action="#">
+                        <div>
+                                <label for="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                                <input
+                                value={userFormData.firstName} 
+                                type="text" 
+                                name="firstName" 
+                                id="firstName"
+                                onChange={handleInputChange} 
+                                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                placeholder="John" 
+                                required=""/>
+                            </div>
+                            <div>
+                                <label for="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                                <input
+                                value={userFormData.lastName} 
+                                type="text" 
+                                name="lastName" 
+                                id="lastName"
+                                onChange={handleInputChange} 
+                                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                placeholder="John" 
+                                required=""/>
+                            </div>
                             <div>
                                 <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                 <input
@@ -85,18 +114,6 @@ export default function SignUp() {
                                 type="password" 
                                 name="password" 
                                 id="password"
-                                onChange={handleInputChange} 
-                                placeholder="••••••••" 
-                                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                required=""/>
-                            </div>
-                            <div>
-                                <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Retype Password</label>
-                                <input 
-                                value={userFormData.password2} 
-                                type="password2" 
-                                name="password2" 
-                                id="password2"
                                 onChange={handleInputChange} 
                                 placeholder="••••••••" 
                                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 

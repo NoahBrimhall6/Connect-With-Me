@@ -19,7 +19,7 @@ const jobPostingSchema = new Schema(
       required: true
     },
     zipCode: {
-      type: Integer,
+      type: String,
       required: true
     },
     createdAt: {

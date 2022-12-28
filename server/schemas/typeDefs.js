@@ -8,12 +8,12 @@ const typeDefs = gql`
     lastName: String
     email: String
     password: String
-    profileType: Integer
-    availableToWork: Boolean
+    profileType: String
+    availableToWork: String
     posts: [Post]
     comments: [Comment]
     jobPostings: [JobPosting]
-    resume: Resume
+    resume: String
   }
 
   type Post {
@@ -42,6 +42,11 @@ const typeDefs = gql`
     comments: [Comment]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     posts: [Post]
@@ -50,6 +55,10 @@ const typeDefs = gql`
   }
 
 type Mutation {
-  addUser(username: String!, email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!, firstName: String!, lastName: String!): Auth
+  login(email: String!, password: String!): Auth
 }
 `
+
+
+module.exports = typeDefs;
