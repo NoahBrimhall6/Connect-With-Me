@@ -12,21 +12,21 @@ const userSchema = new Schema(
     },
     firstName: {
       type: String,
-      required: false
+      required: true
     },
     lastName: {
       type: String,
-      required: false
+      required: true
     },
     email: {
       type: String,
-      required: false,
+      required: true,
       unique: true,
       match: [/.+@.+\..+/, 'Must match an email address!'],
     },
     password: {
       type: String,
-      required: false,
+      required: true,
       minlength: 5
     },
     profileType: {

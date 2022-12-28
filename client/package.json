@@ -2,6 +2,7 @@
   "name": "00-connect-with-me",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.7.3",
     "@ionic/react": "^6.4.1",
@@ -17,7 +18,8 @@
     "react-router-dom": "^6.6.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "jwt-decode": "^2.2.0"
+    "jwt-decode": "^3.1.2",
+    "graphql": "^15.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

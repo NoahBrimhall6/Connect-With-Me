@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 
 
-export default function SignUp() {
+function SignUp() {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', firstName: '', lastName: '' });
   const [addUser, { error, data }] = useMutation(ADD_USER)
@@ -58,9 +58,9 @@ export default function SignUp() {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign up for an account
                         </h1>
-                        <form className="space-y-4 md:space-y-6" action="#">
+                        <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleFormSubmit}>
                         <div>
-                                <label for="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                                <label htmlFor ="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
                                 <input
                                 value={userFormData.firstName} 
                                 type="text" 
@@ -72,7 +72,7 @@ export default function SignUp() {
                                 required=""/>
                             </div>
                             <div>
-                                <label for="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                                <label htmlFor ="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
                                 <input
                                 value={userFormData.lastName} 
                                 type="text" 
@@ -84,7 +84,7 @@ export default function SignUp() {
                                 required=""/>
                             </div>
                             <div>
-                                <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                                <label htmlFor ="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                 <input
                                 value={userFormData.email} 
                                 type="email" 
@@ -96,7 +96,7 @@ export default function SignUp() {
                                 required=""/>
                             </div>
                             <div>
-                                <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                                <label htmlFor ="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
                                 <input 
                                 value={userFormData.username} 
                                 type="text" 
@@ -108,7 +108,7 @@ export default function SignUp() {
                                 required=""/>
                             </div>
                             <div>
-                                <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                                <label htmlFor ="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                 <input 
                                 value={userFormData.password} 
                                 type="password" 
@@ -122,7 +122,6 @@ export default function SignUp() {
                             <button 
                             type="submit" 
                             className="w-full text-white bg-teal-600 hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
-                            onClick={handleFormSubmit}
                             >Sign up</button>
                         </form>
                     </div>
@@ -133,3 +132,4 @@ export default function SignUp() {
     )
 }
 
+export default SignUp
