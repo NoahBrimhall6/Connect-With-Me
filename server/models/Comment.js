@@ -15,7 +15,7 @@ const commentSchema = new Schema(
       default: Date.now,
       get: rawDate => rawDate.toDateString()
     },
-    like: [
+    likes: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -23,7 +23,7 @@ const commentSchema = new Schema(
             
       }
     ],
-    dislike: [
+    dislikes: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',

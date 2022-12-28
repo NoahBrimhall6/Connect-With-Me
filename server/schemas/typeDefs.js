@@ -9,7 +9,7 @@ const typeDefs = gql`
     email: String
     password: String
     profileType: String
-    availableToWork: String
+    availableToWork: Boolean
     posts: [Post]
     comments: [Comment]
     jobPostings: [JobPosting]
@@ -21,8 +21,8 @@ const typeDefs = gql`
     title: String
     body: String
     username: String
-    upVotes: [User]
-    downVotes: [User]
+    likes: [User]
+    dislikes: [User]
     comments: [Comment]
   }
 
@@ -37,9 +37,6 @@ const typeDefs = gql`
     title: String
     body: String
     username: String
-    upVotes: [User]
-    downVotes: [User]
-    comments: [Comment]
   }
 
   type Auth {
