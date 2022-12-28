@@ -42,8 +42,8 @@ export default function Home() {
     <>
     <div className="flex justify-center">
     <header className="">
-        <div className="flex flex-col justify-center items-center m-10 bg-gray-900 py-12 px-16 rounded-lg">
-          <h3 className="bold text-2xl mb-3 text-white">Create a Post</h3>
+        <div className="flex flex-col justify-center items-center m-10 bg-gray-900 py-12 px-20 rounded-lg">
+          <h3 className="bold text-2xl mb-5 text-white">Create a Post</h3>
           <div>
             <button
               className="createPost px-6 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 "

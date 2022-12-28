@@ -40,8 +40,9 @@ export default function Navbar() {
             <a href="/resume" className={location === '/resume' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"}>Resume</a>
 
             {/* need to create so when 'enter' is hit it will search to clean up the navbar with no button */}
-            <div className={location === '/jobs' ? '' : 'hidden'}>
-                <input type='text' placeholder='Search' className=' text-gray-800 sm:w-30 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none'/>
+            {/* CLASS for following div if we only want search on the jobs page: className={location === '/jobs' ? '' : 'hidden'} */}
+            <div>
+                <input type='text' placeholder='Search' className=' text-gray-800 sm:w-30 h-9 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none'/>
             </div>
           </div>
         </div>
