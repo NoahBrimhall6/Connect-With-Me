@@ -132,203 +132,225 @@ export default function Resume() {
     }
 
     return (
-        <div className='contactConatainer'>
-            <h2>ResumeBuilder!</h2>
-            <form className='contactForm'>
-                <div className="mb-3">
+        <div className='xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10'>
+            <h2 className='bg-gray-900 rounded-md text-white text-3xl p-4 text-center m-3'>ResumeBuilder!</h2>
+            {/* max-w-3xl */}
+            <form className='contactForm m-3 bg-gray-800 p-6 rounded-lg'>
+                <h2 className='bold text-2xl text-teal-400 mb-1'>Basic Information</h2>
+                <div className="mb-3 mx-1">
+                    <h3 className='bold text-md text-white'>Full Name:</h3>
                     <input
                         value={fullName}
                         name='fullName'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="fullName"
                         placeholder="Your Full Name">
-
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                    <h3 className='bold text-md text-white'>Email:</h3>
                     <input
                         value={email}
                         name='email'
                         type="email"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="email"
-                        placeholder="email">
-
+                        placeholder="Email">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Location:</h3>
                     <input
                         value={location}
                         name='location'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="location"
                         placeholder="(West Valley, Utah)">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Skills:</h3>
                     <input
                         value={skills}
                         name='skills'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="skils"
                         placeholder="What are your skills? (HTML CSS JS)">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                    <h3 className='bold text-md text-white'>Education:</h3>
                     <input
                         value={education}
                         name='education'
                         type="text"
                         onChange={handleInputChange}
-                        className="education"
+                        className="education form-control focus:outline-teal-400  rounded-md p-1 bg-gray-200"
                         id="education"
-                        placeholder="What Education do you have?">
+                        placeholder="What education do you have?">
                     </input>
                 </div>
                 <br></br>
-                <div className="mb-3">
+                <h2 className='bold text-2xl text-teal-400 mb-1 mt-1'>Previous Experience</h2>
+                <div className="mb-3 mx-1">
+                    <h3 className='bold text-xl text-white mb-1'>Job 1</h3>
+                    <h3 className='bold text-md text-white'>Job Title:</h3>
                     <input
                         value={prevJ1Title}
                         name='prevJ1Title'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Title"
-                        placeholder="What is your Previous Job Title">
+                        placeholder="What is your previous job title?">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Company:</h3>
                     <input
                         value={prevJ1Company}
                         name='prevJ1Company'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Company"
-                        placeholder="What was the Company of your previous Job?">
+                        placeholder="What was the company of your previous job?">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Job Duration:</h3>
                     <input
                         value={prevJ1Length}
                         name='prevJ1Length'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Length"
-                        placeholder="How Long did you Work there? (August 2021 - July 2022)">
+                        placeholder="How long did you work there? (August 2021 - July 2022)">
                     </input>
                 </div>
-                <div className="mb-3">
-                    <input
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Responsibilities:</h3>
+                    <textarea
                         value={prevJ1Responsibilities}
                         name='prevJ1Responsibilities'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control textarea-form focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ1Responsibilities"
                         placeholder="Responsibility 1; Responsibility 2; Responsibility 3; Responsibility 4; Responsibility 5; Responsibility 6; Responsibility 7; Responsibility 8; Responsibility 9; Responsibility 10">
-                    </input>
+                    </textarea>
                 </div>
                 <br></br>
-                <div className="mb-3">
+                
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-xl text-white mb-1'>Job 2</h3>
+                <h3 className='bold text-md text-white'>Job Title:</h3>
                     <input
                         value={prevJ2Title}
                         name='prevJ2Title'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Title"
-                        placeholder="What is your Previous Job Title">
+                        placeholder="What is your previous job title?">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Company:</h3>
                     <input
                         value={prevJ2Company}
                         name='prevJ2Company'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Company"
-                        placeholder="What was the Company of your previous Job?">
+                        placeholder="What was the company of your previous job?">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Job Duration:</h3>
                     <input
                         value={prevJ2Length}
                         name='prevJ2Length'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Length"
-                        placeholder="How Long did you Work there? (August 2021 - July 2022)">
+                        placeholder="How long did you work there? (August 2021 - July 2022)">
                     </input>
                 </div>
-                <div className="mb-3">
-                    <input
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Responsibilities:</h3>
+                    <textarea
                         value={prevJ2Responsibilities}
                         name='prevJ2Responsibilities'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control textarea-form focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ2Responsibilities"
                         placeholder="Responsibility 1; Responsibility 2; Responsibility 3; Responsibility 4; Responsibility 5; Responsibility 6; Responsibility 7; Responsibility 8; Responsibility 9; Responsibility 10">
-                    </input>
+                    </textarea>
                 </div>
                 <br></br>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-xl text-white mb-1'>Job 3</h3>
+                <h3 className='bold text-md text-white'>Job Title:</h3>
                     <input
                         value={prevJ3Title}
                         name='prevJ3Title'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Title"
-                        placeholder="What is your Previous Job Title">
+                        placeholder="What is your previous job title?">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Company:</h3>
                     <input
                         value={prevJ3Company}
                         name='prevJ3Company'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Company"
-                        placeholder="What was the Company of your previous Job?">
+                        placeholder="What was the company of your previous job?">
                     </input>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Job Duration:</h3>
                     <input
                         value={prevJ3Length}
                         name='prevJ3Length'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Length"
-                        placeholder="How Long did you Work there? (August 2021 - July 2022)">
+                        placeholder="How long did you work there? (August 2021 - July 2022)">
                     </input>
                 </div>
-                <div className="mb-3">
-                    <input
+                <div className="mb-3 mx-1">
+                <h3 className='bold text-md text-white'>Responsibilities:</h3>
+                    <textarea
                         value={prevJ3Responsibilities}
                         name='prevJ3Responsibilities'
                         type="text"
                         onChange={handleInputChange}
-                        className="form-control"
+                        className="form-control textarea-form focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                         id="prevJ3Responsibilities"
                         placeholder="Responsibility 1; Responsibility 2; Responsibility 3; Responsibility 4; Responsibility 5; Responsibility 6; Responsibility 7; Responsibility 8; Responsibility 9; Responsibility 10">
-                    </input>
+                    </textarea>
                 </div>
 
-                <button type="submit" className="btn btn-primary" id="contactSubmit" onClick={handleFormSubmit}>Submit</button>
+                <button type="submit" className="bg-teal-500 hover:bg-teal-400 p-2 rounded-lg py-1 px-6 bold m-2" id="contactSubmit" onClick={handleFormSubmit}>Submit</button>
             </form>
         </div>
 

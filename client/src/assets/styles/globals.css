@@ -71,7 +71,55 @@ footer {
     width: auto;
 }
 
-/* styling to keep footer on bottom and not compromise main content */
+.bold {
+    font-family: 'RobotoBold';
+}
+
+.xbutton {
+    padding-top: 4px;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+/* Modal styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40rem;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .form-control {
+    width: 27rem;
+    padding: .3rem;
+    margin-right: 1rem;
+  }
+
+  .textarea-form {
+    height: 8rem;
+  }
+  
+  .blur {
+    filter: blur(5px);
+  }  
+
+
+/* Styling to keep footer on bottom and not compromise main content */
 @media screen and (max-width: 1024px )  {
     body {
         padding-bottom: 40rem;
@@ -82,6 +130,30 @@ footer {
     body {
         padding-bottom: 60rem;
     }
+}
+
+@media screen and (max-width: 575px) {
+    .form-control {
+        width: 22rem;
+      }
+}
+
+@media screen and (max-width: 411px) {
+    .form-control {
+        width: 15rem;
+      }
+}
+
+@media screen and (max-width: 334px) {
+    .form-control {
+        width: 10rem;
+      }
+}
+
+@media screen and (max-width: 253px) {
+    .form-control {
+        width: 5rem;
+      }
 }
 
 @media screen and (max-width: 270px )  {
