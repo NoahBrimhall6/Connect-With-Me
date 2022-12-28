@@ -14,18 +14,18 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
-    upVotes: [
+    likes: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        unique: true,   //Manamana Is this right?
+        unique: true
       }
     ],
-    downVotes: [
+    dislikes: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        unique: true,   //Manamana Is this right?
+        unique: true
       }
     ],
     comments: [
