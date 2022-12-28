@@ -40,9 +40,10 @@ export default function Home() {
 
   return (
     <>
-      <header className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5">
-        <div className="flex flex-col justify-center items-center m-10 bg-gray-900 p-6 rounded-lg">
-          <h3 className="bold text-2xl mb-2 text-white">Create a Post</h3>
+    <div className="flex justify-center">
+    <header className="">
+        <div className="flex flex-col justify-center items-center m-10 bg-gray-900 py-12 px-16 rounded-lg">
+          <h3 className="bold text-2xl mb-3 text-white">Create a Post</h3>
           <div>
             <button
               className="createPost px-6 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 "
@@ -106,8 +107,10 @@ export default function Home() {
         </div>
       </header>
 
+    </div>
+      
       {/* Feed section starts here */}
-      <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-8 grid-rows-6 gap-3 rounded-md text-white p-4 gridFeed">
+      <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 grid grid-cols-8 grid-rows-6 gap-3 rounded-md text-white p-4 gridFeed">
         <div className="bg-gray-900 rounded-lg p-4 lg:col-start-1 lg:col-end-7 lg:row-start-1 lg:row-end-7 md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-7 sm:col-start-1 sm:col-end-9 sm:row-start-1 sm:row-end-5 col-start-1 col-end-9 row-start-1 row-end-5">
 
 
