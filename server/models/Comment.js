@@ -30,6 +30,12 @@ const commentSchema = new Schema(
         unique: true
       }
     ],
+  },
+  {
+    toJSON: {
+      getters: true
+    },
+    id: false
   }
 );
 

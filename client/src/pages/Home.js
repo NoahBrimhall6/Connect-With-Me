@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import Card from '../components/Card';
+import PostList from '../components/PostList';
+
+import { QUERY_POSTS } from '../utils/queries';
 
 // posting to the page, but it is not saving on refresh, need database
 
 
 export default function Home() {
+  // Query Posts
+  const { loading, data } = useQuery(QUERY_POSTS);
+  const postData = data?.posts || [];
+
   // Comments section use state to show and hide comments
   const [isSectionVisible, setIsSectionVisible] = useState(false);
 
@@ -113,7 +119,7 @@ export default function Home() {
 
 
           {/* Start of feed post template - example, not final one! */}
-            <Card />
+            <PostList posts={postData} />
           {/* End of feed post template */}
 
 

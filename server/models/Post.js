@@ -39,9 +39,22 @@ const postSchema = new Schema(
         ref: 'Comment'
       }
     ]
+  },
+  {
+    toJSON: {
+      getters: true,
+      virtuals: true
+    },
+    id: false
   }
 );
 
+postSchema.virtual('commentCount')
+  .get(() => 
+    !this.comments
+    ? 'No'
+    : this.comments.length
+  );
 
 
 const Post = model('Post', postSchema);

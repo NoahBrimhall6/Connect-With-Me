@@ -33,6 +33,12 @@ const jobPostingSchema = new Schema(
       ref: 'Keyword'
       }
     ]
+  },
+  {
+    toJSON: {
+      getters: true
+    },
+    id: false
   }
 );
 

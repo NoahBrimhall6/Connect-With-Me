@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import Comment from './Comment';
+import Comment from '../Comment';
 
-export default function Card() {
+export default function PostList({ postData }) {
   // Comments section use state to show and hide comments
   const [isSectionVisible, setIsSectionVisible] = useState(false);
 
-  // Get current Date
-  const current = new Date();
-  const date = `${current.getMonth() + 1}/${current.getDate()}/${current.getFullYear()}`;
-
+  if (!postData) return null;
+  
   return (
     <section className="flex justify-center mt-5">
       <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-gray-100 shadow-lg">
@@ -18,7 +16,7 @@ export default function Card() {
           <div className="flex justify-between mb-3">
             <div className="">
               <h5 className="text-gray-900 text-xl font-medium mb-1 bold">
-                Jose Jenkins McGee
+                {postData.username}
               </h5>
               <h6 className="text-gray-500 text-sm font-medium mb-1">
                 Secret FBI Agent
@@ -27,7 +25,7 @@ export default function Card() {
             {/* Make a responsive date change !!! */}
             <div className="mr-2">
               <h6 className="text-gray-500 text-xs font-medium">
-                {date}
+                {postData.createdAt}
               </h6>
             </div>
           </div>
@@ -35,12 +33,10 @@ export default function Card() {
           {/* Card Body */}
           <div className="text-gray-700 text-base mb-4">
             <h5 className="text-gray-900 text-md bold">
-              Title of Post Here
+              {postData.title}
             </h5>
             <p>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              {postData.body}
             </p>
           </div>
 
@@ -48,7 +44,8 @@ export default function Card() {
           <hr className="my-3 h-px border-0 bg-gray-400"></hr>
           {/* Make this responsive with current likes and comments!!! */}
           <div className="flex flex-row justify-between mx-5">
-            <p className="text-black text-xs">93 Likes</p>
+            <p className="text-black text-xs">{postData.likes} Likes</p>
+            <p className="text-black text-xs">{postData.dislikes} Likes</p>
             {/* create comment section how to reference that post?? */}
             <button
               onClick={() =>
@@ -56,7 +53,7 @@ export default function Card() {
               }
               className="text-black hover:underline text-xs"
             >
-              63 Comments
+              {postData.commentCount} Comments
             </button>
           </div>
 
@@ -83,11 +80,7 @@ export default function Card() {
 
                   {/* Comments section */}
                   <section>
-
-                    {/* Start of a comment template */}
-                      <Comment />
-                    {/* End of comment template */}
-
+                    <Comment />
                   </section>
 
                   <div className="flex justify-end">
