@@ -48,4 +48,8 @@ const typeDefs = gql`
     comments: [Comment]
     jobPostings: [JobPosting]
   }
+
+type Mutation {
+  addUser(username: String!, email: String!, password: String!): Auth
+}
 `
