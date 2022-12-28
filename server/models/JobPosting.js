@@ -22,6 +22,11 @@ const jobPostingSchema = new Schema(
       type: Integer,
       required: true
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: rawDate => rawDate.toDateString()
+    },
     keywords: [
       {
       type: Schema.Types.ObjectId,

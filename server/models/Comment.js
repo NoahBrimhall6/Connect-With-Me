@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const commentsSchema = new Schema(
+const commentSchema = new Schema(
   {
     comment: {
       type: String,
@@ -10,19 +10,24 @@ const commentsSchema = new Schema(
       type: String,
       required: true,
     },
-    upVotes: [
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: rawDate => rawDate.toDateString()
+    },
+    like: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Users',
-        unique: true,   //Manamana Is this right?
+        ref: 'User',
+        unique: true
             
       }
     ],
-    downVotes: [
+    dislike: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Users',
-        unique: true,   //Manamana Is this right?
+        ref: 'User',
+        unique: true
       }
     ],
   }
