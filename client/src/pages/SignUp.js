@@ -21,7 +21,6 @@ function SignUp() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -29,7 +28,6 @@ function SignUp() {
     }
 
     try {
-        console.log(userFormData.username)
       const { data } = await addUser({
         variables: {username: userFormData.username, email: userFormData.email, password: userFormData.password, firstName: userFormData.firstName, lastName: userFormData.lastName},
       });
