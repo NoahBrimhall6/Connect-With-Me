@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function ConnectionList() {
   return (
-    <div>
+    <>
       {/* start of connection card template -- will map through this? */}
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
-        <div className="flex flex-col items-center pb-5 pt-5">
+        <div className="flex flex-col items-center py-5">
           <h5 className="text-xl font-medium text-gray-900 text-center">
             Sally Sue
           </h5>
@@ -80,6 +80,6 @@ export default function ConnectionList() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

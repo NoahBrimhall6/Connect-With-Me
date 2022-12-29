@@ -8,7 +8,7 @@ export default function CreatePost() {
     setIsOpen(!isOpen);
   };
 
-  // Post button -- when user creates a clicks submit, will appear on feed
+  // Post button
   const [formData, setFormData] = useState({});
 
   const handleSubmit = (event) => {
@@ -28,9 +28,10 @@ export default function CreatePost() {
   };
 
   return (
+    <div className='flex justify-center'>
     <section className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5">
-      <div className="flex flex-col justify-center items-center m-10 bg-gray-900 p-6 rounded-lg">
-        <h3 className="bold text-2xl mb-2 text-white">Create a Post</h3>
+      <div className="flex flex-col justify-center items-center mx-10 mt-10 bg-gray-900 py-12 px-20 rounded-lg">
+        <h3 className="bold text-2xl mb-5 text-white">Create a Post</h3>
         <div>
           <button
             className="createPost px-6 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 "
@@ -97,5 +98,6 @@ export default function CreatePost() {
         </div>
       </div>
     </section>
+    </div>
   )
 }

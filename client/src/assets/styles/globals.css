@@ -35,7 +35,7 @@ body {
     background-color: var(--whitestblue);
     color: black;
     min-height: 100%;
-    padding-bottom: 30rem;
+    padding-bottom: 25rem;
     box-sizing: inherit;
 }
 
@@ -59,6 +59,10 @@ footer {
 
 .gridFeed {
     min-height: 100vh;
+}
+
+.text-onehalfxl {
+    font-size: 1.3rem;
 }
 
 .placeholderImage {
@@ -113,6 +117,10 @@ footer {
   .textarea-form {
     height: 8rem;
   }
+
+  .textarea-education {
+    height: 5.85rem;
+  }
   
   .blur {
     filter: blur(5px);
@@ -122,14 +130,20 @@ footer {
 /* Styling to keep footer on bottom and not compromise main content */
 @media screen and (max-width: 1024px )  {
     body {
-        padding-bottom: 40rem;
+        padding-bottom: 30rem;
     }
 }
 
 @media screen and (max-width: 640px )  {
     body {
-        padding-bottom: 60rem;
+        padding-bottom: 50rem;
     }
+}
+
+@media screen and (max-width: 1076px )  {
+    .form-control {
+        width: 25rem;
+      }
 }
 
 @media screen and (max-width: 575px) {
@@ -158,6 +172,6 @@ footer {
 
 @media screen and (max-width: 270px )  {
     body {
-        padding-bottom: 70rem;
+        padding-bottom: 60rem;
     }
 }
