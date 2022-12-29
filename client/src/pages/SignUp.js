@@ -21,7 +21,6 @@ function SignUp() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -29,7 +28,6 @@ function SignUp() {
     }
 
     try {
-        console.log(userFormData.username)
       const { data } = await addUser({
         variables: {username: userFormData.username, email: userFormData.email, password: userFormData.password, firstName: userFormData.firstName, lastName: userFormData.lastName},
       });
@@ -80,7 +78,7 @@ function SignUp() {
                                 id="lastName"
                                 onChange={handleInputChange} 
                                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                placeholder="John" 
+                                placeholder="Hunter" 
                                 required=""/>
                             </div>
                             <div>

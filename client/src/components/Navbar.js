@@ -1,9 +1,15 @@
 import React from 'react';
 import Logo from '../assets/images/cwm-logo.png';
 import BlankProfile from '../assets/images/blank-profile-pic.webp';
+import Auth from '../utils/auth';
 
 export default function Navbar() {
     let location = window.location.pathname;
+
+    const logout = (event) => {
+      event.preventDefault();
+      Auth.logout();
+    }
 
     return (
 
@@ -52,8 +58,10 @@ export default function Navbar() {
           <div>
             <button type="button" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               {/* need to update sign in and out !!! only show sign out when signed in and vice versa ... will update */}
-              <a href='/signin' className={location === '/signin' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium mr-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-2"}>Sign In</a>
-              <a href='/signout' className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
+              {Auth.loggedIn() ? (
+                <a onClick={logout} className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
+              ): (<a href='/signin' className={location === '/signin' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium mr-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-2"}>Sign In</a>)
+              }
             </button>
           </div>
         </div>

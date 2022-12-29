@@ -7,7 +7,6 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: false,
-      trim: true,
       unique: true
     },
     firstName: {
@@ -28,14 +27,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: 5
-    },
-    profileType: {
-        type: String,
-        required: false
-    },
-    availableToWork: {
-      type: Boolean,
-      required: false
     },
     posts: [
       {
