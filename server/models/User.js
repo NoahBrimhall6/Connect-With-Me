@@ -49,7 +49,13 @@ const userSchema = new Schema(
     resume: {
       type: Schema.Types.ObjectId,
       ref: 'Resume'
-    }
+    },
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Friend'
+      }
+    ]
   }
 );
 
