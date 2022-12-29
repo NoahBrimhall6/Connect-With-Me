@@ -21,20 +21,18 @@ const resolvers = {
     },
     posts: async () => {
       return await Post.find({})
-        .populate('upVotes')
-        .populate('downVotes')
+        .populate('likes')
+        .populate('dislikes')
         .populate('comments');
     },
     comments: async () => {
       return await Comment.find({})
-        .populate('upVotes')
-        .populate('downVotes');
+        .populate('likes')
+        .populate('dislikes');
     },
     jobPostings: async () => {
       return await JobPosting.find({})
-        .populate('upVotes')
-        .populate('downVotes')
-        .populate('comments');
+      .populate('keywords');
     } 
   },
 

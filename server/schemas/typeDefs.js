@@ -8,8 +8,6 @@ const typeDefs = gql`
     lastName: String
     email: String
     password: String
-    profileType: String
-    availableToWork: String
     posts: [Post]
     comments: [Comment]
     jobPostings: [JobPosting]
@@ -21,15 +19,22 @@ const typeDefs = gql`
     title: String
     body: String
     username: String
-    upVotes: [User]
-    downVotes: [User]
+    createdAt: String
+    likes: [User]
+    dislikes: [User]
     comments: [Comment]
+    commentCount: String
+    likesCount: String
+    dislikesCount: String
   }
 
   type Comment {
     _id: ID
-    body: String
-    username: String
+    comment: String
+    author: String
+    createdAt: String
+    likes: [User]
+    dislikes: [User]
   }
 
   type JobPosting {
@@ -37,9 +42,7 @@ const typeDefs = gql`
     title: String
     body: String
     username: String
-    upVotes: [User]
-    downVotes: [User]
-    comments: [Comment]
+    createdAt: String
   }
 
   type Auth {

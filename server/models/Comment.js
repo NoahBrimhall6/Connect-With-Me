@@ -15,21 +15,24 @@ const commentSchema = new Schema(
       default: Date.now,
       get: rawDate => rawDate.toDateString()
     },
-    like: [
+    likes: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        unique: true
-            
+        ref: 'User'          
       }
     ],
-    dislike: [
+    dislikes: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        unique: true
+        ref: 'User'
       }
     ],
+  },
+  {
+    toJSON: {
+      getters: true
+    },
+    id: false
   }
 );
 

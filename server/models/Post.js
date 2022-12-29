@@ -22,15 +22,13 @@ const postSchema = new Schema(
     likes: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        unique: true
+        ref: 'User'
       }
     ],
     dislikes: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        unique: true
+        ref: 'User'
       }
     ],
     comments: [
@@ -39,10 +37,36 @@ const postSchema = new Schema(
         ref: 'Comment'
       }
     ]
+  },
+  {
+    toJSON: {
+      getters: true,
+      virtuals: true
+    },
+    id: false
   }
 );
 
+postSchema.virtual('commentCount')
+  .get(() => 
+    !this.comments
+    ? 'No'
+    : this.comments.length
+  );
 
+postSchema.virtual('likesCount')
+  .get(() => 
+    !this.likes
+    ? 'No'
+    : this.likes.length
+  );
+
+postSchema.virtual('dislikesCount')
+  .get(() => 
+    !this.dislikes
+    ? 'No'
+    : this.dislikes.length
+  );
 
 const Post = model('Post', postSchema);
 
