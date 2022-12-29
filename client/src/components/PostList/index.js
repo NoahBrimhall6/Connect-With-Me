@@ -7,11 +7,11 @@ export default function PostList({ posts }) {
 
   const toggleComments = () => setIsSectionVisible((currentState) => !currentState);
 
-  if (!posts.length) {return <h3>No Posts Yet</h3>}
+  if (!posts.length) {return <h3>No Posts Yet</h3>};
 
   return (
-    <div>
-      {posts.map((post) => (
+    posts.map((post) => {
+      return (
         <section className="flex justify-center mt-5">
           <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-gray-100 shadow-lg w-full">
             <div className="p-6 flex flex-col justify-start w-full">
@@ -45,9 +45,9 @@ export default function PostList({ posts }) {
       
               <div className="flex flex-row justify-between mx-5">
                 <p className="text-black text-xs">{post.likesCount} Likes</p>
-                <p className="text-black text-xs">{post.dislikesCount} Likes</p>
+                <p className="text-black text-xs">{post.dislikesCount} Disikes</p>
                 <button
-                  onClick={toggleComments()}
+                  //onClick={toggleComments()}
                   className="text-black hover:underline text-xs"
                 >
                   {post.commentCount} Comments
@@ -64,7 +64,7 @@ export default function PostList({ posts }) {
                       <div className="flex justify-between">
                         <h3 className="text-white mx-2 text-lg">Comments</h3>
                         <button
-                          onClick={toggleComments()}
+                          // onClick={toggleComments()}
                           className="bg-teal-500 hover:bg-teal-400 text-white xbutton  rounded-full mx-1 mr-1 mb-1 text-xs"
                         >
                           <ion-icon name="close"></ion-icon>
@@ -73,12 +73,12 @@ export default function PostList({ posts }) {
       
                       {/* Comments section */}
                       <section>
-                        <CommentList comments={post.comments} />
+                        <CommentList key={post._id} comments={post.comments} />
                       </section>
       
                       <div className="flex justify-end">
                         <button
-                          onClick={toggleComments()}
+                          // onClick={toggleComments()}
                           className="text-xs hover:underline mr-3 mt-1"
                         >
                           Close
@@ -129,9 +129,9 @@ export default function PostList({ posts }) {
             </div>
           </div>
         </section>
-      ))}
-    </div>
-  );
+      )
+    })    
+  )
 };
 
 

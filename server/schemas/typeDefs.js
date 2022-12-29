@@ -19,15 +19,22 @@ const typeDefs = gql`
     title: String
     body: String
     username: String
+    createdAt: String
     likes: [User]
     dislikes: [User]
     comments: [Comment]
+    commentCount: String
+    likesCount: String
+    dislikesCount: String
   }
 
   type Comment {
     _id: ID
-    body: String
-    username: String
+    comment: String
+    author: String
+    createdAt: String
+    likes: [User]
+    dislikes: [User]
   }
 
   type JobPosting {
@@ -35,6 +42,7 @@ const typeDefs = gql`
     title: String
     body: String
     username: String
+    createdAt: String
   }
 
   type Auth {
