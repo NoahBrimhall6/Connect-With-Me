@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const resumeSchema = new Schema(
   {
-    name: {
+    fullName: {
         type: String,
         required: true
     },
@@ -10,37 +10,49 @@ const resumeSchema = new Schema(
         type: String,
         required: true
     },
+    location: {
+        type:String
+    },
     skills: {
         type: String       
     },
     education: {
         type: String       
     },
-    job1Title: {
+    prevJ1Title: {
         type: String        
     },
-    job1Length: {
+    prevJ1Company: {
         type: String        
     },
-    job1Description: {
+    prevJ1Length: {
         type: String        
     },
-    job2Title: {
+    prevJ1Responsibilities: {
         type: String        
     },
-    job2Length: {
+    prevJ2Title: {
         type: String        
     },
-    job2Description: {
+    prevJ2Company: {
+        type: String        
+    },
+    prevJ2Length: {
+        type: String        
+    },
+    prevJ2Responsibilities: {
         type: String       
     },
-    job3Title: {
+    prevJ3Title: {
         type: String        
     },
-    job3Length: {
+    prevJ3Company: {
         type: String        
     },
-    job3Description: {
+    prevJ3Length: {
+        type: String        
+    },
+    prevJ3Responsibilities: {
         type: String       
     }
   }
