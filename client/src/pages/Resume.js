@@ -1,35 +1,22 @@
 import React, { useState } from "react";
-import { Document, Packer, Paragraph, HeadingLevel, TextRun } from "docx";
+import { Document, Packer, Paragraph, HeadingLevel } from "docx";
 import { saveAs } from "file-saver";
 import { useMutation } from "@apollo/client";
 import { UPDATE_RESUME } from "../utils/mutations";
 
 export default function Resume() {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [location, setLocation] = useState("");
-  const [skills, setSkills] = useState("");
-  const [education, setEducation] = useState("");
-  const [prevJ1Title, setPrevJ1Title] = useState("");
-  const [prevJ1Company, setPrevJ1Company] = useState("");
-  const [prevJ1Length, setPrevJ1Length] = useState("");
-  const [prevJ1Responsibilities, setPrevJ1Responsibilities] = useState("");
-  const [prevJ2Title, setPrevJ2Title] = useState("");
-  const [prevJ2Company, setPrevJ2Company] = useState("");
-  const [prevJ2Length, setPrevJ2Length] = useState("");
-  const [prevJ2Responsibilities, setPrevJ2Responsibilities] = useState("");
-  const [prevJ3Title, setPrevJ3Title] = useState("");
-  const [prevJ3Company, setPrevJ3Company] = useState("");
-  const [prevJ3Length, setPrevJ3Length] = useState("");
-  const [prevJ3Responsibilities, setPrevJ3Responsibilities] = useState("");
 
   //all variables from the resume form
   const [userResumeForm, setUserResumeForm] = useState({
+    summary: "",
     fullName: "",
+    phone:"",
     email: "",
     location: "",
     skills: "",
     education: "",
+    educationLength:"",
+    educationType:"",
     prevJ1Title: "",
     prevJ1Company: "",
     prevJ1Length: "",
@@ -143,13 +130,19 @@ export default function Resume() {
 
     //calls to the updateResume Mutation which creates a resume and updates the user
     try {
+        console.log("hi")
       const { data } = await updateResume({
+        
         variables: {
           fullName: userResumeForm.fullName,
           email: userResumeForm.email,
+          phone: userResumeForm.phone,
+          summary: userResumeForm.summary,
           location: userResumeForm.location,
           skills: userResumeForm.skills,
           education: userResumeForm.education,
+          educationType: userResumeForm.educationType,
+          educationLength: userResumeForm.educationLength,
           prevJ1Title: userResumeForm.prevJ1Title,
           prevJ1Company: userResumeForm.prevJ1Company,
           prevJ1Length: userResumeForm.prevJ1Length,
@@ -219,6 +212,18 @@ export default function Resume() {
               ></input>
             </div>
             <div className="mb-3 mx-1">
+              <h3 className="bold text-md text-white">Phone:</h3>
+              <input
+                value={userResumeForm.phone}
+                name="phone"
+                type="text"
+                onChange={handleInputChange}
+                className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
+                id="phone"
+                placeholder="801-916-5555"
+              ></input>
+            </div>
+            <div className="mb-3 mx-1">
               <h3 className="bold text-md text-white">Location:</h3>
               <input
                 value={userResumeForm.location}
@@ -244,14 +249,50 @@ export default function Resume() {
             </div>
             <div className="mb-3 mx-1">
               <h3 className="bold text-md text-white">Education:</h3>
-              <textarea
+              <input
                 value={userResumeForm.education}
                 name="education"
                 type="text"
                 onChange={handleInputChange}
-                className="education form-control textarea-education focus:outline-teal-400  rounded-md p-1 bg-gray-200"
+                className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                 id="education"
-                placeholder="What education do you have?"
+                placeholder="What educational facility did you attend?"
+              ></input>
+            </div>
+            <div className="mb-3 mx-1">
+              <h3 className="bold text-md text-white">Education Type:</h3>
+              <input
+                value={userResumeForm.educationType}
+                name="educationType"
+                type="text"
+                onChange={handleInputChange}
+                className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
+                id="educationType"
+                placeholder="Enter your degree or certificate"
+              ></input>
+            </div>
+            <div className="mb-3 mx-1">
+              <h3 className="bold text-md text-white">Education Length:</h3>
+              <input
+                value={userResumeForm.educationLength}
+                name="educationLength"
+                type="text"
+                onChange={handleInputChange}
+                className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
+                id="educationLength"
+                placeholder="How long did you attend?"
+              ></input>
+            </div>
+            <div className="mb-3 mx-1">
+              <h3 className="bold text-md text-white">Professional Summary:</h3>
+              <textarea
+                value={userResumeForm.summary}
+                name="summary"
+                type="text"
+                onChange={handleInputChange}
+                className="education form-control textarea-education focus:outline-teal-400  rounded-md p-1 bg-gray-200"
+                id="summary"
+                placeholder="Write a professional Summary About yourself"
               ></textarea>
             </div>
           </div>
