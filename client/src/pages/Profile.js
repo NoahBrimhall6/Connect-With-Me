@@ -9,15 +9,15 @@ export default function Profile() {
         <header className="bg-gray-900 text-white p-8 rounded-lg col-start-2 col-end-6 grid grid-cols-6 gap-8">
           <div className="lg:col-start-2 lg:col-end-6 md:col-start-2 md:col-end-6 sm:col-start-2 sm:col-end-6 col-start-2 col-end-6 flex justify-center items-center">
             <div>
-              {/* logic needed to UPLOAD IMAGE */}
+              {/* logic needed to UPLOAD IMAGE -- change to a button so when clicked can change picture ? */}
               <img
                 className="rounded-lg my-3 placeholderImage"
                 src={Img}
                 alt="profile picture holder"
               ></img>
               {/* <h1 className='bold text-lg text-black mt-3 text-center rounded-lg bg-gray-200 py-5 my-3'>Banana Yomamma</h1> */}
-              <h1 className="text-center text-lg bold">Banana Bobanaa</h1>
-              <h3 className="text-white text-center">Banana Grower</h3>
+              <h1 className="text-center text-lg bold">Sally Swanson</h1>
+              <h3 className="text-white text-center">Software Developer</h3>
             </div>
           </div>
 

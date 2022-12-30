@@ -8,7 +8,7 @@ export default function CreatePost() {
     setIsOpen(!isOpen);
   };
 
-  // Post button
+  // Post button 
   const [formData, setFormData] = useState({});
 
   const handleSubmit = (event) => {
