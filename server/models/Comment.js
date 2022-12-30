@@ -2,11 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const commentSchema = new Schema(
   {
-    comment: {
-      type: String,
-      required: true,
-    },
-    author: {
+    body: {
       type: String,
       required: true,
     },
@@ -15,18 +11,10 @@ const commentSchema = new Schema(
       default: Date.now,
       get: rawDate => rawDate.toDateString()
     },
-    likes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'          
-      }
-    ],
-    dislikes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ],
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
   },
   {
     toJSON: {

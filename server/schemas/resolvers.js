@@ -7,15 +7,8 @@ const resolvers = {
     users: async () => {
       return await User.find({})
         .populate('posts')
-        .populate('comments')
-        .populate('jobPostings')
-        .populate('resume')
         .populate({
           path: 'posts',
-          populate: 'comments'
-        })
-        .populate({
-          path: 'jobPostings',
           populate: 'comments'
         });
     },
@@ -23,7 +16,6 @@ const resolvers = {
     user: async (parent, {username}) => {
       return User.findOne({ username })
       .populate('posts')
-      .populate('comments')
       .populate('jobPostings')
       .populate('resume')
       .populate({
@@ -35,14 +27,13 @@ const resolvers = {
         populate: 'comments'
       })
     },
-
     //finds signed in user
-    myUser: async (parent, {id}) => {
-        return User.findOne({ id })
+    myUser: async (parent, { id }) => {
+        return User.findById(id)
         .populate('posts')
-        .populate('comments')
         .populate('jobPostings')
         .populate('resume')
+        .populate('connections')
         .populate({
           path: 'posts',
           populate: 'comments'
@@ -52,17 +43,18 @@ const resolvers = {
           populate: 'comments'
         });
     },
-
     posts: async () => {
       return await Post.find({})
-        .populate('likes')
-        .populate('dislikes')
-        .populate('comments');
+        .populate('author')
+        .populate('comments')
+        .populate({
+          path: 'comments',
+          populate: 'author'
+        });
     },
     comments: async () => {
       return await Comment.find({})
-        .populate('likes')
-        .populate('dislikes');
+        .populate('author');
     },
     jobPostings: async () => {
       return await JobPosting.find({})

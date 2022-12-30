@@ -1,24 +1,49 @@
 import { gql } from '@apollo/client';
 
+// Queries all posts for the homepage
 export const QUERY_POSTS = gql`
   query getPosts {
     posts {
       _id
       title
       body
-      username
       createdAt
-      comments {
-        _id
-        comment
-        author
-        createdAt
-      }
-      commentCount
       likesCount
       dislikesCount
+      commentCount
+      author {
+        _id
+        username
+        firstName
+        lastName
+      }
+      comments {
+        _id
+        body
+        createdAt
+        author {
+          _id
+          username
+          firstName
+          lastName
+        }
+      }
     }
   }
+`;
+
+// Queries a single users connections
+export const QUERY_CONNECTIONS = gql`
+query connections($myUserId: ID!) {
+  myUser(id: $myUserId) {
+    username
+    connections {
+      username
+      firstName
+      lastName
+    }
+  }
+}
 `;
 
 
@@ -109,7 +134,3 @@ query myUser($id: ID) {
   }
 }`
 
-
-// export const QUERY_CONNECTIONS = gql`
-  
-// `;
