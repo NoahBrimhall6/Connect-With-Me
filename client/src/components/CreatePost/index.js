@@ -57,7 +57,7 @@ export default function CreatePost() {
                   </h3>
                   <div className="bg-gray-800 editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
                     <input
-                      className="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none"
+                      className="title bg-gray-100 border border-gray-300 p-2 mb-4 rounded-md outline-none"
                       spellcheck="false"
                       placeholder="Title"
                       type="text"
@@ -65,7 +65,7 @@ export default function CreatePost() {
                       onChange={handleChange}
                     />
                     <textarea
-                      className="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none"
+                      className="description bg-gray-100 sec p-3 h-60 border rounded-md border-gray-300 outline-none"
                       spellcheck="false"
                       placeholder="Describe everything about this post here"
                       name="content"
