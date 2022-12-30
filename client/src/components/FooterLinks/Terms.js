@@ -4,7 +4,7 @@ const TermsAndConditions = () => {
   return (
     <div>
       <h1 className='text-center text-2xl bold my-10 text-teal-600'>Terms and Conditions</h1>
-      <div className='mx-48'>
+      <div className='mx-12 xl:mx-48 lg:mx-48 md:mx-32 sm:mx-16'>
       <p>
         Please read these terms and conditions carefully before using our platform. By accessing or using our platform, you agree to be bound by these terms and conditions. If you do not agree to these terms and conditions, you may not use our platform.
       </p>
