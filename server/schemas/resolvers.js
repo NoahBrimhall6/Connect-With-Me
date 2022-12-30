@@ -19,6 +19,40 @@ const resolvers = {
           populate: 'comments'
         });
     },
+    //finds user by userName
+    user: async (parent, {username}) => {
+      return User.findOne({ username })
+      .populate('posts')
+      .populate('comments')
+      .populate('jobPostings')
+      .populate('resume')
+      .populate({
+        path: 'posts',
+        populate: 'comments'
+      })
+      .populate({
+        path: 'jobPostings',
+        populate: 'comments'
+      })
+    },
+
+    //finds signed in user
+    myUser: async (parent, {id}) => {
+        return User.findOne({ id })
+        .populate('posts')
+        .populate('comments')
+        .populate('jobPostings')
+        .populate('resume')
+        .populate({
+          path: 'posts',
+          populate: 'comments'
+        })
+        .populate({
+          path: 'jobPostings',
+          populate: 'comments'
+        });
+    },
+
     posts: async () => {
       return await Post.find({})
         .populate('likes')
@@ -67,14 +101,20 @@ const resolvers = {
 
 
     //Creates a new Resume and updates the logged in user resume ID to the new Resume ID
-    updateResume: async (parent, {fullName, email, location, skills, education, prevJ1Title, prevJ1Company, prevJ1Length, prevJ1Responsibilities, prevJ2Title, prevJ2Company, prevJ2Length, prevJ2Responsibilities, prevJ3Title, prevJ3Company, prevJ3Length, prevJ3Responsibilities}, context) => {
+    updateResume: async (parent, {fullName, email, summary, phone, location, skills, education, educationType, educationLength, prevJ1Title, prevJ1Company, prevJ1Length, prevJ1Responsibilities, prevJ2Title, prevJ2Company, prevJ2Length, prevJ2Responsibilities, prevJ3Title, prevJ3Company, prevJ3Length, prevJ3Responsibilities}, context) => {
       if (context.user) {
+        console.log("hi from resolver")
+        try{
         const newResume = await Resume.create({
           fullName,
           email,
+          summary,
+          phone,
           location,
           skills,
           education,
+          educationType,
+          educationLength,
           prevJ1Title,
           prevJ1Company,
           prevJ1Length,
@@ -88,13 +128,18 @@ const resolvers = {
           prevJ3Length,
           prevJ3Responsibilities
         })
+      
         await User.findOneAndUpdate(
           {_id: context.user._id},
           {$set: {resume: newResume._id}}
         )
       }
-      },
-
+    
+      catch (e) {
+        console.error(e)
+      }
+      }
+    }
   },
 }
 

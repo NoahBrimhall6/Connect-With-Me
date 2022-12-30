@@ -1,7 +1,55 @@
 import React from "react";
 import Img from "../assets/images/blank-profile-pic.webp";
+import { Navigate, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER, QUERY_MYUSER, QUERY_RESUME } from '../utils/queries';
+import Auth from '../utils/auth';
 
-export default function Profile() {
+
+import Skills from '../components/Skills';
+import Skillslist from '../components/skillsList';
+import Responsibilities from '../components/Responsibilites';
+
+const Profile = () => {
+
+
+  const userParam  = useParams();
+
+
+  // gets logged in user information and sets to userData
+  const userID = Auth.getProfile().data._id
+  
+  const {loading, data} = useQuery(QUERY_MYUSER, {
+    variables: { _id: userID },
+  });
+
+  //displays loading until information from QueryUser recieves information
+  if (loading) {
+    return <div>Loading...</div>;
+  } 
+  const userData = data.myUser
+  console.log(userData)
+  console.log(userData.resume.skills)
+  
+  const skillsArray = userData.resume.skills.split(";")
+  const skillsArrayTrimmed = skillsArray.map(element => {
+    return element.trim()
+  })
+  const responsibility1 = userData.resume.prevJ1Responsibilities.split(";")
+  const responsibility1Trimmed = responsibility1.map(element => {
+    return element.trim()
+  })
+  const responsibility2 = userData.resume.prevJ1Responsibilities.split(";")
+  const responsibility2Trimmed = responsibility2.map(element => {
+    return element.trim()
+  })
+  const responsibility3 = userData.resume.prevJ1Responsibilities.split(";")
+  const responsibility3Trimmed = responsibility3.map(element => {
+    return element.trim()
+  })
+
+  console.log(userData.resume.educationType)
+
   return (
     <div>
       {/* Header section for profile ??? ... need to figure out what we want to do here */}
@@ -16,8 +64,8 @@ export default function Profile() {
                 alt="profile picture holder"
               ></img>
               {/* <h1 className='bold text-lg text-black mt-3 text-center rounded-lg bg-gray-200 py-5 my-3'>Banana Yomamma</h1> */}
-              <h1 className="text-center text-lg bold">Sally Swanson</h1>
-              <h3 className="text-white text-center">Software Developer</h3>
+              <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
+              <h3 className="text-white text-center">{`${userData.resume.prevJ1Title}`}</h3>
             </div>
           </div>
 
@@ -35,9 +83,7 @@ export default function Profile() {
             </div>
 
             <p className="mx-10 my-5 text-black">
-              About me Section About me SectionAbout me SectionAbout me
-              SectionAbout me Section About me Section About me Section About me
-              Section
+            {`${userData.resume.summary}`}
             </p>
           </div>
         </header>
@@ -97,47 +143,31 @@ export default function Profile() {
               <h4 className="m-1 bold text-teal-400 text-lg">Education</h4>
               {/* Education template -- make responsive with users credentials */}
               <div className="m-1 educationTemplate">
-                <h6 className="bold">University of Utah</h6>
-                <p className="text-sm">Full Stack Coding Bootcamp</p>
-                <p className="text-sm">Jul 2022 - Jan 2023</p>
+                <h6 className="bold">{`${userData.resume.education}`}</h6>
+                <p className="text-sm">{`${userData.resume.educationType}`}</p>
+                <p className="text-sm">{`${userData.resume.educationLength}`}</p>
               </div>
               {/* end template */}
 
-              <div className="m-1 educationTemplate">
-                <h6 className="bold">Harvard</h6>
-                <p className="text-sm">Bachelor of Business Administration</p>
-                <p className="text-sm">Jul 2012 - Jan 2018</p>
-              </div>
             </div>
 
             <div className="skillsSection ml-2">
               <h4 className="m-1 bold text-teal-400 text-lg">Skills</h4>
               {/* Make the skills responsive . . . */}
               <div className="skillsList flex flex-wrap">
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
-                <p className="mr-2 m-1">Skill here</p>
+                <Skills skills={skillsArrayTrimmed} />
+
               </div>
             </div>
           </div>
         </div>
         <div className="resume bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-3 lg:row-end-7 md:row-start-3 md:row-end-7 sm:row-start-2 sm:row-end-5 row-start-2 row-end-5 col-start-1 col-span-4">
           <div className="profileResume bg-gray-200 text-black rounded-lg p-4 m-5">
-            <h3 className="bold text-2xl text-center">Jane Doe</h3>
+            <h3 className="bold text-2xl text-center">{`${userData.resume.fullName}`}</h3>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
             <div className="m-1 py-1 px-10 text-sm">
               <p>
-                Professional summary about me. Lots of good stuff. I am so
-                amazing because of xyz and have a lot to offer... blah blah
-                blah. Lots of good stuff. I am so amazing ya ya ya I am wow cool
-                I am wow cool I am wow cool.
+              {`${userData.resume.summary}`}
               </p>
             </div>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
@@ -150,35 +180,32 @@ export default function Profile() {
                     <span className="mr-2">
                       <ion-icon name="mail"></ion-icon>
                     </span>
-                    janedoe@gmail.com
+                    {`${userData.resume.email}`}
                   </p>
                   <p>
                     <span>
                       <ion-icon name="call"></ion-icon>
                     </span>
-                    <span className="mr-1 ml-2">(385)</span>123-1234
+                    {`${userData.resume.phone}`}
                   </p>
                   <p>
                     <span className="mr-2">
                       <ion-icon name="location"></ion-icon>
                     </span>
-                    Salt Lake City, Utah
+                    {`${userData.resume.location}`}
                   </p>
                 </div>
 
                 <h3 className="bold text-lg text-teal-400">Education</h3>
                 <div className="m-1">
-                  <p className="bold">University of Utah</p>
-                  <p className="text-sm">Full Stack Coding Bootcamp</p>
-                  <p className="text-sm">Jul 2022 - Jan 2023</p>
+                  <p className="bold">{`${userData.resume.education}`}</p>
+                  <p className="text-sm">{`${userData.resume.educationType}`}</p>
+                  <p className="text-sm">{`${userData.resume.educationLength}`}</p>
                 </div>
 
                 <h3 className="bold text-lg text-teal-400">Skills</h3>
                 <ul className="m-1">
-                  <li>skill</li>
-                  <li>skill</li>
-                  <li>skill</li>
-                  <li>skill</li>
+                <Skillslist skills={skillsArrayTrimmed} />
                 </ul>
               </div>
 
@@ -186,58 +213,31 @@ export default function Profile() {
                 <h3 className="bold text-xl">Experience</h3>
                 {/* Make this responsive */}
                 <div className="m-1 my-2">
-                  <h4 className="bold">Software Developer</h4>
-                  <h5 className="text-sm">Jan 2018 - Jan 2022</h5>
+                  <h4 className="bold">{`${userData.resume.prevJ1Title}`}</h4>
+                  <h5 className="text-sm">{`${userData.resume.prevJ1Company}`}</h5>
+                  <h5 className="text-sm">{`${userData.resume.prevJ1Length}`}</h5>
                   <h5 className="text-sm bold">Responsibilities</h5>
                   <ul className="text-sm list-disc ml-4">
-                    <li>responsibility one goes here.</li>
-                    <li>responsibility two goes here.</li>
-                    <li>responsibility three goes here.</li>
+                  <Responsibilities responsibilities={responsibility1Trimmed} />
                   </ul>
                 </div>
                 {/* end of template */}
 
                 <div className="m-1 my-2">
-                  <h4 className="bold">Software Developer</h4>
-                  <h5 className="text-sm">Jan 2018 - Jan 2022</h5>
-                  <h5 className="text-sm bold">Responsibilities</h5>
+                <h4 className="bold">{`${userData.resume.prevJ2Title}`}</h4>
+                  <h5 className="text-sm">{`${userData.resume.prevJ2Company}`}</h5>
+                  <h5 className="text-sm">{`${userData.resume.prevJ2Length}`}</h5>
                   <ul className="text-sm list-disc ml-4">
-                    <li>responsibility one goes here.</li>
-                    <li>responsibility two goes here.</li>
-                    <li>responsibility three goes here.</li>
+                  <Responsibilities responsibilities={responsibility2Trimmed} />
                   </ul>
                 </div>
 
                 <div className="m-1 my-2">
-                  <h4 className="bold">Software Developer</h4>
-                  <h5 className="text-sm">Jan 2018 - Jan 2022</h5>
-                  <h5 className="text-sm bold">Responsibilities</h5>
+                <h4 className="bold">{`${userData.resume.prevJ3Title}`}</h4>
+                  <h5 className="text-sm">{`${userData.resume.prevJ3Company}`}</h5>
+                  <h5 className="text-sm">{`${userData.resume.prevJ3Length}`}</h5>
                   <ul className="text-sm list-disc ml-4">
-                    <li>responsibility one goes here.</li>
-                    <li>responsibility two goes here.</li>
-                    <li>responsibility three goes here.</li>
-                  </ul>
-                </div>
-
-                <div className="m-1 my-2">
-                  <h4 className="bold">Software Developer</h4>
-                  <h5 className="text-sm">Jan 2018 - Jan 2022</h5>
-                  <h5 className="text-sm bold">Responsibilities</h5>
-                  <ul className="text-sm list-disc ml-4">
-                    <li>responsibility one goes here.</li>
-                    <li>responsibility two goes here.</li>
-                    <li>responsibility three goes here.</li>
-                  </ul>
-                </div>
-
-                <div className="m-1 my-2">
-                  <h4 className="bold">Software Developer</h4>
-                  <h5 className="text-sm">Jan 2018 - Jan 2022</h5>
-                  <h5 className="text-sm bold">Responsibilities</h5>
-                  <ul className="text-sm list-disc ml-4">
-                    <li>responsibility one goes here.</li>
-                    <li>responsibility two goes here.</li>
-                    <li>responsibility three goes here.</li>
+                  <Responsibilities responsibilities={responsibility3Trimmed} />
                   </ul>
                 </div>
               </div>
@@ -248,3 +248,5 @@ export default function Profile() {
     </div>
   );
 }
+
+export default Profile
