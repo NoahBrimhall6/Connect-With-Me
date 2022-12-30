@@ -2,9 +2,15 @@ const { Schema, model } = require('mongoose');
 
 const resumeSchema = new Schema(
   {
+    summary: {
+        type: String
+    },
     fullName: {
         type: String,
         required: true
+    },
+    phone: {
+        type: String,
     },
     email: {
         type: String,
@@ -17,6 +23,12 @@ const resumeSchema = new Schema(
         type: String       
     },
     education: {
+        type: String       
+    },
+    educationLength: {
+        type: String       
+    },
+    educationType: {
         type: String       
     },
     prevJ1Title: {
