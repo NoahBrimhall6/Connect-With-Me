@@ -50,6 +50,12 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Resume'
     },
+    connections: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
     friends: [
       {
         type: Schema.Types.ObjectId,

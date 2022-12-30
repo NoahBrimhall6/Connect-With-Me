@@ -109,7 +109,3 @@ query myUser($id: ID) {
   }
 }`
 
-
-// export const QUERY_CONNECTIONS = gql`
-  
-// `;
