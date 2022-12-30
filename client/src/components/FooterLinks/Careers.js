@@ -33,7 +33,7 @@ const Careers = () => {
     <div>
       <h1 className='text-center text-2xl bold my-10 text-teal-600'>Careers</h1>
       {jobs.map((job) => (
-        <div className='mx-96 text-center mb-5' key={job.title}>
+        <div className='mx-12 xl:mx-96 lg:mx-96 md:mx-64 sm:mx-28 text-center mb-5' key={job.title}>
           <h2 className='bold text-lg'>{job.title}</h2>
           <p><span className='bold'>Location: </span>{job.location}</p>
           <p>{job.description}</p>

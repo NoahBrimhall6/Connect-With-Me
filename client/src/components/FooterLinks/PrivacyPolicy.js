@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <h1 className="text-center text-2xl bold my-10 text-teal-600">
         Privacy Policy
       </h1>
-      <div className="mx-48">
+      <div className="mx-12 xl:mx-48 lg:mx-48 md:mx-32 sm:mx-16">
         <p className="mb-5">
           At our company, we take the privacy of our users very seriously. We
           have created this privacy policy to explain how we collect, use, and

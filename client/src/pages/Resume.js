@@ -176,11 +176,11 @@ export default function Resume() {
 
   return (
     <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10">
-      <h2 className="bg-gray-900 rounded-md text-white text-3xl p-4 text-center m-3">
+      <h2 className="bg-gray-900 rounded-md text-white text-3xl p-4 text-center m-3 mb-10">
         ResumeBuilder!
       </h2>
       {/* max-w-3xl */}
-      <form className="contactForm m-3 bg-gray-800 p-6 rounded-lg">
+      <form className="contactForm m-3 bg-gray-900 p-6 rounded-lg">
         <div className="grid grid-cols-4">
           {/* basic information input section */}
           <div className="m-2 xl:pl-12 lg:pl-0 lg:col-start-1 lg:col-end-2 md:col-start-1 md:col-end-5 sm:col-start-1 sm:col-end-5 col-start-1 col-end-5">

@@ -27,7 +27,7 @@ const QuestionsAnswers = () => {
   ];
 
   return (
-    <div className='mx-48'>
+    <div className='mx-12 xl:mx-48 lg:mx-48 md:mx-32 sm:mx-16'>
       <h1 className='text-center text-2xl bold my-10 text-teal-600'>Questions and Answers</h1>
       {questions.map((question) => (
         <div key={question.question}>

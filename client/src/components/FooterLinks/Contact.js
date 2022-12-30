@@ -29,7 +29,7 @@ const ContactUs = () => {
       {success ? (
         <p className=''>Thank you for contacting us! We will get back to you as soon as possible.</p>
       ) : (
-        <form className='bg-gray-900 mx-52 rounded-lg p-4 text-white' onSubmit={handleSubmit}>
+        <form className='bg-gray-900 xl:mx-52 lg:mx-52 md:mx-32 sm:mx-20 mx-12 rounded-lg p-4 text-white' onSubmit={handleSubmit}>
           <div className='flex flex-col mx-5 mt-2'>
           <label className='bold text-lg mb-1'>
             Name:

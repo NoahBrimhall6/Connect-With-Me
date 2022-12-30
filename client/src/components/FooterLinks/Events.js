@@ -44,7 +44,7 @@ const Events = () => {
     <div>
       <h1 className='text-center text-2xl bold my-10 text-teal-600'>Events</h1>
       {events.map((event) => (
-        <div className='text-center mx-96' key={event.name}>
+        <div className='text-center mx-12 xl:mx-96 lg:mx-96 md:mx-64 sm:mx-28' key={event.name}>
           <h2 className='bold mt-5 text-lg'>{event.name}</h2>
           <p><span className='bold'>Date: </span>{event.date}</p>
           <p><span className='bold'>Location: </span>{event.location}</p>
