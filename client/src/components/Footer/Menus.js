@@ -1,19 +1,19 @@
 export const RESOURCES = [
-    {name : 'Networking', link: '/'},
-    {name : 'Job Resources', link: '#'},
+    {name : 'Networking', link: '/connections'},
+    {name : 'Job Resources', link: '/jobs'},
     {name : 'Resume Builder', link: '/resume'},
 ]
 
 export const SUPPORT = [
-    {name : 'Contact', link: '#'},
-    {name : 'Get in touch', link: '#'},
-    {name : 'FAQs', link: '#'},
+    {name : 'Contact', link: '/contact'},
+    {name : 'Privacy Policy', link: '/privacypolicy'},
+    {name : 'FAQs', link: '/faqs'},
 ]
 
 export const COMPANY = [
-    {name : 'Careers', link: '#'},
-    {name : 'About Us', link: '#'},
-    {name : 'Events', link: '#'},
+    {name : 'About Us', link: '/aboutus'},
+    {name : 'Careers', link: '/careers'},
+    {name : 'Events', link: '/events'},
 ]
 
 export const Icons = [
