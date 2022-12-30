@@ -194,7 +194,7 @@ export default function Resume() {
                 name="fullName"
                 type="text"
                 onChange={handleInputChange}
-                className="form-control focus:outline-teal-400 focus:outline-teal-400 rounded-md p-1 bg-gray-200"
+                className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
                 id="fullName"
                 placeholder="Your Full Name"
               ></input>

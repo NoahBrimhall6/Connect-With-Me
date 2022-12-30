@@ -12,9 +12,7 @@ import Responsibilities from '../components/Responsibilites';
 
 const Profile = () => {
 
-
   const userParam  = useParams();
-
 
   // gets logged in user information and sets to userData
   const userID = Auth.getProfile().data._id
@@ -71,15 +69,7 @@ const Profile = () => {
 
           <div className="lg:col-start-1 lg:col-end-7 lg:row-start-2 lg:row-end-3 mt-3 bg-white rounded-md p-4 md:col-start-1 md:-col-end-7 sm:col-start-1 sm:col-end-7 col-start-1 col-end-7">
             <div className="flex justify-center relative">
-              <h3 className="text-black profileHeaders cols-start-3 col-end-6">About</h3>
-            
-            {/* added edit button, need to add logic now... */}
-            <div className="absolute right-0">
-            <button className="hover:text-teal-500 text-black">
-                <ion-icon name="create-outline"></ion-icon>
-              </button>
-            </div>
-              
+              <h3 className="text-black profileHeaders cols-start-3 col-end-6">About</h3>              
             </div>
 
             <p className="mx-10 my-5 text-black">
