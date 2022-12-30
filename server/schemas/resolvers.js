@@ -29,7 +29,7 @@ const resolvers = {
     },
     //finds signed in user
     myUser: async (parent, { id }) => {
-        return User.findById(id)
+        return User.findOne(id)
         .populate('posts')
         .populate('jobPostings')
         .populate('resume')
