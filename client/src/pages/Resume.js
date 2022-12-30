@@ -235,18 +235,24 @@ export default function Resume() {
                 placeholder="(West Valley, Utah)"
               ></input>
             </div>
+            <h2 className="bold text-onehalfxl text-teal-400 mb-1 mt-5">
+              Skills
+            </h2>
             <div className="mb-3 mx-1">
               <h3 className="bold text-md text-white">Skills:</h3>
-              <input
+              <textarea
                 value={userResumeForm.skills}
                 name="skills"
                 type="text"
                 onChange={handleInputChange}
-                className="form-control focus:outline-teal-400 rounded-md p-1 bg-gray-200"
+                className="form-control focus:outline-teal-400 rounded-md p-1 h-40 bg-gray-200"
                 id="skils"
                 placeholder="What are your skills? (HTML CSS JS)"
-              ></input>
+              ></textarea>
             </div>
+            <h2 className="bold text-onehalfxl text-teal-400 mb-1 mt-5">
+              Education
+            </h2>
             <div className="mb-3 mx-1">
               <h3 className="bold text-md text-white">Education:</h3>
               <input
@@ -283,7 +289,10 @@ export default function Resume() {
                 placeholder="How long did you attend?"
               ></input>
             </div>
-            <div className="mb-3 mx-1">
+            <h2 className="bold text-onehalfxl text-teal-400 mb-1 mt-5">
+              About
+            </h2>
+            <div className="mb-3 mx-1 sm:mb-0 xs:mb-0 md:mb-0">
               <h3 className="bold text-md text-white">Professional Summary:</h3>
               <textarea
                 value={userResumeForm.summary}
@@ -300,12 +309,13 @@ export default function Resume() {
 
           {/* previous experience */}
           <div className="m-2 2xl:pl-20 xl:pl-16 lg:pl-6 lg:col-start-3 lg:col-end-5 md:col-start-1 md:col-end-5 sm:col-start-1 sm:col-end-5 col-start-1 col-end-5">
+          <div>
             <h2 className="bold text-onehalfxl text-teal-400 mb-1 mt-1">
               Previous Experience
             </h2>
           {/* previous experience job 1 */}
             <div className="mb-3 mx-1">
-              <h3 className="bold text-xl text-white mb-1">Job 1</h3>
+              <h3 className="bold text-xl text-teal-100 mb-1">Job 1</h3>
               <h3 className="bold text-md text-white">Job Title:</h3>
               <input
                 value={userResumeForm.prevJ1Title}
@@ -358,9 +368,9 @@ export default function Resume() {
           <br></br>
 
           {/* previous experience job 2 */}
-          <div className="m-2 xl:pl-12 lg:pl-0 lg:col-start-1 lg:col-end-2 md:col-start-1 md:col-end-5 sm:col-start-1 sm:col-end-5 col-start-1 col-end-5">
+          <div>
             <div className="mb-3 mx-1">
-              <h3 className="bold text-xl text-white mb-1">Job 2</h3>
+              <h3 className="bold text-xl text-teal-100 mb-1">Job 2</h3>
               <h3 className="bold text-md text-white">Job Title:</h3>
               <input
                 value={userResumeForm.prevJ2Title}
@@ -413,9 +423,9 @@ export default function Resume() {
           <br></br>
 
           {/* previous experience job 3 */}
-          <div className="m-2 2xl:pl-20 xl:pl-16 lg:pl-6 lg:col-start-3 lg:col-end-5 md:col-start-1 md:col-end-5 sm:col-start-1 sm:col-end-5 col-start-1 col-end-5">
+          <div>
             <div className="mb-3 mx-1">
-              <h3 className="bold text-xl text-white mb-1">Job 3</h3>
+              <h3 className="bold text-xl text-teal-100 mb-1">Job 3</h3>
               <h3 className="bold text-md text-white">Job Title:</h3>
               <input
                 value={userResumeForm.prevJ3Title}
@@ -466,6 +476,8 @@ export default function Resume() {
           </div>
         </div>
 
+          </div>
+          
         <div className="flex justify-center mt-2">
           <button
             type="submit"
