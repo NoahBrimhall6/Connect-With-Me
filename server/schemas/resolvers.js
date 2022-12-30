@@ -28,11 +28,12 @@ const resolvers = {
       })
     },
     //finds signed in user
-    myUser: async (parent, {id}) => {
-        return User.findOne({ id })
+    myUser: async (parent, { id }) => {
+        return User.findById(id)
         .populate('posts')
         .populate('jobPostings')
         .populate('resume')
+        .populate('connections')
         .populate({
           path: 'posts',
           populate: 'comments'

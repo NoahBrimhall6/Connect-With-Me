@@ -6,7 +6,8 @@ import CreatePost from '../components/CreatePost';
 import ConnectionList from '../components/ConnectionList';
 
 import {  
-  QUERY_POSTS
+  QUERY_POSTS,
+  QUERY_CONNECTIONS
 } from '../utils/queries';
 
 export default function Home() {

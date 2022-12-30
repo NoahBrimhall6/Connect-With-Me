@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// Queries all posts for the homepage
 export const QUERY_POSTS = gql`
   query getPosts {
     posts {
@@ -29,6 +30,20 @@ export const QUERY_POSTS = gql`
       }
     }
   }
+`;
+
+// Queries a single users connections
+export const QUERY_CONNECTIONS = gql`
+query connections($myUserId: ID!) {
+  myUser(id: $myUserId) {
+    username
+    connections {
+      username
+      firstName
+      lastName
+    }
+  }
+}
 `;
 
 
