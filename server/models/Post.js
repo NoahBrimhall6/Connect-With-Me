@@ -10,14 +10,14 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
-    username: {
-      type: String,
-      required: true
-    },
     createdAt: {
       type: Date,
       default: Date.now,
       get: rawDate => rawDate.toDateString()
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     },
     likes: [
       {

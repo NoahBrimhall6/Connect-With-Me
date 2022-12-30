@@ -28,16 +28,19 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: rawDate => rawDate.toDateString()
+    },
+    resume: {
+      type: Schema.Types.ObjectId,
+      ref: 'Resume'
+    },
     posts: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Post'
-      }
-    ],
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
       }
     ],
     jobPostings: [
@@ -46,10 +49,6 @@ const userSchema = new Schema(
         ref: 'JobPosting'
       }
     ],
-    resume: {
-      type: Schema.Types.ObjectId,
-      ref: 'Resume'
-    },
     connections: [
       {
         type: Schema.Types.ObjectId,
@@ -62,9 +61,14 @@ const userSchema = new Schema(
         ref: 'Friend'
       }
     ]
+  },
+  {
+    toJSON: {
+      getters: true
+    },
+    id: false
   }
 );
-
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {

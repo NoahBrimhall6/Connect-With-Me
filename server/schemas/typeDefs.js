@@ -9,7 +9,6 @@ const typeDefs = gql`
     email: String
     password: String
     posts: [Post]
-    comments: [Comment]
     jobPostings: [JobPosting]
     resume: Resume
     connections: [User]
@@ -32,8 +31,8 @@ const typeDefs = gql`
     _id: ID
     title: String
     body: String
-    username: String
     createdAt: String
+    author: User
     likes: [User]
     dislikes: [User]
     comments: [Comment]
@@ -44,11 +43,9 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
-    comment: String
-    author: String
+    body: String
     createdAt: String
-    likes: [User]
-    dislikes: [User]
+    author: User
   }
 
   type JobPosting {
