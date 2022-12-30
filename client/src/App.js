@@ -14,6 +14,15 @@ import Footer from './components/Footer';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ViewJob from './pages/ViewJob';
+import AboutUs from './components/FooterLinks/AboutUs';
+import Careers from './components/FooterLinks/Careers';
+import Connections from './components/FooterLinks/Connections';
+import Contact from './components/FooterLinks/Contact';
+import Events from './components/FooterLinks/Events';
+import Faqs from './components/FooterLinks/Faqs';
+import PrivacyPolicy from './components/FooterLinks/PrivacyPolicy';
+import Terms from './components/FooterLinks/Terms';
+
 
 
 const httpLink = createHttpLink({
@@ -55,6 +64,14 @@ function App() {
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
               <Route path='/viewjob' element={<ViewJob />} />
+              <Route path='/aboutus' element={<AboutUs />} />
+              <Route path='/careers' element={<Careers />} />
+              <Route path='/connections' element={<Connections />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/events' element={<Events />} />
+              <Route path='/faqs' element={<Faqs />} />
+              <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+              <Route path='/terms' element={<Terms />} />
             </Routes>
           </div>
         <Footer />
