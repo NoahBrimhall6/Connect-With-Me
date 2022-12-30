@@ -128,9 +128,6 @@ query myUser($id: ID) {
     jobPostings {
       _id
     }
-    comments {
-      _id
-    }
   }
 }`
 
