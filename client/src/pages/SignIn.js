@@ -30,7 +30,7 @@ export default function SignIn() {
                 variables: { ...userFormData },
             })
             Auth.login(data.login.token);
-            console.log("logged In!")
+            console.log(data)
 
         } catch (err) {
             console.error(err);
