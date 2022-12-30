@@ -83,7 +83,7 @@ const resolvers = {
     //logs the user in and sets the Auth Token
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
+      
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
@@ -95,7 +95,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
-
+      
       return { token, user };
     },
 
@@ -103,7 +103,7 @@ const resolvers = {
     //Creates a new Resume and updates the logged in user resume ID to the new Resume ID
     updateResume: async (parent, {fullName, email, summary, phone, location, skills, education, educationType, educationLength, prevJ1Title, prevJ1Company, prevJ1Length, prevJ1Responsibilities, prevJ2Title, prevJ2Company, prevJ2Length, prevJ2Responsibilities, prevJ3Title, prevJ3Company, prevJ3Length, prevJ3Responsibilities}, context) => {
       if (context.user) {
-        console.log("hi from resolver")
+        
         try{
         const newResume = await Resume.create({
           fullName,
