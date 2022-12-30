@@ -14,6 +14,8 @@ export default function Home() {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
 
+  console.log(data);
+
   return (
     <>
       <CreatePost />

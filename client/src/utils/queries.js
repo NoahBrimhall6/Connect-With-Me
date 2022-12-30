@@ -6,17 +6,27 @@ export const QUERY_POSTS = gql`
       _id
       title
       body
-      username
       createdAt
-      comments {
-        _id
-        comment
-        author
-        createdAt
-      }
-      commentCount
       likesCount
       dislikesCount
+      commentCount
+      author {
+        _id
+        username
+        firstName
+        lastName
+      }
+      comments {
+        _id
+        body
+        createdAt
+        author {
+          _id
+          username
+          firstName
+          lastName
+        }
+      }
     }
   }
 `;

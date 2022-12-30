@@ -16,10 +16,10 @@ export default function Post({ post }) {
           <div className="flex justify-between mb-3">
             <div>
               <h5 className="text-gray-900 text-xl font-medium mb-1 bold">
-                {post.username}
+                {post.author.username}
               </h5>
               <h6 className="text-gray-500 text-sm font-medium mb-1">
-                What should go here?
+                {`${post.author.firstName} ${post.author.lastName}`}
               </h6>
             </div>
             <div className="mr-2">
@@ -41,13 +41,13 @@ export default function Post({ post }) {
           <hr className="my-3 h-px bg-gray-200 border-0 dark:bg-gray-400"></hr>
 
           <div className="flex flex-row justify-between mx-5">
-            <p className="text-black text-xs">{post.likesCount} Likes</p>
-            <p className="text-black text-xs">{post.dislikesCount} Disikes</p>
+            <p className="text-black text-xs">{post.likesCount}</p>
+            <p className="text-black text-xs">{post.dislikesCount}</p>
             <button
               onClick={toggleComments}
               className="text-black hover:underline text-xs"
             >
-              {post.commentCount} Comments
+              {post.commentCount}
             </button>
           </div>
 
@@ -70,7 +70,7 @@ export default function Post({ post }) {
 
                   {/* Comments section */}
                   <section>
-                    <CommentList key={post._id} comments={post.comments} />
+                    <CommentList comments={post.comments} />
                   </section>
 
                   <div className="flex justify-end">

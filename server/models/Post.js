@@ -47,26 +47,32 @@ const postSchema = new Schema(
   }
 );
 
-postSchema.virtual('commentCount')
-  .get(() => 
-    !this.comments
-    ? 'No'
-    : this.comments.length
-  );
+postSchema.virtual('commentCount').get(function () {
+  const numComments = this.comments.length;
+  switch (numComments) {
+    case 0: return 'No Comments Yet'
+    case 1: return '1 Comment'
+    default: return `${numComments} Comments`
+  }
+});
 
-postSchema.virtual('likesCount')
-  .get(() => 
-    !this.likes
-    ? 'No'
-    : this.likes.length
-  );
+postSchema.virtual('likesCount').get(function () {
+  const numLikes = this.likes.length;
+  switch (numLikes) {
+    case 0: return 'No Likes Yet'
+    case 1: return '1 Like'
+    default: return `${numLikes} Likes`
+  }
+});
 
-postSchema.virtual('dislikesCount')
-  .get(() => 
-    !this.dislikes
-    ? 'No'
-    : this.dislikes.length
-  );
+postSchema.virtual('dislikesCount').get(function () {
+  const numDislikes = this.dislikes.length;
+  switch (numDislikes) {
+    case 0: return 'No Dislikes Yet'
+    case 1: return '1 Disike'
+    default: return `${numDislikes} Dislikes`
+  }
+});
 
 const Post = model('Post', postSchema);
 
