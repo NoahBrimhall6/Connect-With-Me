@@ -1,13 +1,16 @@
 import React from "react";
+import { useCurrentUser } from '../utils/UserContext';
 
 import PostList from '../components/PostList';
 import CreatePost from '../components/CreatePost';
 import ConnectionList from '../components/ConnectionList';
 
 export default function Home() {
+  const { currentUser } = useCurrentUser();
   return (
     <>
       <CreatePost />
+      {currentUser.loggedIn ? <h1>Logged In</h1> : <h1>Not Logged In</h1>}
       
       {/* Feed section starts here */}
       <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-8 grid-rows-6 gap-3 rounded-md text-white p-4 gridFeed">

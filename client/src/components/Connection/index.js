@@ -5,10 +5,10 @@ export default function Connection({ connection }) {
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
       <div className="flex flex-col items-center py-5">
         <h5 className="text-xl font-medium text-gray-900 text-center">
-          {connection.username}
+          noahbrimhall6
         </h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          {`${connection.firstName} ${connection.lastName}`}
+          Noah Brimhall
         </span>
         <div className="flex mt-4 space-x-3 md:mt-6">
           <a
