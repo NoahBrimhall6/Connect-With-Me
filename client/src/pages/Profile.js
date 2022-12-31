@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_MYUSER, QUERY_RESUME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-
+import Redirect from '../pages/Redirect';
 import Skills from '../components/Skills';
 import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
@@ -19,6 +19,7 @@ const Profile = () => {
   const {loading, data} = useQuery(QUERY_MYUSER, {
     variables: { id: userID },
   });
+
   //displays loading until information from QueryUser recieves information
   if (loading) {
     return <div>Loading...</div>;
@@ -59,7 +60,6 @@ const Profile = () => {
                 src={Img}
                 alt="profile picture holder"
               ></img>
-              {/* <h1 className='bold text-lg text-black mt-3 text-center rounded-lg bg-gray-200 py-5 my-3'>Banana Yomamma</h1> */}
               <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
               <h3 className="text-white text-center">{`${userData.resume.prevJ1Title}`}</h3>
             </div>
@@ -144,7 +144,6 @@ const Profile = () => {
               {/* Make the skills responsive . . . */}
               <div className="skillsList flex flex-wrap">
                 <Skills skills={skillsArrayTrimmed} />
-
               </div>
             </div>
           </div>
@@ -171,7 +170,7 @@ const Profile = () => {
                     {`${userData.resume.email}`}
                   </p>
                   <p>
-                    <span>
+                    <span className="mr-2">
                       <ion-icon name="call"></ion-icon>
                     </span>
                     {`${userData.resume.phone}`}
