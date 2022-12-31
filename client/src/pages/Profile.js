@@ -18,11 +18,9 @@ const Profile = () => {
 
   // gets logged in user information and sets to userData
   const userID = Auth.getProfile().data._id
-  
   const {loading, data} = useQuery(QUERY_MYUSER, {
-    variables: { _id: userID },
+    variables: { id: userID },
   });
-
   //displays loading until information from QueryUser recieves information
   if (loading) {
     return <div>Loading...</div>;
