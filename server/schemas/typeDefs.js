@@ -22,7 +22,6 @@ const typeDefs = gql`
     email: String
     password: String
     posts: [Post]
-    comments: [Comment]
     jobPostings: [JobPosting]
     resume: String
   }
@@ -90,7 +89,7 @@ const typeDefs = gql`
     users: [User]
     posts: [Post]
     user(username: String!): User
-    myUser(_id: ID): User
+    myUser(_id: ID!): User
     comments: [Comment]
     jobPostings: [JobPosting]
   }

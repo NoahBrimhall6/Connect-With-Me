@@ -90,44 +90,38 @@ query user($username: String!) {
 
 
 export const QUERY_MYUSER = gql`
-query myUser($id: ID) {
+query myUser($id: ID!) {
   myUser(_id: $id) {
     _id
-    username
+    email
     firstName
     lastName
-    email
     password
     resume {
       _id
       fullName
+      email
+      location
+      summary
+      phone
+      skills
       education
       educationType
       educationLength
-      summary
-      email
-      phone
-      location
+      prevJ1Title
       prevJ1Company
       prevJ1Length
       prevJ1Responsibilities
-      prevJ1Title
+      prevJ2Title
       prevJ2Company
       prevJ2Length
       prevJ2Responsibilities
-      prevJ2Title
+      prevJ3Title
       prevJ3Company
       prevJ3Length
       prevJ3Responsibilities
-      prevJ3Title
-      skills
     }
-    posts {
-      _id
-    }
-    jobPostings {
-      _id
-    }
+    username
   }
 }`
 
