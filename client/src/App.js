@@ -22,6 +22,7 @@ import Events from './components/FooterLinks/Events';
 import Faqs from './components/FooterLinks/Faqs';
 import PrivacyPolicy from './components/FooterLinks/PrivacyPolicy';
 import Terms from './components/FooterLinks/Terms';
+import Redirect from './pages/Redirect';
 
 
 
@@ -72,6 +73,7 @@ function App() {
               <Route path='/faqs' element={<Faqs />} />
               <Route path='/privacypolicy' element={<PrivacyPolicy />} />
               <Route path='/terms' element={<Terms />} />
+              <Route path='/redirect' element={<Redirect />} />
             </Routes>
           </div>
         <Footer />
