@@ -21,15 +21,25 @@ export default function CreatePost() {
     const { name, value } = event.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { title, body } = formState;
-    createPost({ variables: { title, body } })
+    // const { firstName, lastName, username } = formState;
+    // const { title, body } = formState;
+    createPost({ 
+      variables: { 
+        title: formState.title, 
+        body: formState.body, 
+        // author: 'userId', 
+        // firstName, 
+        // lastName, 
+        // username 
+      }})
       .then(() => {
         // Closes the modal
         // setFormState({});
         toggleModal();
+        window.location.assign('/');
       })
       .catch((error) => {
         console.error(error);

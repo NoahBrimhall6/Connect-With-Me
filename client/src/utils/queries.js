@@ -35,6 +35,18 @@ export const QUERY_POSTS = gql`
   }
 `;
 
+// myUser(_id: $id) {
+//   _id
+//   username
+//   firstName
+//   lastName
+//   resume {
+//     prevJ1Title
+//   }
+// }
+
+
+
 // Queries a single users connections
 export const QUERY_CONNECTIONS = gql`
 query connections($id: ID!) {
@@ -140,3 +152,38 @@ query Users {
     email
   }
 }`
+
+// Queries all posts for the homepage
+export const QUERY_NEW_POSTS = gql`
+  query getPosts {
+    posts {
+      _id
+      title
+      body
+      createdAt
+      likesCount
+      dislikesCount
+      commentCount
+      author {
+        _id
+        username
+        firstName
+        lastName
+        resume {
+          prevJ1Title
+        }
+      }
+      comments {
+        _id
+        body
+        createdAt
+        author {
+          _id
+          username
+          firstName
+          lastName
+        }
+      }
+    }
+  }
+`;
