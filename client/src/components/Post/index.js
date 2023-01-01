@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import CommentList from '../CommentList';
+import { useMutation } from '@apollo/client';
+import { ADD_CONNECTION } from '../../utils/mutations';
 
-export default function Post({ post }) {
+export default function Post({ post, userID }) {
   // Comments section use state to show and hide comments
   const [isOpen, setIsOpen] = useState(false);
 
+  const [addConnection, { error }] = useMutation(ADD_CONNECTION);
+
+  if (error) {
+    console.log('Mutation Failed', error);
+  };
+
   const toggleComments = () => {
     setIsOpen(!isOpen);
+  };
+
+  const Connection = async () => {
+    try {
+      const { data } = await addConnection({
+        variables: { id: userID, connections: post.author._id }
+      })
+      window.location.assign('/');
+    } catch (err) {console.error(err)};
   };
   
   return (
@@ -98,7 +115,7 @@ export default function Post({ post }) {
               </button>
 
               <button className="bg-red-400 hover:bg-red-300 text-white py-2 px-3 rounded-full mx-1">
-                <ion-icon name="heart"></ion-icon>
+                <ion-icon onClick={Connection} name="heart"></ion-icon>
               </button>
 
               <button className="bg-yellow-400 hover:bg-yellow-300 text-white py-2 px-3 rounded-full mx-1">

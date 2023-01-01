@@ -34,10 +34,12 @@ export const QUERY_POSTS = gql`
 
 // Queries a single users connections
 export const QUERY_CONNECTIONS = gql`
-query connections($myUserId: ID!) {
-  myUser(id: $myUserId) {
+query connections($id: ID!) {
+  myUser(_id: $id) {
     username
+    _id
     connections {
+      _id
       username
       firstName
       lastName

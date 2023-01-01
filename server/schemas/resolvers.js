@@ -64,7 +64,12 @@ const resolvers = {
   },
 
   Mutation: {
-
+    addConnection: async (parent, { id, connections }) => {
+      return await User.findOneAndUpdate(
+        { _id: id },
+        { $addToSet: { connections } } 
+      );
+    },
     //Creates a new User and sets the Auth Token
     addUser: async (parent, { username, email, password, firstName, lastName }) => {
       const user = await User.create({ username, email, password, firstName, lastName });
