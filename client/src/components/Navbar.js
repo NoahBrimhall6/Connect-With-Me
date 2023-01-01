@@ -3,7 +3,18 @@ import Logo from '../assets/images/cwm-logo.png';
 import BlankProfile from '../assets/images/blank-profile-pic.webp';
 import Auth from '../utils/auth';
 
+import SearchBar from "./SearchBar";  //  Manamana Search
+import { useQuery } from '@apollo/client';  // Manamana Search
+import { QUERY_SEARCHUSERS } from '../utils/queries';  //  Manamana Search
+
+
+
+
 export default function Navbar() {
+    const {loading, data} = useQuery(QUERY_SEARCHUSERS);  //  Manamana Search
+    var usersArray = [];
+    if(!loading){usersArray = data.users;};  //  Manamana Search
+
     let location = window.location.pathname;
 
     const logout = (event) => {
@@ -11,8 +22,9 @@ export default function Navbar() {
       Auth.logout();
     }
 
+    
     return (
-
+      
     <nav className="bg-gray-800">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -49,6 +61,9 @@ export default function Navbar() {
             {/* CLASS for following div if we only want search on the jobs page: className={location === '/jobs' ? '' : 'hidden'} */}
             <div>
                 <input type='text' placeholder='Search' className=' text-gray-800 sm:w-30 h-9 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none'/>
+            </div>
+            <div> 
+            <SearchBar placeholder="Search to connect" data={usersArray} />
             </div>
           </div>
         </div>
