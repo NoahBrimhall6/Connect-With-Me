@@ -125,3 +125,13 @@ query myUser($id: ID!) {
   }
 }`
 
+//Query all users for search -Manamana
+export const QUERY_SEARCHUSERS = gql`
+query Users {
+  users {
+    firstName
+    lastName
+    username
+    email
+  }
+}`
