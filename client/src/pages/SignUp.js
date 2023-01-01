@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client'
 import { ADD_USER, LOGIN_USER } from '../utils/mutations'
 import Auth from '../utils/auth';
-import { useCurrentUser } from '../utils/UserContext';
 
 export default function SignUp() {
-  // Assign variable from custom hook
-  const { logUserIn } = useCurrentUser();
-
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', firstName: '', lastName: '' });
 
@@ -40,9 +36,6 @@ export default function SignUp() {
           lastName: userFormData.lastName
         }
       });
-
-      // Login new user
-      logUserIn(data);
 
       try {
         const { data } = await login({

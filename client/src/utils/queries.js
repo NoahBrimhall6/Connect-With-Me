@@ -39,6 +39,7 @@ query connections($id: ID!) {
     username
     _id
     connections {
+      _id
       username
       firstName
       lastName

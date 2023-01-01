@@ -2,7 +2,7 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
-import { UserProvider } from './utils/UserContext';
+import Auth from './utils/auth';
 // import "tailwindcss/tailwind.css"
 
 // Components
@@ -51,34 +51,32 @@ const client = new ApolloClient({
 // Application
 function App() {
   return (
-    <UserProvider>
-      <ApolloProvider client={client}>
-        <Router>
-          <Navbar/>
-            <div>
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/jobs' element={<JobSearch />} />
-                <Route path='/me' element={<Profile />} />
-                <Route path='/resume' element={<Resume />} />
-                <Route path='/signin' element={<SignIn />} />
-                <Route path='/signup' element={<SignUp />} />
-                <Route path='/viewjob' element={<ViewJob />} />
-                <Route path='/aboutus' element={<AboutUs />} />
-                <Route path='/careers' element={<Careers />} />
-                <Route path='/connections' element={<Connections />} />
-                <Route path='/contact' element={<Contact />} />
-                <Route path='/events' element={<Events />} />
-                <Route path='/faqs' element={<Faqs />} />
-                <Route path='/privacypolicy' element={<PrivacyPolicy />} />
-                <Route path='/terms' element={<Terms />} />
-                <Route path='/redirect' element={<Redirect />} />
-              </Routes>
-            </div>
-          <Footer />
-        </Router>
-      </ApolloProvider>
-    </UserProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <Navbar />
+        <div>
+          <Routes>
+            <Route path='/' element={Auth.loggedIn() ? <Home /> : <SignIn />} />
+            <Route path='/jobs' element={<JobSearch />} />
+            <Route path='/me' element={Auth.loggedIn() ? <Profile /> : <SignIn />} />
+            <Route path='/resume' element={Auth.loggedIn() ? <Resume /> : <SignIn />} />
+            <Route path='/signin' element={<SignIn />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/viewjob' element={<ViewJob />} />
+            <Route path='/aboutus' element={<AboutUs />} />
+            <Route path='/careers' element={<Careers />} />
+            <Route path='/connections' element={<Connections />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/events' element={<Events />} />
+            <Route path='/faqs' element={<Faqs />} />
+            <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+            <Route path='/terms' element={<Terms />} />
+            <Route path='/redirect' element={<Redirect />} />
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
+    </ApolloProvider>
   );
 }
 
