@@ -8,18 +8,20 @@ export default function Post({ post }) {
   const toggleComments = () => {
     setIsOpen(!isOpen);
   };
+
   
   return (
+    <>
     <section className="flex justify-center mt-5">
       <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-gray-100 shadow-lg w-full">
         <div className="p-6 flex flex-col justify-start w-full">
           <div className="flex justify-between mb-3">
             <div>
               <h5 className="text-gray-900 text-xl font-medium mb-1 bold">
-                {post.author.username}
+                {`${post.author.firstName} ${post.author.lastName}`}
               </h5>
               <h6 className="text-gray-500 text-sm font-medium mb-1">
-                {`${post.author.firstName} ${post.author.lastName}`}
+                {post.author.username}
               </h6>
             </div>
             <div className="mr-2">
@@ -126,5 +128,6 @@ export default function Post({ post }) {
         </div>
       </div>
     </section>
+    </>
   )
 }

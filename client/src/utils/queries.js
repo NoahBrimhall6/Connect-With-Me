@@ -16,6 +16,9 @@ export const QUERY_POSTS = gql`
         username
         firstName
         lastName
+        resume {
+          prevJ1Title
+        }
       }
       comments {
         _id

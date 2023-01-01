@@ -61,7 +61,7 @@ export default function CreateJob() {
                       <div className="bg-gray-800 editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Job Title"
                           type="text"
                           name="title"
@@ -69,14 +69,14 @@ export default function CreateJob() {
                         />
                         <textarea
                           className="description bg-gray-100 sec p-3 h-20 mb-4 rounded-md border border-gray-300 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Description of job posting"
                           name="content"
                           onChange={handleChange}
                         ></textarea>
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Salary"
                           type="text"
                           name="title"
@@ -84,7 +84,7 @@ export default function CreateJob() {
                         />
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Contact"
                           type="text"
                           name="title"
@@ -92,7 +92,7 @@ export default function CreateJob() {
                         />
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Zip Code"
                           type="text"
                           name="title"
@@ -100,7 +100,7 @@ export default function CreateJob() {
                         />
                         <textarea
                           className="title bg-gray-100 border border-gray-300 rounded-md h-20 p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Job Qualifications"
                           type="text"
                           name="title"
@@ -108,7 +108,7 @@ export default function CreateJob() {
                         ></textarea>
                         <textarea
                           className="title bg-gray-100 border border-gray-300 rounded-md h-20 p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Job Responsibilities"
                           type="text"
                           name="title"
