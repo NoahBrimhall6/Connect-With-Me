@@ -7,24 +7,19 @@ import SearchBar from "./SearchBar";  //  Manamana Search
 import { useQuery } from '@apollo/client';  // Manamana Search
 import { QUERY_SEARCHUSERS } from '../utils/queries';  //  Manamana Search
 
-
-
-
 export default function Navbar() {
-    const {loading, data} = useQuery(QUERY_SEARCHUSERS);  //  Manamana Search
-    var usersArray = [];
-    if(!loading){usersArray = data.users;};  //  Manamana Search
+  const { loading, data } = useQuery(QUERY_SEARCHUSERS);  //  Manamana Search
+  var usersArray = [];
+  if (!loading) { usersArray = data.users; };  //  Manamana Search
 
   let location = window.location.pathname;
 
-    const logout = (event) => {
-      event.preventDefault();
-      Auth.logout();
-    }
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  }
 
-    
-    return (
-      
+  return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -64,11 +59,8 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-            <div> 
-            <SearchBar placeholder="Search to connect" data={usersArray} />
-            </div>
-            <div> 
-            <SearchBar placeholder="Search to connect" data={usersArray} />
+            <div>
+              <SearchBar placeholder="Search to connect" data={usersArray} />
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
