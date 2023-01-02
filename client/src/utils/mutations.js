@@ -41,7 +41,7 @@ mutation updateResume($fullName: String, $email: String, $summary: String, $phon
     resume
   }
 }
-`
+`;
 
 // Create a post mutation
 export const CREATE_POST = gql `
@@ -56,5 +56,17 @@ mutation createPost($title: String!, $body: String!, $author: ID!) {
     }
   }
 }
-`
+`;
 
+export const CREATE_COMMENT = gql `
+  mutation createComment($body: String!, $author: ID!, $postId: ID!) {
+    createComment(body: $body, author: $author, postId: $postId) {
+      _id
+      body
+      author {
+        _id
+        username
+      }
+    }
+  }
+`;
