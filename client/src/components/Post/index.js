@@ -34,11 +34,11 @@ export default function Post({ post, userID }) {
           <div className="flex justify-between mb-3">
             <div>
               <h5 className="text-gray-900 text-xl font-medium mb-1 bold">
-                {`${post.author.firstName} ${post.author.lastName}`}
+                {/* {`${post.author.firstName} ${post.author.lastName}`} */}
               </h5>
               <h6 className="text-gray-500 text-sm font-medium mb-1">
                 {/* would love to change this to user's job title */}
-                {post.author.username}
+                {/* {post.author.username} */}
               </h6>
             </div>
             <div className="mr-2">

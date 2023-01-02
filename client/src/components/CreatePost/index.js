@@ -24,20 +24,13 @@ export default function CreatePost() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const { firstName, lastName, username } = formState;
-    // const { title, body } = formState;
     createPost({ 
       variables: { 
         title: formState.title, 
         body: formState.body, 
-        // author: 'userId', 
-        // firstName, 
-        // lastName, 
-        // username 
       }})
       .then(() => {
         // Closes the modal
-        // setFormState({});
         toggleModal();
         window.location.assign('/');
       })

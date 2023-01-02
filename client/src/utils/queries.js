@@ -5,45 +5,43 @@ export const QUERY_POSTS = gql`
   query getPosts {
     posts {
       _id
-      title
-      body
-      createdAt
-      likesCount
-      dislikesCount
-      commentCount
       author {
-        _id
-        username
         firstName
         lastName
+        username
         resume {
           prevJ1Title
         }
       }
+      commentCount
       comments {
         _id
-        body
-        createdAt
         author {
           _id
-          username
           firstName
           lastName
+          username
+          resume {
+            prevJ1Title
+          }
         }
+        body
+        createdAt
+      }
+      createdAt
+      dislikes {
+        username
+      }
+      dislikesCount
+      likesCount
+      title
+      body
+      likes {
+        username
       }
     }
   }
 `;
-
-// myUser(_id: $id) {
-//   _id
-//   username
-//   firstName
-//   lastName
-//   resume {
-//     prevJ1Title
-//   }
-// }
 
 
 
