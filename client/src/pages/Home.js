@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <CreatePost />
+      <CreatePost userID={userID}/>
 
       {/* Feed section starts here */}
       <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-8 grid-rows-6 gap-3 rounded-md text-white p-4 gridFeed">

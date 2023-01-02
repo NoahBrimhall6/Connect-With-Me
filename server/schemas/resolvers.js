@@ -98,16 +98,16 @@ const resolvers = {
     },
 
     // Creates a new post 
-    createPost: async (_, {title, body}) => {
+    createPost: async (parent, { title, body, author }) => {
       // create the new post 
-      const newPost = new Post({ title, body });
-      // save new post to database
-      await newPost.save();
-      // return the new post
-      return newPost;
+      const post =  await Post.create({ title, body, author });
+      // need to link it to the user? it's showing null for author at the moment. . .
+      const user = await User.findOneAndUpdate(
+        { _id: post.author },
+        { $addToSet: { posts: post._id } }
+      );
 
-
-      // need to link it to the user? it's showing null for author at the moment. . . 
+      return { post, user };
     },
 
     //Creates a new Resume and updates the logged in user resume ID to the new Resume ID

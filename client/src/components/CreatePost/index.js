@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_POST } from "../../utils/mutations";
 
-export default function CreatePost() {
+export default function CreatePost({ userID }) {
   // Sets state for the modal when creating a post to open and close
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,28 +22,16 @@ export default function CreatePost() {
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
   
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // const { firstName, lastName, username } = formState;
-    // const { title, body } = formState;
-    createPost({ 
-      variables: { 
-        title: formState.title, 
-        body: formState.body, 
-        // author: 'userId', 
-        // firstName, 
-        // lastName, 
-        // username 
-      }})
-      .then(() => {
-        // Closes the modal
-        // setFormState({});
-        toggleModal();
-        window.location.assign('/');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const { title, body } = formState;
+      const { data } = await createPost({ variables: { title, body, author: userID } })
+      toggleModal();
+      window.location.assign('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
