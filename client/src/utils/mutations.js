@@ -70,3 +70,18 @@ export const CREATE_COMMENT = gql `
     }
   }
 `;
+
+export const CREATE_JOB = gql`
+  mutation createJob($title: String!, $description: String!, $salary: String!, $contact: String!, $zipcode: String!, $qualifications: String, $responsibilities: String) {
+    createJob(title: $title, description: $description, salary: $salary, contact: $contact, zipcode: $zipcode, qualifications: $qualifications, responsibilities: $responsibilities) {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+    }
+  }
+`;

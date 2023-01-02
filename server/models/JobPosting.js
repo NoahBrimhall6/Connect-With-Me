@@ -2,11 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const jobPostingSchema = new Schema(
   {
-    jobTitle: {
+    title: {
       type: String,
       required: true
     },
-    jobDescription: {
+    description: {
       type: String,
       required: true
     },
@@ -18,9 +18,15 @@ const jobPostingSchema = new Schema(
       type: String,
       required: true
     },
-    zipCode: {
+    zipcode: {
       type: String,
       required: true
+    },
+    qualifications: {
+      type: String
+    },
+    responsibilities: {
+      type: String
     },
     createdAt: {
       type: Date,

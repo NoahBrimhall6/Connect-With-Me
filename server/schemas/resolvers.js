@@ -58,8 +58,7 @@ const resolvers = {
         .populate('author');
     },
     jobPostings: async () => {
-      return await JobPosting.find({})
-      .populate('keywords');
+      return await JobPosting.find({});
     } 
   },
 
@@ -96,7 +95,6 @@ const resolvers = {
       
       return { token, user };
     },
-
     // Creates a new post 
     createPost: async (parent, { title, body, author }) => {
       // create the new post 
@@ -109,7 +107,6 @@ const resolvers = {
 
       return { post, user };
     },
-
     // Create a new comment and attach it to a post
     createComment: async (parent, { body, author, postId }) => {
       const comment = await Comment.create({ body, author });
@@ -120,7 +117,10 @@ const resolvers = {
 
       return { comment, post };
     },
-
+    // Create Job Posting
+    createJob: async (parent, vars) => {
+      return await JobPosting.create(vars);
+    },
     //Creates a new Resume and updates the logged in user resume ID to the new Resume ID
     updateResume: async (parent, {fullName, email, summary, phone, location, skills, education, educationType, educationLength, prevJ1Title, prevJ1Company, prevJ1Length, prevJ1Responsibilities, prevJ2Title, prevJ2Company, prevJ2Length, prevJ2Responsibilities, prevJ3Title, prevJ3Company, prevJ3Length, prevJ3Responsibilities}, context) => {
       if (context.user) {

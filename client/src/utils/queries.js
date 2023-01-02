@@ -153,37 +153,19 @@ query Users {
   }
 }`
 
-// Queries all posts for the homepage
-export const QUERY_NEW_POSTS = gql`
-  query getPosts {
-    posts {
+// Queries Job Listings
+export const QUERY_JOBPOSTINGS = gql`
+  query jobPostings {
+    jobPostings {
       _id
       title
-      body
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
       createdAt
-      likesCount
-      dislikesCount
-      commentCount
-      author {
-        _id
-        username
-        firstName
-        lastName
-        resume {
-          prevJ1Title
-        }
-      }
-      comments {
-        _id
-        body
-        createdAt
-        author {
-          _id
-          username
-          firstName
-          lastName
-        }
-      }
     }
   }
 `;
