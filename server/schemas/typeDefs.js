@@ -106,7 +106,11 @@ const typeDefs = gql`
     createPost(title: String!, body: String!, author: ID!): Post
     createComment(body: String!, author: ID!, postId: ID!): Comment
     createJob(title: String!, description: String!, salary: String!, contact: String!, zipcode: String!, qualifications: String, responsibilities: String): JobPosting
+    likePost(userId: ID!, postId: ID!): Post
+    dislikePost(userId: ID!, postId: ID!): Post
   }
+
+
 `;
 
 

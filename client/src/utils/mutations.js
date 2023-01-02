@@ -85,3 +85,33 @@ export const CREATE_JOB = gql`
     }
   }
 `;
+
+export const LIKE_POST = gql`
+  mutation likePost($userID: ID!, $postID: ID!) {
+    likePost(userId: $userID, postId: $postID) {
+      _id
+      title
+      likes {
+        _id
+      }
+      dislikes {
+        _id
+      }
+    }
+  }
+`;
+
+export const DISLIKE_POST = gql`
+  mutation dislikePost($userID: ID!, $postID: ID!) {
+    dislikePost(userId: $userID, postId: $postID) {
+      _id
+      title
+      likes {
+        _id
+      }
+      dislikes {
+        _id
+      }
+    }
+  }
+`;

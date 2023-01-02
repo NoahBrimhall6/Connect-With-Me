@@ -63,6 +63,20 @@ const resolvers = {
   },
 
   Mutation: {
+    likePost: async (parent, { userId, postId }) => {
+      return await Post.findOneAndUpdate(
+        { _id: postId },
+        { $addToSet: { likes: userId }, $pull: { dislikes: userId } },
+        { new: true }
+      )
+    },
+    dislikePost: async (parent, { userId, postId }) => {
+      return await Post.findOneAndUpdate(
+        { _id: postId },
+        { $addToSet: { dislikes: userId }, $pull: { likes: userId } },
+        { new: true }
+      )
+    },
     addConnection: async (parent, { id, connections }) => {
       return await User.findOneAndUpdate(
         { _id: id },
