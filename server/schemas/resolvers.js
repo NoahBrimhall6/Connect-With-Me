@@ -97,6 +97,18 @@ const resolvers = {
       return { token, user };
     },
 
+    // Creates a new post 
+    createPost: async (_, {title, body}) => {
+      // create the new post 
+      const newPost = new Post({ title, body });
+      // save new post to database
+      await newPost.save();
+      // return the new post
+      return newPost;
+
+
+      // need to link it to the user? it's showing null for author at the moment. . . 
+    },
 
     //Creates a new Resume and updates the logged in user resume ID to the new Resume ID
     updateResume: async (parent, {fullName, email, summary, phone, location, skills, education, educationType, educationLength, prevJ1Title, prevJ1Company, prevJ1Length, prevJ1Responsibilities, prevJ2Title, prevJ2Company, prevJ2Length, prevJ2Responsibilities, prevJ3Title, prevJ3Company, prevJ3Length, prevJ3Responsibilities}, context) => {

@@ -27,16 +27,18 @@ export default function Post({ post, userID }) {
   };
   
   return (
+    <>
     <section className="flex justify-center mt-5">
       <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-gray-100 shadow-lg w-full">
         <div className="p-6 flex flex-col justify-start w-full">
           <div className="flex justify-between mb-3">
             <div>
               <h5 className="text-gray-900 text-xl font-medium mb-1 bold">
-                {post.author.username}
+                {`${post.author.firstName} ${post.author.lastName}`}
               </h5>
               <h6 className="text-gray-500 text-sm font-medium mb-1">
-                {`${post.author.firstName} ${post.author.lastName}`}
+                {/* would love to change this to user's job title */}
+                {post.author.username}
               </h6>
             </div>
             <div className="mr-2">
@@ -110,7 +112,7 @@ export default function Post({ post, userID }) {
               <button className="bg-teal-500 hover:bg-teal-400 text-white py-2 px-3 rounded-full mx-1">
                 <ion-icon name="thumbs-up"></ion-icon>
               </button>
-              <button className="bg-red-600 hover:bg-red-500 text-white py-2 px-3 rounded-full mx-1">
+              <button className="bg-blue-500 hover:bg-blue-400 text-white py-2 px-3 rounded-full mx-1">
                 <ion-icon name="thumbs-down"></ion-icon>
               </button>
 
@@ -143,5 +145,6 @@ export default function Post({ post, userID }) {
         </div>
       </div>
     </section>
+    </>
   )
 }

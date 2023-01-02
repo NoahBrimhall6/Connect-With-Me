@@ -42,3 +42,38 @@ mutation updateResume($fullName: String, $email: String, $summary: String, $phon
   }
 }
 `
+
+// Create a post mutation
+export const CREATE_POST = gql `
+mutation createPost($title: String!, $body: String!) {
+  createPost(title: $title, body: $body) {
+    _id
+    title
+    body
+    createdAt
+    author {
+      _id
+      username
+      firstName
+      lastName
+      resume {
+        prevJ1Title
+      }
+    }
+    likesCount
+    dislikesCount
+    commentCount
+    comments {
+      _id
+      body
+      createdAt
+      author {
+        _id
+        username
+        firstName
+        lastName
+      }
+    }
+  }
+}
+`

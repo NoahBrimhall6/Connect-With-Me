@@ -130,7 +130,6 @@ export default function Resume() {
 
     //calls to the updateResume Mutation which creates a resume and updates the user
     try {
-        console.log("hi")
       const { data } = await updateResume({
         
         variables: {

@@ -8,9 +8,9 @@ export default function ConnectionList({ userID }) {
   const {loading, data} = useQuery(QUERY_CONNECTIONS, {
     variables: { id: userID },
   });
-  if (loading) {return <h3>loading</h3>};
+  if (loading) {return <h3>Loading...</h3>};
 
   const connections = data?.myUser?.connections || [];
   if (!connections.length) {return <h3>No Connections Yet</h3>}
-  return connections.map((connection) => <Connection key={connection.id} connection={connection}/>);
+  return connections.map((connection) => <Connection key={connection._id} connection={connection}/>);
 };
