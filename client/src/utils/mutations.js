@@ -57,3 +57,4 @@ mutation createPost($title: String!, $body: String!, $author: ID!) {
   }
 }
 `
+

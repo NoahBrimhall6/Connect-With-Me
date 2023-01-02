@@ -25,6 +25,8 @@ export default function Post({ post, userID }) {
       window.location.assign('/');
     } catch (err) {console.error(err)};
   };
+
+  
   
   return (
     <>
@@ -34,11 +36,12 @@ export default function Post({ post, userID }) {
           <div className="flex justify-between mb-3">
             <div>
               <h5 className="text-gray-900 text-xl font-medium mb-1 bold">
-                {/* {`${post.author.firstName} ${post.author.lastName}`} */}
+                {`${post.author.firstName} ${post.author.lastName}`}
               </h5>
               <h6 className="text-gray-500 text-sm font-medium mb-1">
                 {/* would love to change this to user's job title */}
-                {/* {post.author.username} */}
+                {/* {post.author.resume.prevJ1Title} */}
+                {post.author.username}
               </h6>
             </div>
             <div className="mr-2">
@@ -112,6 +115,7 @@ export default function Post({ post, userID }) {
               <button className="bg-teal-500 hover:bg-teal-400 text-white py-2 px-3 rounded-full mx-1">
                 <ion-icon name="thumbs-up"></ion-icon>
               </button>
+
               <button className="bg-blue-500 hover:bg-blue-400 text-white py-2 px-3 rounded-full mx-1">
                 <ion-icon name="thumbs-down"></ion-icon>
               </button>
