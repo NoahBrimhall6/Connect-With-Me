@@ -32,11 +32,13 @@ body {
     padding: 0;
     margin: 0;
     font-family: "RobotoReg";
-    background-color: var(--whitestblue);
     color: black;
     min-height: 100%;
     padding-bottom: 25rem;
     box-sizing: inherit;
+    background-color: var(--whitestblue);
+    animation-name: fade-in;
+    animation-duration: 1.3s;
 }
 
 footer {
@@ -126,6 +128,11 @@ footer {
     filter: blur(5px);
   }  
 
+/* creates a nice transition when the page is loaded or refreshed */
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity:1;}
+}
 
 /* Styling to keep footer on bottom and not compromise main content */
 @media screen and (max-width: 1024px )  {

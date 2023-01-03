@@ -1,35 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { CREATE_JOB } from '../../utils/mutations';
 
 export default function CreateJob() {
   // Logic to show the modal when creating a post
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
   // Post button
   const [formData, setFormData] = useState({});
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Create new post in the DB
-    // Tell React to re-query posts?
-
-
-    // Clear form data
-    setFormData({});
-    toggleModal();
-  };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
+  // Create new Job Listing
+  const [createJob] = useMutation(CREATE_JOB);
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      // Create new post in the DB
+      const { data } = await createJob({ variables: formData}); 
+      console.log(data);
+      // Clear form data
+      setFormData({});
+      toggleModal();
+      window.location.assign('/jobs');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
-    <div className="flex justify-center">
+      <div className="flex justify-center">
         <section>
           <div className="flex flex-col justify-center items-center m-10 bg-gray-900 p-12 rounded-lg">
             <h3 className="bold text-2xl mb-5 text-white">
@@ -61,7 +68,7 @@ export default function CreateJob() {
                       <div className="bg-gray-800 editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Job Title"
                           type="text"
                           name="title"
@@ -69,49 +76,49 @@ export default function CreateJob() {
                         />
                         <textarea
                           className="description bg-gray-100 sec p-3 h-20 mb-4 rounded-md border border-gray-300 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Description of job posting"
-                          name="content"
+                          name="description"
                           onChange={handleChange}
                         ></textarea>
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Salary"
                           type="text"
-                          name="title"
+                          name="salary"
                           onChange={handleChange}
                         />
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Contact"
                           type="text"
-                          name="title"
+                          name="contact"
                           onChange={handleChange}
                         />
                         <input
                           className="title bg-gray-100 border border-gray-300 rounded-md p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Zip Code"
                           type="text"
-                          name="title"
+                          name="zipcode"
                           onChange={handleChange}
                         />
                         <textarea
                           className="title bg-gray-100 border border-gray-300 rounded-md h-20 p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Job Qualifications"
                           type="text"
-                          name="title"
+                          name="qualifications"
                           onChange={handleChange}
                         ></textarea>
                         <textarea
                           className="title bg-gray-100 border border-gray-300 rounded-md h-20 p-2 mb-4 outline-none"
-                          spellcheck="false"
+                          spellCheck="false"
                           placeholder="Job Responsibilities"
                           type="text"
-                          name="title"
+                          name="responsibilities"
                           onChange={handleChange}
                         ></textarea>
                       </div>

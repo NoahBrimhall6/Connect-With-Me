@@ -16,6 +16,9 @@ export const QUERY_POSTS = gql`
         username
         firstName
         lastName
+        resume {
+          prevJ1Title
+        }
       }
       comments {
         _id
@@ -32,12 +35,26 @@ export const QUERY_POSTS = gql`
   }
 `;
 
+// myUser(_id: $id) {
+//   _id
+//   username
+//   firstName
+//   lastName
+//   resume {
+//     prevJ1Title
+//   }
+// }
+
+
+
 // Queries a single users connections
 export const QUERY_CONNECTIONS = gql`
-query connections($myUserId: ID!) {
-  myUser(id: $myUserId) {
+query connections($id: ID!) {
+  myUser(_id: $id) {
     username
+    _id
     connections {
+      _id
       username
       firstName
       lastName
@@ -125,3 +142,30 @@ query myUser($id: ID!) {
   }
 }`
 
+//Query all users for search -Manamana
+export const QUERY_SEARCHUSERS = gql`
+query Users {
+  users {
+    firstName
+    lastName
+    username
+    email
+  }
+}`
+
+// Queries Job Listings
+export const QUERY_JOBPOSTINGS = gql`
+  query jobPostings {
+    jobPostings {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+      createdAt
+    }
+  }
+`;

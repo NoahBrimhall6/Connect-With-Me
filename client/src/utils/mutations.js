@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+export const ADD_CONNECTION = gql`
+mutation addConnection($id: ID!, $connections: ID!) {
+  addConnection(id: $id, connections: $connections) {
+    username
+    connections {
+      _id
+    }
+  }
+}
+`;
+
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -30,4 +41,77 @@ mutation updateResume($fullName: String, $email: String, $summary: String, $phon
     resume
   }
 }
-`
+`;
+
+// Create a post mutation
+export const CREATE_POST = gql `
+mutation createPost($title: String!, $body: String!, $author: ID!) {
+  createPost(title: $title, body: $body, author: $author) {
+    _id
+    title
+    body
+    author {
+      _id
+      username
+    }
+  }
+}
+`;
+
+export const CREATE_COMMENT = gql `
+  mutation createComment($body: String!, $author: ID!, $postId: ID!) {
+    createComment(body: $body, author: $author, postId: $postId) {
+      _id
+      body
+      author {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const CREATE_JOB = gql`
+  mutation createJob($title: String!, $description: String!, $salary: String!, $contact: String!, $zipcode: String!, $qualifications: String, $responsibilities: String) {
+    createJob(title: $title, description: $description, salary: $salary, contact: $contact, zipcode: $zipcode, qualifications: $qualifications, responsibilities: $responsibilities) {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+    }
+  }
+`;
+
+export const LIKE_POST = gql`
+  mutation likePost($userID: ID!, $postID: ID!) {
+    likePost(userId: $userID, postId: $postID) {
+      _id
+      title
+      likes {
+        _id
+      }
+      dislikes {
+        _id
+      }
+    }
+  }
+`;
+
+export const DISLIKE_POST = gql`
+  mutation dislikePost($userID: ID!, $postID: ID!) {
+    dislikePost(userId: $userID, postId: $postID) {
+      _id
+      title
+      likes {
+        _id
+      }
+      dislikes {
+        _id
+      }
+    }
+  }
+`;
