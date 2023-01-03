@@ -50,6 +50,10 @@ const resolvers = {
         .populate({
           path: 'comments',
           populate: 'author'
+        })
+        .populate({
+          path: 'author',
+          populate: 'resume'
         });
     },
     comments: async () => {
@@ -111,7 +115,7 @@ const resolvers = {
     // Creates a new post 
     createPost: async (parent, { title, body, author }) => {
       // create the new post 
-      const post =  await Post.create({ title, body, author });
+      const post = await Post.create({ title, body, author });
       // need to link it to the user? it's showing null for author at the moment. . .
       const user = await User.findOneAndUpdate(
         { _id: post.author },
