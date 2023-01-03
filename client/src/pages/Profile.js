@@ -11,13 +11,18 @@ import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
 
 const Profile = () => {
+ var skillsArrayTrimmed = ""
+ var responsibility1Trimmed = ""
+ var responsibility2Trimmed = ""
+ var responsibility3Trimmed = ""
 
   const userParam  = useParams();
+
 
   // gets logged in user information and sets to userData
   const userID = Auth.getProfile().data._id;
   const {loading, data} = useQuery(QUERY_MYUSER, {
-    variables: { id: userID },
+    variables: { id: userParam.id },
   });
 
   //displays loading until information from QueryUser recieves information
@@ -25,31 +30,29 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  if (!data.myUser.resume) {
-    return <Redirect />
-  }
   const userData = data.myUser
-  console.log(userData)
-  console.log(userData.resume.skills)
   
+  if (userData.resume){
+
   const skillsArray = userData.resume.skills.split(";")
-  const skillsArrayTrimmed = skillsArray.map(element => {
-    return element.trim()
-  })
-  const responsibility1 = userData.resume.prevJ1Responsibilities.split(";")
-  const responsibility1Trimmed = responsibility1.map(element => {
-    return element.trim()
-  })
-  const responsibility2 = userData.resume.prevJ1Responsibilities.split(";")
-  const responsibility2Trimmed = responsibility2.map(element => {
-    return element.trim()
-  })
-  const responsibility3 = userData.resume.prevJ1Responsibilities.split(";")
-  const responsibility3Trimmed = responsibility3.map(element => {
+  var skillsArrayTrimmed = skillsArray.map(element => {
     return element.trim()
   })
 
-  console.log(userData.resume.educationType)
+  const responsibility1 = userData.resume.prevJ1Responsibilities.split(";")
+  var responsibility1Trimmed = responsibility1.map(element => {
+    return element.trim()
+  })
+  const responsibility2 = userData.resume.prevJ1Responsibilities.split(";")
+  var responsibility2Trimmed = responsibility2.map(element => {
+    return element.trim()
+  })
+  const responsibility3 = userData.resume.prevJ1Responsibilities.split(";")
+  var responsibility3Trimmed = responsibility3.map(element => {
+    return element.trim()
+  })
+
+}
 
   return (
     <div>
@@ -65,7 +68,7 @@ const Profile = () => {
                 alt="profile picture holder"
               ></img>
               <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
-              <h3 className="text-white text-center">{`${userData.resume.prevJ1Title}`}</h3>
+              <h3 className="text-white text-center">{userData.resume ? userData.resume.prevJ1Title : " "}</h3>
             </div>
           </div>
 
@@ -75,7 +78,7 @@ const Profile = () => {
             </div>
 
             <p className="mx-10 my-5 text-black">
-            {`${userData.resume.summary}`}
+            {userData.resume ? userData.resume.summary : " "}
             </p>
           </div>
         </header>
@@ -135,9 +138,9 @@ const Profile = () => {
               <h4 className="m-1 bold text-teal-400 text-lg">Education</h4>
               {/* Education template -- make responsive with users credentials */}
               <div className="m-1 educationTemplate">
-                <h6 className="bold">{`${userData.resume.education}`}</h6>
-                <p className="text-sm">{`${userData.resume.educationType}`}</p>
-                <p className="text-sm">{`${userData.resume.educationLength}`}</p>
+                <h6 className="bold">{userData.resume ? userData.resume.education : " "}</h6>
+                <p className="text-sm">{userData.resume ? userData.resume.educationType : " "}</p>
+                <p className="text-sm">{userData.resume ? userData.resume.educationLength : " "}</p>
               </div>
               {/* end template */}
 
@@ -147,18 +150,18 @@ const Profile = () => {
               <h4 className="m-1 bold text-teal-400 text-lg">Skills</h4>
               {/* Make the skills responsive . . . */}
               <div className="skillsList flex flex-wrap">
-                <Skills skills={skillsArrayTrimmed} />
+                {userData.resume ? <Skills skills={skillsArrayTrimmed} /> : " "}
               </div>
             </div>
           </div>
         </div>
         <div className="resume bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-3 lg:row-end-7 md:row-start-3 md:row-end-7 sm:row-start-2 sm:row-end-5 row-start-2 row-end-5 col-start-1 col-span-4">
           <div className="profileResume bg-gray-200 text-black rounded-lg p-4 m-5">
-            <h3 className="bold text-2xl text-center">{`${userData.resume.fullName}`}</h3>
+            <h3 className="bold text-2xl text-center">{userData.resume ? userData.resume.fullName : " "}</h3>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
             <div className="m-1 py-1 px-10 text-sm">
               <p>
-              {`${userData.resume.summary}`}
+              {userData.resume ? userData.resume.summary : " "}
               </p>
             </div>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
@@ -171,32 +174,32 @@ const Profile = () => {
                     <span className="mr-2">
                       <ion-icon name="mail"></ion-icon>
                     </span>
-                    {`${userData.resume.email}`}
+                    {userData.resume ? userData.resume.email : " "}
                   </p>
                   <p>
                     <span className="mr-2">
                       <ion-icon name="call"></ion-icon>
                     </span>
-                    {`${userData.resume.phone}`}
+                    {userData.resume ? userData.resume.phone: " "}
                   </p>
                   <p>
                     <span className="mr-2">
                       <ion-icon name="location"></ion-icon>
                     </span>
-                    {`${userData.resume.location}`}
+                    {userData.resume ? userData.resume.location : " "}
                   </p>
                 </div>
 
                 <h3 className="bold text-lg text-teal-400">Education</h3>
                 <div className="m-1">
-                  <p className="bold">{`${userData.resume.education}`}</p>
-                  <p className="text-sm">{`${userData.resume.educationType}`}</p>
-                  <p className="text-sm">{`${userData.resume.educationLength}`}</p>
+                  <p className="bold">{userData.resume ? userData.resume.education : " "}</p>
+                  <p className="text-sm">{userData.resume ? userData.resume.educationType : " "}</p>
+                  <p className="text-sm">{userData.resume ? userData.resume.educationLength: " "}</p>
                 </div>
 
                 <h3 className="bold text-lg text-teal-400">Skills</h3>
                 <ul className="m-1">
-                <Skillslist skills={skillsArrayTrimmed} />
+                {userData.resume ? <Skillslist skills={skillsArrayTrimmed} /> : " "}
                 </ul>
               </div>
 
@@ -204,31 +207,31 @@ const Profile = () => {
                 <h3 className="bold text-xl">Experience</h3>
                 {/* Make this responsive */}
                 <div className="m-1 my-2">
-                  <h4 className="bold">{`${userData.resume.prevJ1Title}`}</h4>
-                  <h5 className="text-sm">{`${userData.resume.prevJ1Company}`}</h5>
-                  <h5 className="text-sm">{`${userData.resume.prevJ1Length}`}</h5>
+                  <h4 className="bold">{userData.resume ? userData.resume.prevJ1Title : " "}</h4>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Company : " "}</h5>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Length: " "}</h5>
                   <h5 className="text-sm bold">Responsibilities</h5>
                   <ul className="text-sm list-disc ml-4">
-                  <Responsibilities responsibilities={responsibility1Trimmed} />
+                  {userData.resume ? <Responsibilities responsibilities={responsibility1Trimmed} /> : " "}
                   </ul>
                 </div>
                 {/* end of template */}
 
                 <div className="m-1 my-2">
-                <h4 className="bold">{`${userData.resume.prevJ2Title}`}</h4>
-                  <h5 className="text-sm">{`${userData.resume.prevJ2Company}`}</h5>
-                  <h5 className="text-sm">{`${userData.resume.prevJ2Length}`}</h5>
+                <h4 className="bold">{userData.resume ? userData.resume.prevJ2Title : " "}</h4>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Company : " "}</h5>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Length: " "}</h5>
                   <ul className="text-sm list-disc ml-4">
-                  <Responsibilities responsibilities={responsibility2Trimmed} />
+                  {userData.resume ? <Responsibilities responsibilities={responsibility2Trimmed} /> : " "}
                   </ul>
                 </div>
 
                 <div className="m-1 my-2">
-                <h4 className="bold">{`${userData.resume.prevJ3Title}`}</h4>
-                  <h5 className="text-sm">{`${userData.resume.prevJ3Company}`}</h5>
-                  <h5 className="text-sm">{`${userData.resume.prevJ3Length}`}</h5>
+                <h4 className="bold">{userData.resume ? userData.resume.prevJ3Title : " "}</h4>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Company : " "}</h5>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Length: " "}</h5>
                   <ul className="text-sm list-disc ml-4">
-                  <Responsibilities responsibilities={responsibility3Trimmed} />
+                  {userData.resume ? <Responsibilities responsibilities={responsibility3Trimmed} /> : " "}
                   </ul>
                 </div>
               </div>
