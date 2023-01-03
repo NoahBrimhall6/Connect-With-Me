@@ -177,6 +177,11 @@ export default function SignUp() {
                   required=""
                 />
               </div>
+              {/* {showAlert && (
+                <div className="bg-red-500 text-white rounded-full px-3 py-2">
+                  Invalid email or password
+                </div>
+              )} */}
               <button
                 type="submit"
                 className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-teal-500 hover:bg-teal-600 focus:ring-teal-600"

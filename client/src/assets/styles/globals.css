@@ -131,7 +131,7 @@ footer {
 /* creates a nice transition when the page is loaded or refreshed */
 @keyframes fade-in {
     from {opacity: 0;}
-    to {opacity:1;}
+    to {opacity: 1;}
 }
 
 /* Styling to keep footer on bottom and not compromise main content */
