@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { useMutation } from '@apollo/client';
-import { CREATE_COMMENT } from '../../utils/mutations';
-
-export default function CreateComment({ userID, postID }) {
-  const [createComment] = useMutation(CREATE_COMMENT);
+export default function CreateComment({ postID, newComment }) {
   const [commentBody, setCommentBody] = useState('');
 
   const handleChange = (event) => {
@@ -13,17 +9,9 @@ export default function CreateComment({ userID, postID }) {
   };
 
   const handleSubmit = async (event) => {
-    try {
-      event.preventDefault();
-      const { data } = await createComment({ variables: {
-        body: commentBody,
-        author: userID,
-        postId: postID
-      }});
-      window.location.assign('/');
-    } catch (err) {
-      console.error(err);
-    }
+    event.preventDefault();
+    newComment({ body: commentBody, postId: postID });
+    
   };
 
   return (

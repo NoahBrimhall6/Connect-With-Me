@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CreateComment from '../CreateComment';
 import CommentList from '../CommentList';
 
-export default function Post({ post, connection, like, dislike }) {
+export default function Post({ post, connection, like, dislike, newComment }) {
   // Comments section use state to show and hide comments
   const [isOpen, setIsOpen] = useState(false);
   const toggleComments = () => {
@@ -72,7 +72,7 @@ export default function Post({ post, connection, like, dislike }) {
 
                     {/* Comments section */}
                     <section>
-                      <CommentList comments={post.comments} />
+                      <CommentList comments={post.comments}/>
                     </section>
 
                     <div className="flex justify-end">
@@ -106,7 +106,7 @@ export default function Post({ post, connection, like, dislike }) {
                 </button>
               </div>
 
-              {/* <CreateComment postID={post._id} /> */}
+              <CreateComment postID={post._id} newComment={newComment}/>
             </div>
           </div>
         </div>
