@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_MYUSER, QUERY_RESUME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-import Redirect from '../pages/Redirect';
+import Posts from '../components/userPostList';
 import Skills from '../components/Skills';
 import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
@@ -31,7 +31,7 @@ const Profile = () => {
   }
 
   const userData = data.myUser
-  
+  console.log(userData)
   if (userData.resume){
 
   const skillsArray = userData.resume.skills.split(";")
@@ -90,44 +90,8 @@ const Profile = () => {
           <h1 className="profileHeaders text-teal-400">My Posts</h1>
 
           {/* Start of inidividual post here */}
-          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
-            <div className="flex flex-col items-center pb-5 pt-5">
-              <h5 className="text-xl font-medium text-gray-900 text-center">
-                Post Title
-              </h5>
-              <span className="text-sm text-gray-400 text-center">
-                Preview of post content
-              </span>
-              <div className="flex mt-4 space-x-3 md:mt-6">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
-                >
-                  View Post
-                </a>
-              </div>
-            </div>
-          </div>
-          {/* end of individual post here */}
+          {userData.posts ? <Posts posts={userData.posts} /> : "No Posts Yet"}
 
-          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
-            <div className="flex flex-col items-center pb-5 pt-5">
-              <h5 className="text-xl font-medium text-gray-900 text-center">
-                Post Title
-              </h5>
-              <span className="text-sm text-gray-400 text-center">
-                Preview of post content
-              </span>
-              <div className="flex mt-4 space-x-3 md:mt-6">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
-                >
-                  View Post
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-3 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4">

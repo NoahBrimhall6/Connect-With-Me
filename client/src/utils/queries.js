@@ -107,7 +107,7 @@ query user($username: String!) {
 
 
 export const QUERY_MYUSER = gql`
-query myUser($id: ID!) {
+query MyUser($id: ID!) {
   myUser(_id: $id) {
     _id
     email
@@ -139,6 +139,11 @@ query myUser($id: ID!) {
       prevJ3Responsibilities
     }
     username
+    posts {
+      _id
+      title
+      body
+    }
   }
 }`
 
