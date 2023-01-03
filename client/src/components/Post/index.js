@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CreateComment from '../CreateComment';
 import CommentList from '../CommentList';
 import { useMutation } from '@apollo/client';
-import { ADD_CONNECTION } from '../../utils/mutations';
+import { ADD_CONNECTION, LIKE_POST, DISLIKE_POST } from '../../utils/mutations';
 
 export default function Post({ post, userID }) {
   // Comments section use state to show and hide comments
@@ -11,11 +11,11 @@ export default function Post({ post, userID }) {
     setIsOpen(!isOpen);
   };
 
+  // Click the pink heart to add post author to your connections list
   const [addConnection, { error }] = useMutation(ADD_CONNECTION);
   if (error) {
     console.log('Mutation Failed', error);
   };
-
   const Connection = async () => {
     try {
       const { data } = await addConnection({
@@ -23,6 +23,32 @@ export default function Post({ post, userID }) {
       })
       window.location.assign('/');
     } catch (err) { console.error(err) };
+  };
+
+  // Like posts
+  const [likePost] = useMutation(LIKE_POST);
+  const like = async () => {
+    try {
+      const { data } = await likePost({
+        variables: { userID, postID: post._id }
+      });
+      window.location.assign('/');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Dislike posts
+  const [dislikePost] = useMutation(DISLIKE_POST);
+  const dislike = async () => {
+    try {
+      const { data } = await dislikePost({
+        variables: { userID, postID: post._id }
+      });
+      window.location.assign('/');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -109,10 +135,10 @@ export default function Post({ post, userID }) {
             <div className="px-2 pt-3 flex justify-between">
               <div>
                 <button className="bg-teal-500 hover:bg-teal-400 text-white py-2 px-3 rounded-full mx-1">
-                  <ion-icon name="thumbs-up"></ion-icon>
+                  <ion-icon onClick={like} name="thumbs-up"></ion-icon>
                 </button>
                 <button className="bg-blue-500 hover:bg-blue-400 text-white py-2 px-3 rounded-full mx-1">
-                  <ion-icon name="thumbs-down"></ion-icon>
+                  <ion-icon onClick={dislike} name="thumbs-down"></ion-icon>
                 </button>
                 <button className="bg-red-400 hover:bg-red-300 text-white py-2 px-3 rounded-full mx-1">
                   <ion-icon onClick={Connection} name="heart"></ion-icon>

@@ -62,7 +62,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={Auth.loggedIn() ? <Home /> : <SignIn />} />
-            <Route path="/jobs" element={<JobSearch />} />
+            <Route path="/jobs" element={Auth.loggedIn() ? <JobSearch /> : <SignIn />} />
             <Route
               path="/me"
               element={Auth.loggedIn() ? <Profile /> : <SignIn />}

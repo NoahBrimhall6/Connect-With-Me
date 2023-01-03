@@ -70,3 +70,48 @@ export const CREATE_COMMENT = gql `
     }
   }
 `;
+
+export const CREATE_JOB = gql`
+  mutation createJob($title: String!, $description: String!, $salary: String!, $contact: String!, $zipcode: String!, $qualifications: String, $responsibilities: String) {
+    createJob(title: $title, description: $description, salary: $salary, contact: $contact, zipcode: $zipcode, qualifications: $qualifications, responsibilities: $responsibilities) {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+    }
+  }
+`;
+
+export const LIKE_POST = gql`
+  mutation likePost($userID: ID!, $postID: ID!) {
+    likePost(userId: $userID, postId: $postID) {
+      _id
+      title
+      likes {
+        _id
+      }
+      dislikes {
+        _id
+      }
+    }
+  }
+`;
+
+export const DISLIKE_POST = gql`
+  mutation dislikePost($userID: ID!, $postID: ID!) {
+    dislikePost(userId: $userID, postId: $postID) {
+      _id
+      title
+      likes {
+        _id
+      }
+      dislikes {
+        _id
+      }
+    }
+  }
+`;

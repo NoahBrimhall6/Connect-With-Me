@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function JobListing() {
+export default function JobListing({ job }) {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-3 p-2">
       <div className="flex flex-col items-center pb-5 pt-5">
         <h5 className="mb-1 text-xl font-medium text-gray-900 text-center">
-          Job Title
+          {job.title}
         </h5>
         <span className="text-sm text-gray-400 text-center">
-          Job Description
+          {job.description}
         </span>
         <div className="flex mt-4 space-x-3 md:mt-6">
           <a

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from "@apollo/client";
 import Post from '../Post';
 import { QUERY_POSTS } from '../../utils/queries';
