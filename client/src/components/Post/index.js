@@ -63,7 +63,7 @@ export default function Post({ post, userID }) {
                 </h5>
                 <h6 className="text-gray-500 text-sm font-medium mb-1">
                   {/* would love to change this to user's job title */}
-                  {post.author.username}
+                  {post.author.resume ? post.author.resume.prevJ1Title : 'Unemployed'}
                 </h6>
               </div>
               <div className="mr-2">
