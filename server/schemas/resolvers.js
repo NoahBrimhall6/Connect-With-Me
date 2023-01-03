@@ -44,7 +44,7 @@ const resolvers = {
         });
     },
     posts: async () => {
-      return await Post.find({})
+      return await Post.find({}).sort({ createdAt: -1 })
         .populate('author')
         .populate('comments')
         .populate({
@@ -57,7 +57,7 @@ const resolvers = {
         .populate('author');
     },
     jobPostings: async () => {
-      return await JobPosting.find({});
+      return await JobPosting.find({}).sort({ createdAt: -1 });
     } 
   },
 
