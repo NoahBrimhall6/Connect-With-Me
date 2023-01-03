@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Connection({ connection }) {
+  console.log(connection._id)
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
       <div className="flex flex-col items-center py-5">
@@ -13,7 +14,7 @@ export default function Connection({ connection }) {
         </span>
         <div className="flex mt-4 space-x-3 md:mt-6">
           <a
-            href="#"
+            href= {`/profile/${connection._id}`}
             className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
           >
             View Profile
