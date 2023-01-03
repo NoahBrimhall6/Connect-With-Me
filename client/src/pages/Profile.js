@@ -31,7 +31,6 @@ const Profile = () => {
   }
 
   const userData = data.myUser
-  console.log(userData)
   if (userData.resume){
 
   const skillsArray = userData.resume.skills.split(";")

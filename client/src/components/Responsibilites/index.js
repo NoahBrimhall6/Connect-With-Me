@@ -6,7 +6,7 @@ export default function responsibility ({responsibilities}) {
     return (
         responsibilities.map((responsibility) => {
             return (
-                <li>{responsibility}</li>
+                <li key={responsibility}>{responsibility}</li>
             )
         })
     )

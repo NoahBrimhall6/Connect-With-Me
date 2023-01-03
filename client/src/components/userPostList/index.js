@@ -5,9 +5,8 @@ export default function userPosts ({posts}) {
 
     return (
         posts.map((post) => {
-            console.log(post)
             return (
-                <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
+                <div key={post._id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
                 <div className="flex flex-col items-center pb-5 pt-5">
                   <h5 className="text-xl font-medium text-gray-900 text-center">
                     {post.title}
