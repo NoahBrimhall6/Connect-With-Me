@@ -43,12 +43,12 @@ export default function SignUp() {
         },
       });
 
-      // check if a user with the same username already exists
-      if (data.addUser) {
-        // show an alert indicating that the username is taken
-        alert('Username is taken. Please choose a different username.');
-        return;
-      }
+      // // check if a user with the same username already exists
+      // if (data.addUser) {
+      //   // show an alert indicating that the username is taken
+      //   alert('Username is taken. Please choose a different username.');
+      //   return;
+      // }
 
       try {
         const { data } = await login({

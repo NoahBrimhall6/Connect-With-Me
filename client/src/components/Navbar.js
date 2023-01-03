@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../assets/images/cwm-logo.png';
-import BlankProfile from '../assets/images/blank-profile-pic.webp';
 import Auth from '../utils/auth';
 
 import SearchBar from "./SearchBar";  //  Manamana Search
@@ -19,7 +18,12 @@ export default function Navbar() {
     Auth.logout();
   }
 
-  const currentUserID = Auth.getProfile().data._id
+   if (Auth.loggedIn()) {
+    var currentUserID = Auth.getProfile().data._id;
+  } else {
+    var currentUserID = '';
+  }
+
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -66,7 +70,7 @@ export default function Navbar() {
               <div>
                 <button type="button" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                   {Auth.loggedIn() ? (
-                    <a onClick={logout} className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
+                    <a onClick={logout} href='#' className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
                   ) : (<a href='/signin' className={location === '/signin' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium mr-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-2"}>Sign In</a>)
                   }
                 </button>

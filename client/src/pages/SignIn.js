@@ -117,12 +117,11 @@ export default function SignIn() {
                     </label>
                   </div>
                 </div>
-                <a
-                  href="#"
+                <button
                   className="text-sm font-medium hover:underline hover:bg-gray-900 text-teal-400"
                 >
                   Forgot password?
-                </a>
+                </button>
               </div>
               <button
                 type="submit"
