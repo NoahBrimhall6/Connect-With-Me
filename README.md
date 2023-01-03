@@ -111,14 +111,14 @@ Rexxmadsen@gmail.com
 https://github.com/Avialmonanay
 
 Michelle Hales
-
+michellehales93@gmail.com
 https://github.com/mich-hales
 
 Noah Brimhall
-
+noahbrimhall6@gmail.com
 https://github.com/NoahBrimhall6
 
 Allen Robson
-
+allentrobson@gmail.com
 https://github.com/TheManamana
 
