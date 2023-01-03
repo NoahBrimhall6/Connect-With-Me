@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 export default function SignIn() {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
+
   const [showAlert, setShowAlert] = useState(false);
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value, });
+    setUserFormData({ ...userFormData, [name]: value });
   };
 
   const handleFormSubmit = async (event) => {
@@ -26,18 +27,18 @@ export default function SignIn() {
     try {
       const { data } = await login({
         variables: { ...userFormData },
-      })
+      });
 
       Auth.login(data.login.token);
-      console.log(data)
+      console.log(data);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
 
     setUserFormData({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
@@ -49,9 +50,18 @@ export default function SignIn() {
             <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleFormSubmit}>
+            <form
+              className="space-y-4 md:space-y-6"
+              action="#"
+              onSubmit={handleFormSubmit}
+            >
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">Your email</label>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-white"
+                >
+                  Your email
+                </label>
                 <input
                   value={userFormData.email}
                   type="email"
@@ -60,10 +70,17 @@ export default function SignIn() {
                   onChange={handleInputChange}
                   className=" border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                   placeholder="name@email.com"
-                  required="" />
+                  required=""
+                />
               </div>
+
               <div>
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
                 <input
                   value={userFormData.password}
                   type="password"
@@ -72,27 +89,60 @@ export default function SignIn() {
                   onChange={handleInputChange}
                   placeholder="••••••••"
                   className="border sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                  required="" />
+                  required=""
+                />
               </div>
+              {showAlert && (
+                <div className="bg-red-500 text-white rounded-full px-3 py-2">
+                  Invalid email or password
+                </div>
+              )}
               <div className="flex items-center justify-between">
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
-                    <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border rounded focus:ring-3 focus:ring-primary-300 bg-gray-700 border-gray-600 focus:ring-primary-600 ring-offset-gray-800" required="" />
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      className="w-4 h-4 border rounded focus:ring-3 focus:ring-primary-300 bg-gray-700 border-gray-600 focus:ring-primary-600 ring-offset-gray-800"
+                      required=""
+                    />
                   </div>
                   <div className="ml-3 text-sm">
-                    <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                    <label
+                      htmlFor="remember"
+                      className="text-gray-500 dark:text-gray-300"
+                    >
+                      Remember me
+                    </label>
                   </div>
                 </div>
-                <a href="#" className="text-sm font-medium hover:underline text-teal-400">Forgot password?</a>
+                <a
+                  href="#"
+                  className="text-sm font-medium hover:underline text-teal-400"
+                >
+                  Forgot password?
+                </a>
               </div>
-              <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-teal-500 hover:bg-teal-600 focus:ring-teal-800">Sign in</button>
+              <button
+                type="submit"
+                className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-teal-500 hover:bg-teal-600 focus:ring-teal-800"
+              >
+                Sign in
+              </button>
               <p className="text-sm font-light text-gray-400">
-                Don’t have an account yet? <a href="/signup" className="font-medium hover:underline text-teal-400">Sign up</a>
+                Don’t have an account yet?{" "}
+                <a
+                  href="/signup"
+                  className="font-medium hover:underline text-teal-400"
+                >
+                  Sign up
+                </a>
               </p>
             </form>
           </div>
         </div>
       </div>
     </section>
-  )
-};
+  );
+}
