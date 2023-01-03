@@ -40,7 +40,7 @@ function SearchBar({ placeholder, data }) {
     setFilteredData([]);
     setWordEntered("");
   };
-console.log(filteredData);
+//console.log(filteredData);
   return (
     <div className="search  text-gray-800 sm:w-30 h-9 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none">
       <div className="searchInputs">

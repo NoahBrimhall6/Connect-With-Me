@@ -6,7 +6,7 @@ export default function Comment({ comment }) {
       <div className="flex justify-between">
         <div>
           <h5 className="text-black text-sm">
-            {`${comment.author.firstName} ${comment.author.lastName}`}
+            {`${comment.author.firstName} ${comment.author.lastName}`}  
           </h5>
           <h6 className="text-gray-700 text-xs mb-2">
             {comment.author.username}
