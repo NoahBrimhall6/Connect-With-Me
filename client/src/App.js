@@ -75,7 +75,7 @@ function App() {
             />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/viewjob" element={<ViewJob />} />
+            <Route path="/viewjob/:jobId" element={<ViewJob />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/connections" element={<Connections />} />

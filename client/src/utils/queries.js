@@ -103,6 +103,21 @@ query user($username: String!) {
   }
 }`
 
+export const QUERY_JOBPOST = gql`
+  query jobPost($id: ID!) {
+    jobPost(_id: $id) {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+      createdAt
+    }
+  }
+`;
 
 export const QUERY_MYUSER = gql`
 query MyUser($id: ID!) {

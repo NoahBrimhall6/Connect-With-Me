@@ -62,6 +62,9 @@ const resolvers = {
     },
     jobPostings: async () => {
       return await JobPosting.find({}).sort({ createdAt: -1 });
+    },
+    jobPost: async (parent, { _id }) => {
+      return await JobPosting.findById(_id);
     } 
   },
 
