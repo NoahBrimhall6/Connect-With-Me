@@ -20,7 +20,14 @@ const Profile = () => {
 
 
   // gets logged in user information and sets to userData
-  const userID = Auth.getProfile().data._id;
+  // const userID = Auth.getProfile().data._id;
+
+  if (Auth.loggedIn()) {
+    var userID = Auth.getProfile().data._id;
+  } else {
+    var userID = '';
+  }
+
   const {loading, data} = useQuery(QUERY_MYUSER, {
     variables: { id: userParam.id },
   });
