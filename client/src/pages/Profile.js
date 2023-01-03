@@ -23,7 +23,11 @@ const Profile = () => {
   //displays loading until information from QueryUser recieves information
   if (loading) {
     return <div>Loading...</div>;
-  } 
+  }
+
+  if (!data.myUser.resume) {
+    return <Redirect />
+  }
   const userData = data.myUser
   console.log(userData)
   console.log(userData.resume.skills)
