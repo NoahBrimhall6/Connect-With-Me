@@ -102,9 +102,24 @@ query user($username: String!) {
   }
 }`
 
+export const QUERY_JOBPOST = gql`
+  query jobPost($id: ID!) {
+    jobPost(_id: $id) {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+      createdAt
+    }
+  }
+`;
 
 export const QUERY_MYUSER = gql`
-query myUser($id: ID!) {
+query MyUser($id: ID!) {
   myUser(_id: $id) {
     _id
     email
@@ -136,6 +151,11 @@ query myUser($id: ID!) {
       prevJ3Responsibilities
     }
     username
+    posts {
+      _id
+      title
+      body
+    }
   }
 }`
 
@@ -143,6 +163,7 @@ query myUser($id: ID!) {
 export const QUERY_SEARCHUSERS = gql`
 query Users {
   users {
+    _id
     firstName
     lastName
     username

@@ -64,16 +64,18 @@ function App() {
             <Route path="/" element={Auth.loggedIn() ? <Home /> : <SignIn />} />
             <Route path="/jobs" element={Auth.loggedIn() ? <JobSearch /> : <SignIn />} />
             <Route
-              path="/me"
+              path="/profile"
               element={Auth.loggedIn() ? <Profile /> : <SignIn />}
             />
+            <Route
+              path="/profile/:id" element={<Profile/>}/>
             <Route
               path="/resume"
               element={Auth.loggedIn() ? <Resume /> : <SignIn />}
             />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/viewjob" element={<ViewJob />} />
+            <Route path="/viewjob/:jobId" element={<ViewJob />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/connections" element={<Connections />} />
