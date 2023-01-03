@@ -44,7 +44,6 @@ export const QUERY_POSTS = gql`
 `;
 
 
-
 // Queries a single users connections
 export const QUERY_CONNECTIONS = gql`
 query connections($id: ID!) {

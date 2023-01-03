@@ -119,7 +119,7 @@ export default function SignIn() {
                 </div>
                 <a
                   href="#"
-                  className="text-sm font-medium hover:underline text-teal-400"
+                  className="text-sm font-medium hover:underline hover:bg-gray-900 text-teal-400"
                 >
                   Forgot password?
                 </a>
@@ -134,7 +134,7 @@ export default function SignIn() {
                 Don’t have an account yet?{" "}
                 <a
                   href="/signup"
-                  className="font-medium hover:underline text-teal-400"
+                  className="font-medium hover:underline hover:bg-gray-900 text-teal-400"
                 >
                   Sign up
                 </a>
