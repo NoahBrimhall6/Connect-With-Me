@@ -11,7 +11,7 @@ export default function PostList({ userID }) {
   const posts = data?.posts || [];
   if (!posts.length) {return <h3>No Posts Yet</h3>};
 
-  return posts.map((post) => <Post key={post._id} post={post} userID={userID}/>)    
+  return posts.map((post) => <Post key={post._id} post={post} userID={userID} />)    
 };
 
 
