@@ -146,6 +146,7 @@ query myUser($id: ID!) {
 export const QUERY_SEARCHUSERS = gql`
 query Users {
   users {
+    _id
     firstName
     lastName
     username
