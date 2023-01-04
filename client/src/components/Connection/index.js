@@ -9,7 +9,6 @@ export default function Connection({ connection }) {
           {`${connection.firstName} ${connection.lastName}`}
         </h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">
-          {/* could we change this to the user's job title? */}
         {connection.username}
         </span>
         <div className="flex mt-4 space-x-3 md:mt-6">
