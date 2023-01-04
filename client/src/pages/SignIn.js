@@ -77,7 +77,7 @@ export default function SignIn() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-white"
                 >
                   Password
                 </label>
@@ -118,7 +118,7 @@ export default function SignIn() {
                   </div>
                 </div>
                 <button
-                  className="text-sm font-medium hover:underline hover:bg-gray-900 text-teal-400"
+                  className="text-sm font-medium hover:underline hover:bg-gray-800 text-teal-400"
                 >
                   Forgot password?
                 </button>
@@ -133,7 +133,7 @@ export default function SignIn() {
                 Don’t have an account yet?{" "}
                 <a
                   href="/signup"
-                  className="font-medium hover:underline hover:bg-gray-900 text-teal-400"
+                  className="font-medium hover:underline hover:bg-gray-800 text-teal-400"
                 >
                   Sign up
                 </a>

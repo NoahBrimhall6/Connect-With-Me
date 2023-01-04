@@ -12,7 +12,7 @@ export default function Footer() {
             <ItemsContainer />
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8'>
                 <span>© 2023 Connect With Me.</span>
-                <span><a href='/terms' className='hover:underline hover:bg-gray-900 hover:cursor-pointer'>Terms · Conditions</a></span>
+                <span><a href='/terms' className='hover:underline hover:bg-gray-800 hover:cursor-pointer'>Terms · Conditions</a></span>
                 < SocialIcons Icons={Icons}/>
             </div>
         </footer>  
