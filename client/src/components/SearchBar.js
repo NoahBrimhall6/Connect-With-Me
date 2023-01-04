@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SearchBar.css";
+import "../assets/styles/SearchBar.css";
 import searchIcon from "../assets/images/search.png";
 import closeIcon from "../assets/images/cancel.png";
 
@@ -40,9 +40,11 @@ function SearchBar({ placeholder, data }) {
     setFilteredData([]);
     setWordEntered("");
   };
+
 //console.log(filteredData);
+
   return (
-    <div className="search  text-gray-800 sm:w-30 h-9 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none">
+    <div className="search text-gray-800 h-5 w-full sm:mr-5 mr-1 focus:outline-none">
       <div className="searchInputs">
         <input
           type="text"
@@ -52,9 +54,9 @@ function SearchBar({ placeholder, data }) {
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (
-            <img className='searchIcon' alt='search' src={searchIcon}></img>
+            <div className='searchIcon'><ion-icon name="search"></ion-icon></div>
           ) : (
-            <img id="clearBtn" alt='clear' src={closeIcon} onClick={clearInput}></img>
+            <button className="mt-1.5" id="clearBtn" onClick={clearInput}><ion-icon name="close"></ion-icon></button>
           )}
         </div>
       </div>

@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import { useQuery } from "@apollo/client";
+import React from 'react';
 import Post from '../Post';
-import { QUERY_POSTS } from '../../utils/queries';
 
-export default function PostList({ userID }) {
-  // Query Posts
-  const { loading, data } = useQuery(QUERY_POSTS);
-  if (loading) {return <h3>Loading...</h3>};
-
-  const posts = data?.posts || [];
+export default function PostList({ posts, connection, like, dislike, newComment }) {
   if (!posts.length) {return <h3>No Posts Yet</h3>};
-
-  return posts.map((post) => <Post key={post._id} post={post} userID={userID} />)    
+  return posts.map((post) => <Post key={post._id} post={post} connection={connection} like={like} dislike={dislike} newComment={newComment}/>)    
 };
 
 

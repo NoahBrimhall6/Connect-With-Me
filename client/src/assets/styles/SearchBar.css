@@ -1,0 +1,147 @@
+  .searchInputs {
+    display: flex;
+  }
+  
+  .search input {
+    background-color: white;
+    border: 0;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 0px;
+    font-size: 18px;
+    padding: 15px;
+    height: 40px;
+    width: 300px;
+  }
+  
+  .searchIcon {
+    height: 40px;
+    width: 30px;
+    background-color: white;
+    display: grid;
+    place-items: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+
+  .searchIcon svg {
+    font-size: 35px;
+  }
+  
+  .dataResult {
+    margin-top: 3px;
+    width: 300px;
+    border-radius: 3px;
+    max-height: 600px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  
+  .dataResult::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .dataResult .dataItem {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: black;
+  }
+  
+  .dataItem p {
+    margin-left: 10px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    background-color: lightgrey;
+  }
+  
+  #clearBtn {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 900px) {
+    .dataResult {
+      width:15;
+    }
+
+    .dataResult .dataItem {
+      width: 200px;
+    }
+
+    .search input {
+      width: 200px;
+    }
+
+    .searchIcon {
+      width: 20px;
+    }
+  }
+
+  @media screen and (max-width: 790px) {
+    .dataResult {
+      width: 150px;
+    }
+
+    .dataResult .dataItem {
+      width: 150px;
+    }
+
+    .search input {
+      width: 150px;
+    }
+  }
+
+@media screen and (max-width: 737px) {
+  .dataResult {
+    width: 100px;
+  }
+
+  .dataResult .dataItem {
+    width: 100px;
+  }
+
+  .search input {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 687px) {
+  .dataResult {
+    width: 70px;
+  }
+
+  .dataResult .dataItem {
+    width: 70px;
+  }
+
+  .search input {
+    width: 70px;
+  }
+}
+
+@media screen and (max-width: 657px) {
+  .dataResult {
+    width: 40px;
+  }
+
+  .dataResult .dataItem {
+    width: 40px;
+  }
+
+  .search input {
+    width: 40px;
+  }
+}

@@ -96,6 +96,7 @@ const typeDefs = gql`
     myUser(_id: ID!): User
     comments: [Comment]
     jobPostings: [JobPosting]
+    jobPost(_id: ID!): JobPosting
   }
 
   type Mutation {
