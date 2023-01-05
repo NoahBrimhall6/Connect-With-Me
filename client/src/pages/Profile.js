@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_MYUSER, QUERY_RESUME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-import Redirect from '../pages/Redirect';
+import Posts from '../components/userPostList';
 import Skills from '../components/Skills';
 import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
@@ -20,7 +20,14 @@ const Profile = () => {
 
 
   // gets logged in user information and sets to userData
-  const userID = Auth.getProfile().data._id;
+  // const userID = Auth.getProfile().data._id;
+
+  if (Auth.loggedIn()) {
+    var userID = Auth.getProfile().data._id;
+  } else {
+    var userID = '';
+  }
+
   const {loading, data} = useQuery(QUERY_MYUSER, {
     variables: { id: userParam.id },
   });
@@ -31,7 +38,7 @@ const Profile = () => {
   }
 
   const userData = data.myUser
-  
+  console.log(userData)
   if (userData.resume){
 
   const skillsArray = userData.resume.skills.split(";")
@@ -90,44 +97,8 @@ const Profile = () => {
           <h1 className="profileHeaders text-teal-400">My Posts</h1>
 
           {/* Start of inidividual post here */}
-          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
-            <div className="flex flex-col items-center pb-5 pt-5">
-              <h5 className="text-xl font-medium text-gray-900 text-center">
-                Post Title
-              </h5>
-              <span className="text-sm text-gray-400 text-center">
-                Preview of post content
-              </span>
-              <div className="flex mt-4 space-x-3 md:mt-6">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
-                >
-                  View Post
-                </a>
-              </div>
-            </div>
-          </div>
-          {/* end of individual post here */}
+          {userData.posts ? <Posts posts={userData.posts} /> : "No Posts Yet"}
 
-          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
-            <div className="flex flex-col items-center pb-5 pt-5">
-              <h5 className="text-xl font-medium text-gray-900 text-center">
-                Post Title
-              </h5>
-              <span className="text-sm text-gray-400 text-center">
-                Preview of post content
-              </span>
-              <div className="flex mt-4 space-x-3 md:mt-6">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
-                >
-                  View Post
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-3 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4">
@@ -136,7 +107,7 @@ const Profile = () => {
           <div className="flex">
             <div className="educationSection mr-2">
               <h4 className="m-1 bold text-teal-400 text-lg">Education</h4>
-              {/* Education template -- make responsive with users credentials */}
+              {/* Education section with users credentials */}
               <div className="m-1 educationTemplate">
                 <h6 className="bold">{userData.resume ? userData.resume.education : " "}</h6>
                 <p className="text-sm">{userData.resume ? userData.resume.educationType : " "}</p>
@@ -148,7 +119,7 @@ const Profile = () => {
 
             <div className="skillsSection ml-2">
               <h4 className="m-1 bold text-teal-400 text-lg">Skills</h4>
-              {/* Make the skills responsive . . . */}
+              {/* Skills section with users credentials */}
               <div className="skillsList flex flex-wrap">
                 {userData.resume ? <Skills skills={skillsArrayTrimmed} /> : " "}
               </div>
@@ -205,7 +176,7 @@ const Profile = () => {
 
               <div className="resumeExperience mx-4">
                 <h3 className="bold text-xl">Experience</h3>
-                {/* Make this responsive */}
+                {/* Resume section with users credentials */}
                 <div className="m-1 my-2">
                   <h4 className="bold">{userData.resume ? userData.resume.prevJ1Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Company : " "}</h5>
@@ -215,7 +186,6 @@ const Profile = () => {
                   {userData.resume ? <Responsibilities responsibilities={responsibility1Trimmed} /> : " "}
                   </ul>
                 </div>
-                {/* end of template */}
 
                 <div className="m-1 my-2">
                 <h4 className="bold">{userData.resume ? userData.resume.prevJ2Title : " "}</h4>

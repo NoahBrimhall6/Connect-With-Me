@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../assets/images/cwm-logo.png';
-import BlankProfile from '../assets/images/blank-profile-pic.webp';
 import Auth from '../utils/auth';
 
 import SearchBar from "./SearchBar";  //  Manamana Search
@@ -19,7 +18,12 @@ export default function Navbar() {
     Auth.logout();
   }
 
-  const currentUserID = Auth.getProfile().data._id
+   if (Auth.loggedIn()) {
+    var currentUserID = Auth.getProfile().data._id;
+  } else {
+    var currentUserID = '';
+  }
+
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -51,26 +55,22 @@ export default function Navbar() {
 
                 <a href={`/profile/${currentUserID}`} className={location === '/profile' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"}>Profile</a>
 
-                <a href="/resume" className={location === '/resume' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"}>Resume</a>
+                <a href="/resume" className={location === '/resume' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium " : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"}>Resume</a>
 
-                {/* need to create so when 'enter' is hit it will search to clean up the navbar with no button */}
-                {/* CLASS for following div if we only want search on the jobs page: className={location === '/jobs' ? '' : 'hidden'} */}
                 <div>
-                  <input type='text' placeholder='Search' className=' text-gray-800 sm:w-30 h-9 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none' />
+                  <SearchBar placeholder="Search to connect" data={usersArray} />
                 </div>
+
               </div>
             </div>
-            <div>
-              <SearchBar placeholder="Search to connect" data={usersArray} />
-            </div>
+            
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="relative ml-3">
               <div>
                 <button type="button" className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                  {/* need to update sign in and out !!! only show sign out when signed in and vice versa ... will update */}
                   {Auth.loggedIn() ? (
-                    <a onClick={logout} className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
+                    <a onClick={logout} href='#' className={location === '/signout' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium ml-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-2"}>Sign Out</a>
                   ) : (<a href='/signin' className={location === '/signin' ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium mr-2" : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-2"}>Sign In</a>)
                   }
                 </button>

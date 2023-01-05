@@ -69,17 +69,22 @@ function App() {
               element={Auth.loggedIn() ? <Profile /> : <SignIn />}
             />
             <Route
+<<<<<<< HEAD
               path="/profile/:id" element={<Profile />} />
 
             <Route path="/search/" element={<Search />} /> 
             <Route path="/search/:id" element={<Search />} />{/* Manamana fix later */}
+=======
+              path="/profile/:id" element={<Profile/>}
+            />
+>>>>>>> main
             <Route
               path="/resume"
               element={Auth.loggedIn() ? <Resume /> : <SignIn />}
             />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/viewjob" element={<ViewJob />} />
+            <Route path="/viewjob/:jobId" element={<ViewJob />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/connections" element={<Connections />} />

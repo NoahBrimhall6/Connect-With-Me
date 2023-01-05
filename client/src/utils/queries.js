@@ -5,47 +5,43 @@ export const QUERY_POSTS = gql`
   query getPosts {
     posts {
       _id
-      title
-      body
-      createdAt
-      likesCount
-      dislikesCount
-      commentCount
       author {
-        _id
-        username
         firstName
         lastName
+        username
         resume {
           prevJ1Title
         }
       }
+      commentCount
       comments {
         _id
-        body
-        createdAt
         author {
           _id
-          username
           firstName
           lastName
+          username
+          resume {
+            prevJ1Title
+          }
         }
+        body
+        createdAt
+      }
+      createdAt
+      dislikes {
+        username
+      }
+      dislikesCount
+      likesCount
+      title
+      body
+      likes {
+        username
       }
     }
   }
 `;
-
-// myUser(_id: $id) {
-//   _id
-//   username
-//   firstName
-//   lastName
-//   resume {
-//     prevJ1Title
-//   }
-// }
-
-
 
 // Queries a single users connections
 export const QUERY_CONNECTIONS = gql`
@@ -62,7 +58,6 @@ query connections($id: ID!) {
   }
 }
 `;
-
 
 //Queries a single user by username and returns all fields in ID value.
 export const QUERY_USER = gql`
@@ -105,9 +100,24 @@ query user($username: String!) {
   }
 }`
 
+export const QUERY_JOBPOST = gql`
+  query jobPost($id: ID!) {
+    jobPost(_id: $id) {
+      _id
+      title
+      description
+      salary
+      contact
+      zipcode
+      qualifications
+      responsibilities
+      createdAt
+    }
+  }
+`;
 
 export const QUERY_MYUSER = gql`
-query myUser($id: ID!) {
+query MyUser($id: ID!) {
   myUser(_id: $id) {
     _id
     email
@@ -139,6 +149,11 @@ query myUser($id: ID!) {
       prevJ3Responsibilities
     }
     username
+    posts {
+      _id
+      title
+      body
+    }
   }
 }`
 

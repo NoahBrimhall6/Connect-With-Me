@@ -112,7 +112,7 @@ footer {
 
   .form-control {
     width: 27rem;
-    padding: .3rem;
+    padding: .5rem;
     margin-right: 1rem;
   }
 
@@ -121,7 +121,7 @@ footer {
   }
 
   .textarea-education {
-    height: 22.5rem;
+    height: 23.3rem;
   }
   
   .blur {
@@ -131,7 +131,7 @@ footer {
 /* creates a nice transition when the page is loaded or refreshed */
 @keyframes fade-in {
     from {opacity: 0;}
-    to {opacity:1;}
+    to {opacity: 1;}
 }
 
 /* Styling to keep footer on bottom and not compromise main content */

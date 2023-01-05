@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import "./SearchBar.css";
-import searchIcon from "../assets/images/search.png";
-import closeIcon from "../assets/images/cancel.png";
+import "../assets/styles/SearchBar.css";
 
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
@@ -11,22 +9,21 @@ function SearchBar({ placeholder, data }) {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = data.filter((value) => {
-        if(value.firstName.toLowerCase().includes(searchWord.toLowerCase())){           // Manamana- Currently searches users first/last name, username, and email.
+        if(value.firstName.toLowerCase().includes(searchWord.toLowerCase())){           
+          // Manamana- Currently searches users first/last name, username, and email.
             return true;
-        }else if(value.lastName.toLowerCase().includes(searchWord.toLowerCase())){
-            return true;
-
-        }else if(value.username.toLowerCase().includes(searchWord.toLowerCase())){
+        } else if(value.lastName.toLowerCase().includes(searchWord.toLowerCase())){
             return true;
 
-        }else if(value.email.toLowerCase().includes(searchWord.toLowerCase())){
+        } else if(value.username.toLowerCase().includes(searchWord.toLowerCase())){
             return true;
 
-        }else {
+        } else if(value.email.toLowerCase().includes(searchWord.toLowerCase())){
+            return true;
+
+        } else {
             return false;
         }
-      
-      
     });
 
     if (searchWord === "") {
@@ -40,9 +37,11 @@ function SearchBar({ placeholder, data }) {
     setFilteredData([]);
     setWordEntered("");
   };
+
 //console.log(filteredData);
+
   return (
-    <div className="search  text-gray-800 sm:w-30 h-9 w-full sm:mr-5 md:w-50 lg:w-72 mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none">
+    <div className="search text-gray-800 h-5 w-full sm:mr-5 mr-1 focus:outline-none">
       <div className="searchInputs">
         <input
           type="text"
@@ -52,17 +51,21 @@ function SearchBar({ placeholder, data }) {
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (
-            <img className='searchIcon' alt='search' src={searchIcon}></img>
+            <div className='searchIcon'><ion-icon name="search"></ion-icon></div>
           ) : (
-            <img id="clearBtn" alt='clear' src={closeIcon} onClick={clearInput}></img>
+            <button className="mt-1.5" id="clearBtn" onClick={clearInput}><ion-icon name="close"></ion-icon></button>
           )}
         </div>
       </div>
-      {filteredData.length != 0 && (
+      {filteredData.length !== 0 && (
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
+<<<<<<< HEAD
               <a className="dataItem" href={`/Profile/${value._id}`} target="_blank">
+=======
+              <a className="dataItem" href={"https://www.google.com/"}>
+>>>>>>> main
                 <p>{value.firstName} {value.lastName} - {value.username}</p>
               </a>
             );
