@@ -12,6 +12,7 @@ export const QUERY_POSTS = gql`
         resume {
           prevJ1Title
         }
+        _id
       }
       commentCount
       comments {

@@ -11,6 +11,9 @@ export default function Post({ post, connection, like, dislike, newComment }) {
 
 console.log(post.author)
 
+const authorId = post.author._id
+console.log(authorId)
+
   return (
     <>
       <section className="flex justify-center mt-5">
@@ -18,7 +21,7 @@ console.log(post.author)
           <div className="p-6 flex flex-col justify-start w-full">
             <div className="flex justify-between mb-3">
               <div>
-                <h5 className="text-gray-900 text-xl font-medium mb-1 bold"><a href = "#">
+                <h5 className="text-gray-900 text-xl font-medium mb-1 bold"><a href = {`/profile/${authorId}`}>
                   {`${post.author.firstName} ${post.author.lastName}`}</a>
                 </h5>
                 <h6 className="text-gray-500 text-sm font-medium mb-1">
