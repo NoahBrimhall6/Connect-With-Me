@@ -42,7 +42,8 @@ export default function ProfileHeader ({userData}) {
     }
 
     console.log (data.myUser.connections)
-    const myUserConnections = data.myUser.connections
+    const myUserConnections = data?.myUser?.connections
+    console.log (myUserConnections)
 
 
     return (
@@ -58,11 +59,14 @@ export default function ProfileHeader ({userData}) {
               ></img>
               <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
               <h3 className="text-white text-center">{userData.resume ? userData.resume.prevJ1Title : " "}</h3>
-              { userParamID.id === userID ? "" : (myUserConnections?.some((connectionID)=> connectionID === userParamID)?                  <div className="flex mt-4 space-x-3 md:mt-6"><button onClick={() => connection(userParamID)} className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700">
+              { userParamID.id === userID ? "" : 
+              (myUserConnections.some((element) => element._id === userParamID.id)?
+              <div className="flex mt-4 space-x-3 md:mt-6"><button onClick={() => connection(userParamID)} className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700">
                   Remove Connection</button>
-              </div>: <div className="flex mt-4 space-x-3 md:mt-6"><button onClick={() => connection(userParamID)} className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700">
-                      Add Connection</button>
-                  </div>) }
+              </div>: 
+              <div className="flex mt-4 space-x-3 md:mt-6"><button onClick={() => connection(userParamID)} className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700">
+                  Add Connection</button>
+              </div>) }
             </div>
           </div>
 
