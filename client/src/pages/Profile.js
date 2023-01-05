@@ -1,14 +1,15 @@
 import React from "react";
-import Img from "../assets/images/blank-profile-pic.webp";
+
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_MYUSER, QUERY_RESUME } from '../utils/queries';
+import { QUERY_MYUSER } from '../utils/queries';
 import Auth from '../utils/auth';
 
 import Posts from '../components/userPostList';
 import Skills from '../components/Skills';
 import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
+import ProfileHeader from '../components/ProfileHeader'
 
 const Profile = () => {
  var skillsArrayTrimmed = ""
@@ -56,32 +57,7 @@ const Profile = () => {
   return (
     <div>
       {/* Header section for profile ??? ... need to figure out what we want to do here */}
-      <div className="grid grid-cols-6 mt-10">
-        <header className="bg-gray-900 text-white p-8 rounded-lg col-start-2 col-end-6 grid grid-cols-6 gap-8">
-          <div className="lg:col-start-2 lg:col-end-6 md:col-start-2 md:col-end-6 sm:col-start-2 sm:col-end-6 col-start-2 col-end-6 flex justify-center items-center">
-            <div>
-              {/* logic needed to UPLOAD IMAGE -- change to a button so when clicked can change picture ? */}
-              <img
-                className="rounded-lg my-3 placeholderImage"
-                src={Img}
-                alt="profile picture holder"
-              ></img>
-              <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
-              <h3 className="text-white text-center">{userData.resume ? userData.resume.prevJ1Title : " "}</h3>
-            </div>
-          </div>
-
-          <div className="lg:col-start-1 lg:col-end-7 lg:row-start-2 lg:row-end-3 mt-3 bg-white rounded-md p-4 md:col-start-1 md:-col-end-7 sm:col-start-1 sm:col-end-7 col-start-1 col-end-7">
-            <div className="flex justify-center relative">
-              <h3 className="text-black profileHeaders cols-start-3 col-end-6">About</h3>              
-            </div>
-
-            <p className="mx-10 my-5 text-black">
-            {userData.resume ? userData.resume.summary : " "}
-            </p>
-          </div>
-        </header>
-      </div>
+      <ProfileHeader userData = {userData}/>
 
       {/* Grid styling for profile section */}
       <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-4 grid-rows-6 text-white p-5 rounded-md gap-5 gridSection">

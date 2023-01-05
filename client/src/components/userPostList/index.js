@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function userPosts ({posts}) {
     if (!posts.length) {return <h3>No Posts</h3>}
 
