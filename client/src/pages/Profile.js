@@ -10,6 +10,7 @@ import Skills from '../components/Skills';
 import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
 
+
 const Profile = () => {
  var skillsArrayTrimmed = ""
  var responsibility1Trimmed = ""

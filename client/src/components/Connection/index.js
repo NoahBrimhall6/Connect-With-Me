@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function Connection({ connection }) {
   return (
+    <div className="flex flex-row justify-center w-full">
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
       <div className="flex flex-col items-center py-5">
         <h5 className="text-xl font-medium text-gray-900 text-center">
@@ -20,5 +21,6 @@ export default function Connection({ connection }) {
         </div>
       </div>
     </div>
+  </div>
   )
 }
