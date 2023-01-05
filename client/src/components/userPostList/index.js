@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function userPosts ({posts}) {
+export default function userPosts ({ posts, delete }) {
     if (!posts.length) {return <h3>No Posts</h3>}
 
     return (
