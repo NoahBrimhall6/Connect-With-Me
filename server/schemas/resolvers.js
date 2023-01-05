@@ -89,6 +89,12 @@ const resolvers = {
         { $addToSet: { connections } } 
       );
     },
+    removeConnection: async (parent, { id, connections }) => {
+      return await User.findOneAndUpdate(
+        { _id: id },
+        { $pull: { connections } }
+      );
+    },
     //Creates a new User and sets the Auth Token
     addUser: async (parent, { username, email, password, firstName, lastName }) => {
       // Check if the email or username is already taken
