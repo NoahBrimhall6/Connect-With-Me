@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function userPosts ({ posts, delete }) {
+export default function userPosts ({ posts, deletePostFunction, show }) {
     if (!posts.length) {return <h3>No Posts</h3>}
 
     return (
@@ -22,12 +22,12 @@ export default function userPosts ({ posts, delete }) {
                     >
                       View
                     </a>
-                    <a
-                      href={`/posts/${post._id}`}
+                    {show ? (<button
+                      onClick={() => {deletePostFunction(post._id)}}
                       className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
                     >
                       Delete
-                    </a>
+                    </button>) : (<></>)}
                   </div>
                 </div>
               </div>

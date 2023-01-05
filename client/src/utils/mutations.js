@@ -70,12 +70,9 @@ mutation createPost($title: String!, $body: String!, $author: ID!) {
 `;
 
 export const DELETE_POST = gql`
-mutation deletePost($id: ID!, $author: ID) {
+mutation deletePost($id: ID!, $author: ID!) {
   deletePost(id: $id, author: $author) {
     _id
-    author {
-      _id
-    }
   }
 }
 `;

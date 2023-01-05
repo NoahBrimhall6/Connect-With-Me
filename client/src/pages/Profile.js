@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
@@ -34,6 +34,28 @@ const Profile = () => {
     variables: { id: userParam.id },
   });
 
+  // Show Delete Button
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (userID === userParam.id) {
+      setShow(true);
+    }
+  }, [Profile]);
+
+
+  // Delete post
+  const [deletePost] = useMutation(DELETE_POST);
+  const deletePostFunction = async (postID) => {
+    try {
+      console.log(postID, userID)
+      const { data } = await deletePost({
+        variables: { id: postID, author: userID }
+      });
+      window.location.assign('/');
+    } catch (err) { console.error(err) }
+  }; 
+
   //displays loading until information from QueryUser recieves information
   if (loading) {
     return <div>Loading...</div>;
@@ -62,20 +84,6 @@ const Profile = () => {
 
   }
 
-  // Delete post
-  const [deletePost] = useMutation(DELETE_POST);
-  const deletePostFunction = async (postID) => {
-    try {
-      const { data } = await deletePost({
-        variables: { id: postID, author: userID }
-      });
-      window.location.assign('/');
-    } catch (err) { console.error(err) }
-
-  } 
-
-  console.log(userData)
-
   return (
     <div>
       {/* Header section for profile ??? ... need to figure out what we want to do here */}
@@ -87,7 +95,7 @@ const Profile = () => {
           <h1 className="profileHeaders text-teal-400">My Posts</h1>
 
           {/* Start of inidividual post here */}
-          {userData.posts ? <Posts posts={userData.posts} delete={deletePostFunction}/> : "No Posts Yet"}
+          {userData.posts ? <Posts posts={userData.posts} deletePostFunction={deletePostFunction} show={show}/> : "No Posts Yet"}
 
         </div>
 
