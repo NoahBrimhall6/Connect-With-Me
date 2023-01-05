@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Connection({ connection }) {
-  console.log(connection._id)
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
       <div className="flex flex-col items-center py-5">
