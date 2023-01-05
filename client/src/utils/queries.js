@@ -154,6 +154,11 @@ query myUser($id: ID!) {
       summary
     }
     username
+    posts {
+      _id
+      body
+      title
+    }
   }
 }
 `

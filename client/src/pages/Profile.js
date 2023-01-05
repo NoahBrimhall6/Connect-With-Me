@@ -62,6 +62,8 @@ const Profile = () => {
 
 }
 
+console.log(userData)
+
   return (
     <div>
       {/* Header section for profile ??? ... need to figure out what we want to do here */}
