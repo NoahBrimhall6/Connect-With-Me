@@ -11,6 +11,7 @@ import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
 import ProfileHeader from '../components/ProfileHeader'
 
+
 const Profile = () => {
  var skillsArrayTrimmed = ""
  var responsibility1Trimmed = ""
