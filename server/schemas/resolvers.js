@@ -144,6 +144,15 @@ const resolvers = {
 
       return { post, user };
     },
+    deletePost: async (parent, { id, author }) => {
+      const post = await Post.findByIdAndDelete(id);
+      const user = await User.findOneAndUpdate(
+        { _id: author },
+        { $pull: { posts: id } }
+      );
+
+      return { post, user };
+    },
     // Create a new comment and attach it to a post
     createComment: async (parent, { body, author, postId }) => {
       const comment = await Comment.create({ body, author });
