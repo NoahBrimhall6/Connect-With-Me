@@ -1,17 +1,43 @@
 import React from 'react';
 import Img from "../../assets/images/blank-profile-pic.webp"
 import { useParams } from 'react-router-dom';
+import {useMutation, useQuery} from '@apollo/client'
 import Auth from '../../utils/auth';
+
+import { ADD_CONNECTION } from '../../utils/mutations'
+import { QUERY_MYUSER } from '../../utils/queries'
+
+
+
+
 
 
 
 
 export default function ProfileHeader ({userData}) {
+  const [_, updateState] = React.useState();
+  const forceUpdate = () => updateState({})
+  const [addConnection] = useMutation(ADD_CONNECTION)
+  const connection = async (connectionID) => {
+    try {
+      const { data } = await addConnection({
+        variables: { id: userID, connections: connectionID }
+      })
+      forceUpdate();
+      window.location.assign('/');
+    } catch (err) { console.error(err) };
+  }
 
     const userParamID  = useParams();
     const userID = Auth.getProfile().data._id;
 
     console.log(userParamID.id, userID)
+
+    const {loading, data} = useQuery(QUERY_MYUSER, {
+      variables: { id: userID },
+    })
+
+    console.log(data.myUser.connections._id)
 
     return (
         <div className="grid grid-cols-6 mt-10">
@@ -26,8 +52,8 @@ export default function ProfileHeader ({userData}) {
               ></img>
               <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
               <h3 className="text-white text-center">{userData.resume ? userData.resume.prevJ1Title : " "}</h3>
-              { userParamID.id === userID ? "" : <div className="flex mt-4 space-x-3 md:mt-6"><a href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700">
-                      Add Connection</a>
+              { userParamID.id === userID ? "" : <div className="flex mt-4 space-x-3 md:mt-6"><button onClick={() => connection(userParamID)} className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700">
+                      Add Connection</button>
                   </div> }
             </div>
           </div>

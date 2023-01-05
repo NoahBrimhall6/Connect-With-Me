@@ -117,45 +117,44 @@ export const QUERY_JOBPOST = gql`
 `;
 
 export const QUERY_MYUSER = gql`
-query MyUser($id: ID!) {
+query myUser($id: ID!) {
   myUser(_id: $id) {
     _id
+    connections {
+      _id
+    }
     email
     firstName
     lastName
     password
     resume {
       _id
-      fullName
-      email
-      location
-      summary
-      phone
-      skills
       education
-      educationType
       educationLength
-      prevJ1Title
+      educationType
+      email
+      fullName
+      location
+      phone
       prevJ1Company
       prevJ1Length
       prevJ1Responsibilities
-      prevJ2Title
+      prevJ1Title
       prevJ2Company
       prevJ2Length
       prevJ2Responsibilities
-      prevJ3Title
+      prevJ2Title
       prevJ3Company
       prevJ3Length
       prevJ3Responsibilities
+      prevJ3Title
+      skills
+      summary
     }
     username
-    posts {
-      _id
-      title
-      body
-    }
   }
-}`
+}
+`
 
 //Query all users for search -Manamana
 export const QUERY_SEARCHUSERS = gql`
