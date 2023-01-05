@@ -154,6 +154,36 @@ query Users {
   }
 }`
 
+export const QUERY_SEARCHJOBLISTINGS = gql`
+query jobPostings {
+  jobPostings {
+    _id
+    title
+    description
+    createdAt
+    qualifications
+    salary
+    zipcode
+    responsibilities
+  }
+}`
+
+export const QUERY_SEARCHPOSTS = gql`
+query posts {
+  posts {
+    _id
+    title
+    body
+    author {
+      _id
+      firstName
+      lastName
+    }
+    likesCount
+    dislikesCount
+  }
+}`
+
 // Queries Job Listings
 export const QUERY_JOBPOSTINGS = gql`
   query jobPostings {

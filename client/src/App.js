@@ -28,6 +28,7 @@ import Faqs from "./components/FooterLinks/Faqs";
 import PrivacyPolicy from "./components/FooterLinks/PrivacyPolicy";
 import Terms from "./components/FooterLinks/Terms";
 import Redirect from "./pages/Redirect";
+import Search from "./pages/Search";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -68,7 +69,10 @@ function App() {
               element={Auth.loggedIn() ? <Profile /> : <SignIn />}
             />
             <Route
-              path="/profile/:id" element={<Profile/>}/>
+              path="/profile/:id" element={<Profile />} />
+
+            <Route path="/search/" element={<Search />} /> 
+            <Route path="/search/:id" element={<Search />} />{/* Manamana fix later */}
             <Route
               path="/resume"
               element={Auth.loggedIn() ? <Resume /> : <SignIn />}
