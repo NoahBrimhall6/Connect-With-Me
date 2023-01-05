@@ -68,7 +68,8 @@ function App() {
               element={Auth.loggedIn() ? <Profile /> : <SignIn />}
             />
             <Route
-              path="/profile/:id" element={<Profile/>}/>
+              path="/profile/:id" element={<Profile/>}
+            />
             <Route
               path="/resume"
               element={Auth.loggedIn() ? <Resume /> : <SignIn />}

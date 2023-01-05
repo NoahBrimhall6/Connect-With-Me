@@ -20,7 +20,14 @@ const Profile = () => {
 
 
   // gets logged in user information and sets to userData
-  const userID = Auth.getProfile().data._id;
+  // const userID = Auth.getProfile().data._id;
+
+  if (Auth.loggedIn()) {
+    var userID = Auth.getProfile().data._id;
+  } else {
+    var userID = '';
+  }
+
   const {loading, data} = useQuery(QUERY_MYUSER, {
     variables: { id: userParam.id },
   });
@@ -100,7 +107,7 @@ const Profile = () => {
           <div className="flex">
             <div className="educationSection mr-2">
               <h4 className="m-1 bold text-teal-400 text-lg">Education</h4>
-              {/* Education template -- make responsive with users credentials */}
+              {/* Education section with users credentials */}
               <div className="m-1 educationTemplate">
                 <h6 className="bold">{userData.resume ? userData.resume.education : " "}</h6>
                 <p className="text-sm">{userData.resume ? userData.resume.educationType : " "}</p>
@@ -112,7 +119,7 @@ const Profile = () => {
 
             <div className="skillsSection ml-2">
               <h4 className="m-1 bold text-teal-400 text-lg">Skills</h4>
-              {/* Make the skills responsive . . . */}
+              {/* Skills section with users credentials */}
               <div className="skillsList flex flex-wrap">
                 {userData.resume ? <Skills skills={skillsArrayTrimmed} /> : " "}
               </div>
@@ -169,7 +176,7 @@ const Profile = () => {
 
               <div className="resumeExperience mx-4">
                 <h3 className="bold text-xl">Experience</h3>
-                {/* Make this responsive */}
+                {/* Resume section with users credentials */}
                 <div className="m-1 my-2">
                   <h4 className="bold">{userData.resume ? userData.resume.prevJ1Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Company : " "}</h5>
@@ -179,7 +186,6 @@ const Profile = () => {
                   {userData.resume ? <Responsibilities responsibilities={responsibility1Trimmed} /> : " "}
                   </ul>
                 </div>
-                {/* end of template */}
 
                 <div className="m-1 my-2">
                 <h4 className="bold">{userData.resume ? userData.resume.prevJ2Title : " "}</h4>

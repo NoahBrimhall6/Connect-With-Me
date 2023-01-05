@@ -6,4 +6,3 @@ export default function PostList({ posts, connection, like, dislike, newComment 
   return posts.map((post) => <Post key={post._id} post={post} connection={connection} like={like} dislike={dislike} newComment={newComment}/>)    
 };
 
-
