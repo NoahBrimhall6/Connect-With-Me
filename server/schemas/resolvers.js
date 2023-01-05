@@ -91,12 +91,23 @@ const resolvers = {
     },
     //Creates a new User and sets the Auth Token
     addUser: async (parent, { username, email, password, firstName, lastName }) => {
+      // Check if the email or username is already taken
+      const userWithEmail = await User.findOne({ email });
+      const userWithUsername = await User.findOne({ username });
+
+      if (userWithEmail) {
+        throw new Error('A user with this email already exists');
+      }
+
+      if (userWithUsername) {
+        throw new Error('This username is already taken');
+      }
+
+      // creates the new user if the email or username is not taken
       const user = await User.create({ username, email, password, firstName, lastName });
       const token = signToken(user);
       return { token, user };
     },
-
-
     //logs the user in and sets the Auth Token
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

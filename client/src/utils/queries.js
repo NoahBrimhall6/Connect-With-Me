@@ -43,8 +43,6 @@ export const QUERY_POSTS = gql`
   }
 `;
 
-
-
 // Queries a single users connections
 export const QUERY_CONNECTIONS = gql`
 query connections($id: ID!) {
@@ -60,7 +58,6 @@ query connections($id: ID!) {
   }
 }
 `;
-
 
 //Queries a single user by username and returns all fields in ID value.
 export const QUERY_USER = gql`

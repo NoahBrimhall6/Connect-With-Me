@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER, LOGIN_USER } from "../utils/mutations";
+import { IS_EMAIL_TAKEN, IS_USERNAME_TAKEN } from "../utils/queries";
 import Auth from "../utils/auth";
 
 export default function SignUp() {
@@ -23,6 +24,10 @@ export default function SignUp() {
   const [addUser, { error }] = useMutation(ADD_USER);
   const [login, { loginError }] = useMutation(LOGIN_USER);
 
+// alerts if email or username is already taken
+  const [showAlert, setShowAlert] = useState(false);
+  const [showAlertTwo, setShowAlertTwo] = useState(false);
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -33,6 +38,7 @@ export default function SignUp() {
     }
 
     try {
+      // attempt to add the user to the database
       const { data } = await addUser({
         variables: {
           username: userFormData.username,
@@ -43,6 +49,7 @@ export default function SignUp() {
         },
       });
 
+      // if the user was successfully added, try logging them in
       try {
         const { data } = await login({
           variables: {
@@ -55,7 +62,15 @@ export default function SignUp() {
         console.error(err);
       }
     } catch (err) {
+      // if there was an error adding the user, check if it was due to the email being taken
+      if (err.message.includes('A user with this email already exists')) {
+      setShowAlert(true);
+      } 
+      if (err.message.includes('This username is already taken')) {
+      setShowAlertTwo(true);
+      } else {
       console.error(err);
+      }
     }
 
     setUserFormData({
@@ -170,6 +185,17 @@ export default function SignUp() {
                   required=""
                 />
               </div>
+              {showAlert && (
+                <div className="bg-red-500 text-white rounded-full px-3 py-2">
+                  A user with this email already exists
+                </div>
+              )}
+
+              {showAlertTwo && (
+                <div className="bg-red-500 text-white rounded-full px-3 py-2">
+                  This username is already taken
+                </div>
+              )}
               <button
                 type="submit"
                 className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-teal-500 hover:bg-teal-600 focus:ring-teal-600"

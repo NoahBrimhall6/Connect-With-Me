@@ -298,7 +298,7 @@ export default function Resume() {
                 name="summary"
                 type="text"
                 onChange={handleInputChange}
-                className="education form-control textarea-education focus:outline-teal-400  rounded-md p-2 bg-gray-200"
+                className="education form-control textarea-education focus:outline-teal-400 rounded-md p-2 bg-gray-200"
                 id="summary"
                 placeholder="Write a professional Summary About yourself"
               ></textarea>
