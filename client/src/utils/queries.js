@@ -6,6 +6,7 @@ export const QUERY_POSTS = gql`
     posts {
       _id
       author {
+        _id
         firstName
         lastName
         username
