@@ -61,7 +61,7 @@ function SearchBar({ placeholder, data }) {
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
-              <a className="dataItem" href={"https://www.google.com/"}>
+              <a className="dataItem" href={`/Profile/${value._id}`}>
                 <p>{value.firstName} {value.lastName} - {value.username}</p>
               </a>
             );
