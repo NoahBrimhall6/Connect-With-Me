@@ -1,23 +1,25 @@
-import React from "react";
-import Img from "../assets/images/blank-profile-pic.webp";
+import React, { useState, useEffect } from "react";
+
 import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_MYUSER, QUERY_RESUME } from '../utils/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_MYUSER } from '../utils/queries';
+import { DELETE_POST } from "../utils/mutations";
+
 import Auth from '../utils/auth';
 
 import Posts from '../components/userPostList';
 import Skills from '../components/Skills';
 import Skillslist from '../components/skillsList';
 import Responsibilities from '../components/Responsibilites';
+import ProfileHeader from '../components/ProfileHeader'
 
 const Profile = () => {
- var skillsArrayTrimmed = ""
- var responsibility1Trimmed = ""
- var responsibility2Trimmed = ""
- var responsibility3Trimmed = ""
+  var skillsArrayTrimmed = ""
+  var responsibility1Trimmed = ""
+  var responsibility2Trimmed = ""
+  var responsibility3Trimmed = ""
 
-  const userParam  = useParams();
-
+  const userParam = useParams();
 
   // gets logged in user information and sets to userData
   // const userID = Auth.getProfile().data._id;
@@ -28,9 +30,31 @@ const Profile = () => {
     var userID = '';
   }
 
-  const {loading, data} = useQuery(QUERY_MYUSER, {
+  const { loading, data } = useQuery(QUERY_MYUSER, {
     variables: { id: userParam.id },
   });
+
+  // Show Delete Button
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (userID === userParam.id) {
+      setShow(true);
+    }
+  }, [Profile]);
+
+
+  // Delete post
+  const [deletePost] = useMutation(DELETE_POST);
+  const deletePostFunction = async (postID) => {
+    try {
+      console.log(postID, userID)
+      const { data } = await deletePost({
+        variables: { id: postID, author: userID }
+      });
+      window.location.assign('/');
+    } catch (err) { console.error(err) }
+  }; 
 
   //displays loading until information from QueryUser recieves information
   if (loading) {
@@ -38,58 +62,32 @@ const Profile = () => {
   }
 
   const userData = data.myUser
-  console.log(userData)
-  if (userData.resume){
+  if (userData.resume) {
 
-  const skillsArray = userData.resume.skills.split(";")
-  var skillsArrayTrimmed = skillsArray.map(element => {
-    return element.trim()
-  })
+    const skillsArray = userData.resume.skills.split(";")
+    var skillsArrayTrimmed = skillsArray.map(element => {
+      return element.trim()
+    })
 
-  const responsibility1 = userData.resume.prevJ1Responsibilities.split(";")
-  var responsibility1Trimmed = responsibility1.map(element => {
-    return element.trim()
-  })
-  const responsibility2 = userData.resume.prevJ1Responsibilities.split(";")
-  var responsibility2Trimmed = responsibility2.map(element => {
-    return element.trim()
-  })
-  const responsibility3 = userData.resume.prevJ1Responsibilities.split(";")
-  var responsibility3Trimmed = responsibility3.map(element => {
-    return element.trim()
-  })
+    const responsibility1 = userData.resume.prevJ1Responsibilities.split(";")
+    var responsibility1Trimmed = responsibility1.map(element => {
+      return element.trim()
+    })
+    const responsibility2 = userData.resume.prevJ1Responsibilities.split(";")
+    var responsibility2Trimmed = responsibility2.map(element => {
+      return element.trim()
+    })
+    const responsibility3 = userData.resume.prevJ1Responsibilities.split(";")
+    var responsibility3Trimmed = responsibility3.map(element => {
+      return element.trim()
+    })
 
-}
+  }
 
   return (
     <div>
       {/* Header section for profile ??? ... need to figure out what we want to do here */}
-      <div className="grid grid-cols-6 mt-10">
-        <header className="bg-gray-900 text-white p-8 rounded-lg col-start-2 col-end-6 grid grid-cols-6 gap-8">
-          <div className="lg:col-start-2 lg:col-end-6 md:col-start-2 md:col-end-6 sm:col-start-2 sm:col-end-6 col-start-2 col-end-6 flex justify-center items-center">
-            <div>
-              {/* logic needed to UPLOAD IMAGE -- change to a button so when clicked can change picture ? */}
-              <img
-                className="rounded-lg my-3 placeholderImage"
-                src={Img}
-                alt="profile picture holder"
-              ></img>
-              <h1 className="text-center text-lg bold">{`${userData.firstName} ${userData.lastName}`}</h1>
-              <h3 className="text-white text-center">{userData.resume ? userData.resume.prevJ1Title : " "}</h3>
-            </div>
-          </div>
-
-          <div className="lg:col-start-1 lg:col-end-7 lg:row-start-2 lg:row-end-3 mt-3 bg-white rounded-md p-4 md:col-start-1 md:-col-end-7 sm:col-start-1 sm:col-end-7 col-start-1 col-end-7">
-            <div className="flex justify-center relative">
-              <h3 className="text-black profileHeaders cols-start-3 col-end-6">About</h3>              
-            </div>
-
-            <p className="mx-10 my-5 text-black">
-            {userData.resume ? userData.resume.summary : " "}
-            </p>
-          </div>
-        </header>
-      </div>
+      <ProfileHeader userData={userData} />
 
       {/* Grid styling for profile section */}
       <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-4 grid-rows-6 text-white p-5 rounded-md gap-5 gridSection">
@@ -97,7 +95,7 @@ const Profile = () => {
           <h1 className="profileHeaders text-teal-400">My Posts</h1>
 
           {/* Start of inidividual post here */}
-          {userData.posts ? <Posts posts={userData.posts} /> : "No Posts Yet"}
+          {userData.posts ? <Posts posts={userData.posts} deletePostFunction={deletePostFunction} show={show}/> : "No Posts Yet"}
 
         </div>
 
@@ -132,7 +130,7 @@ const Profile = () => {
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
             <div className="m-1 py-1 px-10 text-sm">
               <p>
-              {userData.resume ? userData.resume.summary : " "}
+                {userData.resume ? userData.resume.summary : " "}
               </p>
             </div>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
@@ -151,7 +149,7 @@ const Profile = () => {
                     <span className="mr-2">
                       <ion-icon name="call"></ion-icon>
                     </span>
-                    {userData.resume ? userData.resume.phone: " "}
+                    {userData.resume ? userData.resume.phone : " "}
                   </p>
                   <p>
                     <span className="mr-2">
@@ -165,12 +163,12 @@ const Profile = () => {
                 <div className="m-1">
                   <p className="bold">{userData.resume ? userData.resume.education : " "}</p>
                   <p className="text-sm">{userData.resume ? userData.resume.educationType : " "}</p>
-                  <p className="text-sm">{userData.resume ? userData.resume.educationLength: " "}</p>
+                  <p className="text-sm">{userData.resume ? userData.resume.educationLength : " "}</p>
                 </div>
 
                 <h3 className="bold text-lg text-teal-400">Skills</h3>
                 <ul className="m-1">
-                {userData.resume ? <Skillslist skills={skillsArrayTrimmed} /> : " "}
+                  {userData.resume ? <Skillslist skills={skillsArrayTrimmed} /> : " "}
                 </ul>
               </div>
 
@@ -180,28 +178,28 @@ const Profile = () => {
                 <div className="m-1 my-2">
                   <h4 className="bold">{userData.resume ? userData.resume.prevJ1Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Company : " "}</h5>
-                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Length: " "}</h5>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ1Length : " "}</h5>
                   <h5 className="text-sm bold">Responsibilities</h5>
                   <ul className="text-sm list-disc ml-4">
-                  {userData.resume ? <Responsibilities responsibilities={responsibility1Trimmed} /> : " "}
+                    {userData.resume ? <Responsibilities responsibilities={responsibility1Trimmed} /> : " "}
                   </ul>
                 </div>
 
                 <div className="m-1 my-2">
-                <h4 className="bold">{userData.resume ? userData.resume.prevJ2Title : " "}</h4>
+                  <h4 className="bold">{userData.resume ? userData.resume.prevJ2Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Company : " "}</h5>
-                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Length: " "}</h5>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Length : " "}</h5>
                   <ul className="text-sm list-disc ml-4">
-                  {userData.resume ? <Responsibilities responsibilities={responsibility2Trimmed} /> : " "}
+                    {userData.resume ? <Responsibilities responsibilities={responsibility2Trimmed} /> : " "}
                   </ul>
                 </div>
 
                 <div className="m-1 my-2">
-                <h4 className="bold">{userData.resume ? userData.resume.prevJ3Title : " "}</h4>
+                  <h4 className="bold">{userData.resume ? userData.resume.prevJ3Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Company : " "}</h5>
-                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Length: " "}</h5>
+                  <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Length : " "}</h5>
                   <ul className="text-sm list-disc ml-4">
-                  {userData.resume ? <Responsibilities responsibilities={responsibility3Trimmed} /> : " "}
+                    {userData.resume ? <Responsibilities responsibilities={responsibility3Trimmed} /> : " "}
                   </ul>
                 </div>
               </div>

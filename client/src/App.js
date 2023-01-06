@@ -21,7 +21,7 @@ import SignUp from "./pages/SignUp";
 import ViewJob from "./pages/ViewJob";
 import AboutUs from "./components/FooterLinks/AboutUs";
 import Careers from "./components/FooterLinks/Careers";
-import Connections from "./components/FooterLinks/Connections";
+import Connections from "./pages/Connections";
 import Contact from "./components/FooterLinks/Contact";
 import Events from "./components/FooterLinks/Events";
 import Faqs from "./components/FooterLinks/Faqs";

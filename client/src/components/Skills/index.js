@@ -6,7 +6,7 @@ export default function skill ({skills}) {
     return (
         skills.map((skill) => {
             return (
-                <p className="mr-2 m-1">{skill}</p>
+                <p key={skill} className="mr-2 m-1">{skill}</p>
             )
         })
     )

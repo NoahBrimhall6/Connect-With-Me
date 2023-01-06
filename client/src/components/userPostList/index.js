@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function userPosts ({posts}) {
+
+export default function userPosts ({ posts, deletePostFunction, show }) {
     if (!posts.length) {return <h3>No Posts</h3>}
 
     return (
         posts.map((post) => {
-            console.log(post)
             return (
-                <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
+                <div key={post._id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md m-2 p-2">
                 <div className="flex flex-col items-center pb-5 pt-5">
                   <h5 className="text-xl font-medium text-gray-900 text-center">
                     {post.title}
@@ -18,10 +18,16 @@ export default function userPosts ({posts}) {
                   <div className="flex mt-4 space-x-3 md:mt-6">
                     <a
                       href={`/posts/${post._id}`}
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-teal-500 text-gray-800 border-teal-700 hover:bg-teal-400 hover:border-teal-700 focus:ring-teal-700"
+                    >
+                      View
+                    </a>
+                    {show ? (<button
+                      onClick={() => {deletePostFunction(post._id)}}
                       className="inline-flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none bg-gray-200 text-gray-800 border-gray-600 hover:bg-gray-300 hover:border-gray-400 focus:ring-gray-700"
                     >
-                      View Post
-                    </a>
+                      Delete
+                    </button>) : (<></>)}
                   </div>
                 </div>
               </div>
