@@ -104,6 +104,8 @@ Full list of NPM packages
 
 ## Deployed Application
 
+https://connect-with-me.herokuapp.com/
+
 ## Developers
 
 Rexx Madsen
