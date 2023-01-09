@@ -135,9 +135,26 @@ footer {
 }
 
 /* Styling to keep footer on bottom and not compromise main content */
+@media screen and (max-width: 1076px )  {
+    .form-control {
+        width: 25rem;
+      }
+}
+
 @media screen and (max-width: 1024px )  {
     body {
         padding-bottom: 30rem;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .resume-flex {
+        flex-direction: column;
+    }
+
+    .resumeExperience {
+        margin-left: 2rem;
+        margin-top: 1rem;
     }
 }
 
@@ -145,12 +162,6 @@ footer {
     body {
         padding-bottom: 50rem;
     }
-}
-
-@media screen and (max-width: 1076px )  {
-    .form-control {
-        width: 25rem;
-      }
 }
 
 @media screen and (max-width: 575px) {
@@ -170,7 +181,6 @@ footer {
         width: 15.5rem;
     }
 }
-
 
 @media screen and (max-width: 376px) {
     .form-control {
