@@ -135,9 +135,26 @@ footer {
 }
 
 /* Styling to keep footer on bottom and not compromise main content */
+@media screen and (max-width: 1076px )  {
+    .form-control {
+        width: 25rem;
+      }
+}
+
 @media screen and (max-width: 1024px )  {
     body {
         padding-bottom: 30rem;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .resume-flex {
+        flex-direction: column;
+    }
+
+    .resumeExperience {
+        margin-left: 2rem;
+        margin-top: 1rem;
     }
 }
 
@@ -147,22 +164,34 @@ footer {
     }
 }
 
-@media screen and (max-width: 1076px )  {
-    .form-control {
-        width: 25rem;
-      }
-}
-
 @media screen and (max-width: 575px) {
     .form-control {
         width: 22rem;
-      }
+    }
 }
 
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 415px) {
     .form-control {
-        width: 15rem;
-      }
+        width: 17rem;
+    }
+}
+
+@media screen and (max-width: 391px) {
+    .form-control {
+        width: 15.5rem;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .form-control {
+        width: 14.5rem;
+    }
+}
+
+@media screen and (max-width: 362px) {
+    .form-control {
+        width: 14rem;
+    }
 }
 
 @media screen and (max-width: 334px) {

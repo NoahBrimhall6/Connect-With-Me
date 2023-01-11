@@ -91,7 +91,7 @@ const Profile = () => {
 
       {/* Grid styling for profile section */}
       <div className="xl:mx-20 lg:mx-10 md:mx-5 sm:mx-5 mx-5 my-10 grid grid-cols-4 grid-rows-6 text-white p-5 rounded-md gap-5 gridSection">
-        <div className="myPosts bg-gray-900 rounded-md p-4 lg:col-start-4 lg:col-span-1 md:col-start-4 md:col-span-1 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-7 md:row-start-1 md:row-end-7 sm:row-start-5 sm:row-end-7 row-start-5 row-end-7 col-start-1 col-span-4 flex flex-col items-center">
+        <div className="myPosts bg-gray-900 rounded-md p-4 lg:col-start-4 lg:col-span-1 md:col-start-1 md:col-span-4 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-7 md:row-start-5 md:row-end-7 sm:row-start-5 sm:row-end-7 row-start-5 row-end-7 col-start-1 col-span-4 flex flex-col items-center">
           <h1 className="profileHeaders text-teal-400">My Posts</h1>
 
           {/* Start of inidividual post here */}
@@ -99,7 +99,7 @@ const Profile = () => {
 
         </div>
 
-        <div className="skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-3 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4">
+        <div className="skillsEducation bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-4 sm:col-start-1 sm:col-span-4 lg:row-start-1 lg:row-end-3 md:row-start-1 md:row-end-2 sm:row-start-1 sm:row-end-2 row-start-1 row-end-2 col-start-1 col-span-4">
           <h1 className="profileHeaders text-white">Education and Skills</h1>
 
           <div className="flex">
@@ -124,7 +124,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="resume bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-4 lg:row-start-3 lg:row-end-7 md:row-start-3 md:row-end-7 sm:row-start-2 sm:row-end-5 row-start-2 row-end-5 col-start-1 col-span-4">
+        <div className="resume bg-gray-900 rounded-md p-4 lg:col-start-1 lg:col-span-3 md:col-start-1 md:col-span-4 sm:col-start-1 sm:col-span-4 lg:row-start-3 lg:row-end-7 md:row-start-2 md:row-end-5 sm:row-start-2 sm:row-end-5 row-start-2 row-end-5 col-start-1 col-span-4">
           <div className="profileResume bg-gray-200 text-black rounded-lg p-4 m-5">
             <h3 className="bold text-2xl text-center">{userData.resume ? userData.resume.fullName : " "}</h3>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
@@ -135,7 +135,7 @@ const Profile = () => {
             </div>
             <hr className="my-3 mx-2 h-px border-0 bg-gray-400"></hr>
 
-            <div className="flex">
+            <div className="flex resume-flex">
               <div className="contactEducationSkills bg-gray-900 rounded-lg py-5 px-6 mx-6 text-white">
                 <h4 className="bold text-lg text-teal-400">Contact</h4>
                 <div className="m-1">
@@ -189,6 +189,7 @@ const Profile = () => {
                   <h4 className="bold">{userData.resume ? userData.resume.prevJ2Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Company : " "}</h5>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ2Length : " "}</h5>
+                  <h5 className="text-sm bold">Responsibilities</h5>
                   <ul className="text-sm list-disc ml-4">
                     {userData.resume ? <Responsibilities responsibilities={responsibility2Trimmed} /> : " "}
                   </ul>
@@ -198,6 +199,7 @@ const Profile = () => {
                   <h4 className="bold">{userData.resume ? userData.resume.prevJ3Title : " "}</h4>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Company : " "}</h5>
                   <h5 className="text-sm">{userData.resume ? userData.resume.prevJ3Length : " "}</h5>
+                  <h5 className="text-sm bold">Responsibilities</h5>
                   <ul className="text-sm list-disc ml-4">
                     {userData.resume ? <Responsibilities responsibilities={responsibility3Trimmed} /> : " "}
                   </ul>
